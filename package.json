@@ -1,0 +1,13 @@
+{
+  "name": "project",
+  "version": "0.1.0",
+  "description": "Python project with LLM integration and MCP support",
+  "engines": {
+    "node": "24.16.0"
+  },
+  "scripts": {
+    "dev": "echo 'Development mode'"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
