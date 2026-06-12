@@ -59,3 +59,10 @@ git-setup.sh
 setup-tools.sh
 FNM_UV_GIT_CONFIG.md
 UV_FNM_SETUP.md
+dummy_docs_for_dm/
+mcp.json
+my_mcp_server.py
+temp_game_rules.db
+temp_game_rules.db-journal
+temp_llm_sandbox/
+uv.lock
