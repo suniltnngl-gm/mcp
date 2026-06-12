@@ -1,0 +1,13 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "PLAN.md",
+    "SYSTEM_INVENTORY.md",
+    "GEMINI.md",
+    "ERROR_REGISTRY.md",
+    "CONTRIBUTING.md",
+    "CHECKLIST_DEVELOPMENT.md",
+    "CHECKLIST_PROJECT_GROWTH.md",
+    "CHECKLIST_CODE_REVIEW.md"
+  ]
+}
