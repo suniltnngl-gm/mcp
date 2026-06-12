@@ -1,7 +1,13 @@
 {
-    "timestamp": "2025-12-17 03:31:51.648385",
-    "scanned_path": "/media/sunil-kr/storage/project",
+    "timestamp": "2026-06-01 20:37:44.344085",
+    "scanned_path": "/home/sunil-kr/Public/project",
     "files": [
+        {
+            "path": ".editorconfig",
+            "size_bytes": 630,
+            "last_modified": "2026-05-31 16:25:44.694716",
+            "file_type": ""
+        },
         {
             "path": ".git-changelog.yaml",
             "size_bytes": 575,
@@ -40,14 +46,14 @@
         },
         {
             "path": ".gitignore",
-            "size_bytes": 14,
-            "last_modified": "2025-12-16 14:33:22.135906",
+            "size_bytes": 794,
+            "last_modified": "2026-06-01 18:43:35.283143",
             "file_type": ""
         },
         {
             "path": "CHANGELOG.md",
-            "size_bytes": 797,
-            "last_modified": "2025-12-16 16:10:26.089395",
+            "size_bytes": 1114,
+            "last_modified": "2026-05-31 13:48:12.459694",
             "file_type": ".md"
         },
         {
@@ -76,8 +82,8 @@
         },
         {
             "path": "ERROR_REGISTRY.md",
-            "size_bytes": 6999,
-            "last_modified": "2025-12-16 19:29:15.823315",
+            "size_bytes": 8930,
+            "last_modified": "2025-12-17 13:17:45.741304",
             "file_type": ".md"
         },
         {
@@ -88,15 +94,33 @@
         },
         {
             "path": "PLAN.md",
-            "size_bytes": 10709,
-            "last_modified": "2025-12-17 03:16:03.948388",
+            "size_bytes": 12809,
+            "last_modified": "2025-12-17 13:14:01.698708",
             "file_type": ".md"
         },
         {
             "path": "SYSTEM_INVENTORY.md",
-            "size_bytes": 6305,
-            "last_modified": "2025-12-17 02:35:08.202060",
+            "size_bytes": 5806,
+            "last_modified": "2026-06-01 20:37:34.787873",
             "file_type": ".md"
+        },
+        {
+            "path": "benchmark_orchestrator.py",
+            "size_bytes": 14642,
+            "last_modified": "2026-05-31 14:16:01.859046",
+            "file_type": ".py"
+        },
+        {
+            "path": "package-lock.json",
+            "size_bytes": 86,
+            "last_modified": "2026-05-31 15:01:18.704829",
+            "file_type": ".json"
+        },
+        {
+            "path": "package.json",
+            "size_bytes": 264,
+            "last_modified": "2026-05-31 16:30:44.709661",
+            "file_type": ".json"
         },
         {
             "path": "pre_edit_backup.sh",
@@ -105,15 +129,21 @@
             "file_type": ".sh"
         },
         {
+            "path": "pyproject.toml",
+            "size_bytes": 1210,
+            "last_modified": "2026-05-31 16:23:45.464761",
+            "file_type": ".toml"
+        },
+        {
             "path": "requirements.txt",
-            "size_bytes": 100,
-            "last_modified": "2025-12-16 21:56:54.388787",
+            "size_bytes": 116,
+            "last_modified": "2026-05-31 13:50:34.886622",
             "file_type": ".txt"
         },
         {
             "path": "simple_backup.sh",
-            "size_bytes": 2476,
-            "last_modified": "2025-12-16 16:52:53.809351",
+            "size_bytes": 2643,
+            "last_modified": "2026-05-31 13:50:21.584068",
             "file_type": ".sh"
         },
         {
@@ -124,8 +154,8 @@
         },
         {
             "path": "src/data_models/llm_wrapper.py",
-            "size_bytes": 4003,
-            "last_modified": "2025-12-16 19:17:38.995564",
+            "size_bytes": 4252,
+            "last_modified": "2026-05-31 14:15:31.087454",
             "file_type": ".py"
         },
         {
@@ -142,26 +172,44 @@
         },
         {
             "path": "src/llm_wrapper/core/base.py",
-            "size_bytes": 2231,
-            "last_modified": "2025-12-16 20:01:20.342050",
+            "size_bytes": 2263,
+            "last_modified": "2026-05-31 14:16:33.358673",
             "file_type": ".py"
         },
         {
             "path": "src/llm_wrapper/core/config.py",
-            "size_bytes": 825,
-            "last_modified": "2025-12-16 21:35:20.692404",
+            "size_bytes": 814,
+            "last_modified": "2026-05-31 14:15:31.089454",
+            "file_type": ".py"
+        },
+        {
+            "path": "src/llm_wrapper/core/enricher.py",
+            "size_bytes": 2461,
+            "last_modified": "2026-05-31 14:15:31.090454",
             "file_type": ".py"
         },
         {
             "path": "src/llm_wrapper/core/router.py",
-            "size_bytes": 4832,
-            "last_modified": "2025-12-16 21:44:43.701082",
+            "size_bytes": 5108,
+            "last_modified": "2026-05-31 14:15:31.091454",
+            "file_type": ".py"
+        },
+        {
+            "path": "src/llm_wrapper/llm/local_client.py",
+            "size_bytes": 10732,
+            "last_modified": "2026-05-31 14:15:31.094455",
+            "file_type": ".py"
+        },
+        {
+            "path": "src/llm_wrapper/llm/provider_client.py",
+            "size_bytes": 8498,
+            "last_modified": "2026-05-31 14:15:31.096455",
             "file_type": ".py"
         },
         {
             "path": "src/llm_wrapper/main.py",
-            "size_bytes": 4708,
-            "last_modified": "2025-12-16 22:36:38.479598",
+            "size_bytes": 4866,
+            "last_modified": "2026-05-31 14:16:01.864047",
             "file_type": ".py"
         },
         {
@@ -172,20 +220,74 @@
         },
         {
             "path": "src/llm_wrapper/mcp/client.py",
-            "size_bytes": 1995,
-            "last_modified": "2025-12-16 21:58:26.135515",
+            "size_bytes": 1930,
+            "last_modified": "2026-05-31 14:16:01.866047",
+            "file_type": ".py"
+        },
+        {
+            "path": "src/llm_wrapper/mcp/client_manager.py",
+            "size_bytes": 16172,
+            "last_modified": "2026-05-31 14:15:31.101455",
+            "file_type": ".py"
+        },
+        {
+            "path": "src/llm_wrapper/mcp/config.py",
+            "size_bytes": 9385,
+            "last_modified": "2026-05-31 14:15:31.085454",
+            "file_type": ".py"
+        },
+        {
+            "path": "src/llm_wrapper/mcp/doc_manager_server.py",
+            "size_bytes": 10881,
+            "last_modified": "2026-05-31 14:16:01.862046",
+            "file_type": ".py"
+        },
+        {
+            "path": "src/llm_wrapper/mcp/game_rules_server.py",
+            "size_bytes": 17372,
+            "last_modified": "2026-05-31 14:16:01.873047",
+            "file_type": ".py"
+        },
+        {
+            "path": "src/llm_wrapper/mcp/interfaces.py",
+            "size_bytes": 2046,
+            "last_modified": "2026-05-31 14:15:31.097455",
             "file_type": ".py"
         },
         {
             "path": "src/llm_wrapper/mcp/manager.py",
-            "size_bytes": 3332,
-            "last_modified": "2025-12-16 22:14:31.931500",
+            "size_bytes": 3321,
+            "last_modified": "2026-05-31 14:16:01.875047",
+            "file_type": ".py"
+        },
+        {
+            "path": "src/llm_wrapper/mcp/resilience.py",
+            "size_bytes": 11596,
+            "last_modified": "2026-05-31 14:15:31.100455",
+            "file_type": ".py"
+        },
+        {
+            "path": "src/llm_wrapper/mcp/stdio_client.py",
+            "size_bytes": 7625,
+            "last_modified": "2026-05-31 14:15:31.102455",
+            "file_type": ".py"
+        },
+        {
+            "path": "src/llm_wrapper/mcp/system_utility_server.py",
+            "size_bytes": 20858,
+            "last_modified": "2026-05-31 14:15:31.105455",
             "file_type": ".py"
         },
         {
             "path": "src/llm_wrapper/mcp/tools.py",
-            "size_bytes": 1053,
-            "last_modified": "2025-12-16 20:08:33.149940",
+            "size_bytes": 1070,
+            "last_modified": "2026-05-31 14:15:31.102455",
+            "file_type": ".py"
+        },
+        {
+            "path": "src/llm_wrapper/orchestrator.py",
+            "size_bytes": 15047,
+            "last_modified": "2026-05-31 14:16:01.875047",
             "file_type": ".py"
         },
         {
@@ -196,111 +298,51 @@
         },
         {
             "path": "src/llm_wrapper/providers/local_client.py",
-            "size_bytes": 2111,
-            "last_modified": "2025-12-16 20:58:21.091881",
+            "size_bytes": 2121,
+            "last_modified": "2026-05-31 14:15:31.105455",
             "file_type": ".py"
         },
         {
             "path": "src/llm_wrapper/providers/remote_client.py",
-            "size_bytes": 2735,
-            "last_modified": "2025-12-16 21:38:42.457092",
+            "size_bytes": 2726,
+            "last_modified": "2026-05-31 14:15:31.106455",
             "file_type": ".py"
         },
         {
             "path": "workspace-automation/file_registry.json",
-            "size_bytes": 10471,
-            "last_modified": "2025-12-17 02:09:36.236491",
+            "size_bytes": 11981,
+            "last_modified": "2026-06-01 20:37:34.783873",
             "file_type": ".json"
         },
         {
+            "path": "workspace-automation/src/agent_logger.py",
+            "size_bytes": 2924,
+            "last_modified": "2026-05-31 14:16:01.876048",
+            "file_type": ".py"
+        },
+        {
             "path": "workspace-automation/src/auto_register.py",
-            "size_bytes": 5371,
-            "last_modified": "2025-12-16 15:26:09.151838",
+            "size_bytes": 5618,
+            "last_modified": "2026-05-31 14:16:01.878048",
             "file_type": ".py"
         },
         {
-            "path": "benchmark_orchestrator.py",
-            "size_bytes": 13009,
-            "last_modified": "2025-12-17 00:41:58.279997",
-            "file_type": ".py"
-        },
-        {
-            "path": "src/llm_wrapper/core/enricher.py",
-            "size_bytes": 2337,
-            "last_modified": "2025-12-16 22:32:43.697410",
-            "file_type": ".py"
-        },
-        {
-            "path": "src/llm_wrapper/llm/local_client.py",
-            "size_bytes": 10307,
-            "last_modified": "2025-12-16 23:32:15.594797",
-            "file_type": ".py"
-        },
-        {
-            "path": "src/llm_wrapper/llm/provider_client.py",
-            "size_bytes": 8176,
-            "last_modified": "2025-12-16 23:45:25.152130",
-            "file_type": ".py"
-        },
-        {
-            "path": "src/llm_wrapper/mcp/client_manager.py",
-            "size_bytes": 14733,
-            "last_modified": "2025-12-17 01:05:36.596287",
-            "file_type": ".py"
-        },
-        {
-            "path": "src/llm_wrapper/mcp/config.py",
-            "size_bytes": 8775,
-            "last_modified": "2025-12-17 01:23:28.313283",
-            "file_type": ".py"
-        },
-        {
-            "path": "src/llm_wrapper/mcp/doc_manager_server.py",
-            "size_bytes": 10554,
-            "last_modified": "2025-12-16 23:58:41.945423",
-            "file_type": ".py"
-        },
-        {
-            "path": "src/llm_wrapper/mcp/game_rules_server.py",
-            "size_bytes": 16118,
-            "last_modified": "2025-12-17 00:12:35.575360",
-            "file_type": ".py"
-        },
-        {
-            "path": "src/llm_wrapper/mcp/interfaces.py",
-            "size_bytes": 2030,
-            "last_modified": "2025-12-16 23:16:46.656712",
-            "file_type": ".py"
-        },
-        {
-            "path": "src/llm_wrapper/mcp/resilience.py",
-            "size_bytes": 10928,
-            "last_modified": "2025-12-17 00:52:16.256606",
-            "file_type": ".py"
-        },
-        {
-            "path": "src/llm_wrapper/mcp/stdio_client.py",
-            "size_bytes": 7434,
-            "last_modified": "2025-12-16 23:11:22.500814",
-            "file_type": ".py"
-        },
-        {
-            "path": "src/llm_wrapper/mcp/system_utility_server.py",
-            "size_bytes": 9674,
-            "last_modified": "2025-12-17 01:16:52.855195",
-            "file_type": ".py"
-        },
-        {
-            "path": "src/llm_wrapper/orchestrator.py",
-            "size_bytes": 13897,
-            "last_modified": "2025-12-17 01:28:05.216778",
+            "path": "workspace-automation/src/run_orchestrator_tool.py",
+            "size_bytes": 3076,
+            "last_modified": "2026-05-31 14:15:31.107455",
             "file_type": ".py"
         },
         {
             "path": "workspace_sync.sh",
-            "size_bytes": 1775,
-            "last_modified": "2025-12-17 03:25:57.269063",
+            "size_bytes": 2035,
+            "last_modified": "2026-05-31 13:50:28.735105",
             "file_type": ".sh"
+        },
+        {
+            "path": "uv.lock",
+            "size_bytes": 443402,
+            "last_modified": "2026-06-01 20:37:20.310573",
+            "file_type": ".lock"
         }
     ],
     "directories": [
@@ -320,6 +362,9 @@
             "path": "src/llm_wrapper/core"
         },
         {
+            "path": "src/llm_wrapper/llm"
+        },
+        {
             "path": "src/llm_wrapper/mcp"
         },
         {
@@ -332,14 +377,11 @@
             "path": "workspace-automation/src"
         },
         {
-            "path": "src/llm_wrapper/llm"
-        },
-        {
             "path": "."
         }
     ],
     "summary": {
-        "total_files": 50,
+        "total_files": 57,
         "total_directories": 11
     }
 }

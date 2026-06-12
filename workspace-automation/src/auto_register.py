@@ -4,12 +4,16 @@ import os
 import json
 import datetime
 import subprocess
-from typing import Dict, Any, List
+from typing import Dict, Any
+
 
 def run_shell_command(command: str) -> str:
     """Helper to run shell commands and return stdout."""
-    result = subprocess.run(command, shell=True, capture_output=True, text=True, check=True)
+    result = subprocess.run(
+        command, shell=True, capture_output=True, text=True, check=True
+    )
     return result.stdout.strip()
+
 
 def generate_inventory(project_root: str = ".") -> Dict[str, Any]:
     """
@@ -21,7 +25,7 @@ def generate_inventory(project_root: str = ".") -> Dict[str, Any]:
         "scanned_path": os.path.abspath(project_root),
         "files": [],
         "directories": [],
-        "summary": {}
+        "summary": {},
     }
 
     all_paths = []
@@ -29,12 +33,18 @@ def generate_inventory(project_root: str = ".") -> Dict[str, Any]:
         # Use git ls-files to get all tracked and untracked (but not ignored) files
         # This implicitly respects .gitignore
         tracked_files = run_shell_command(f"git -C {project_root} ls-files")
-        untracked_files = run_shell_command(f"git -C {project_root} ls-files --others --exclude-standard")
+        untracked_files = run_shell_command(
+            f"git -C {project_root} ls-files --others --exclude-standard"
+        )
         all_paths = tracked_files.splitlines() + untracked_files.splitlines()
-        all_paths = [os.path.join(project_root, p) for p in all_paths if p] # Make paths relative to root
+        all_paths = [
+            os.path.join(project_root, p) for p in all_paths if p
+        ]  # Make paths relative to root
 
     except subprocess.CalledProcessError:
-        print("Git not found or project is not a git repository. Falling back to os.walk.")
+        print(
+            "Git not found or project is not a git repository. Falling back to os.walk."
+        )
         # Fallback if not a git repository or git command fails
         for root, dirs, files in os.walk(project_root):
             for name in files:
@@ -42,8 +52,7 @@ def generate_inventory(project_root: str = ".") -> Dict[str, Any]:
             for name in dirs:
                 # Add directories that are not explicitly ignored by git ls-files if it were used
                 # For os.walk fallback, we include all directories for now.
-                pass # Directories are processed based on file paths for simplicity in fallback
-
+                pass  # Directories are processed based on file paths for simplicity in fallback
 
     processed_dirs = set()
     total_files = 0
@@ -56,12 +65,16 @@ def generate_inventory(project_root: str = ".") -> Dict[str, Any]:
         if os.path.isfile(abs_path):
             total_files += 1
             stat = os.stat(abs_path)
-            file_registry["files"].append({
-                "path": rel_path,
-                "size_bytes": stat.st_size,
-                "last_modified": str(datetime.datetime.fromtimestamp(stat.st_mtime)),
-                "file_type": os.path.splitext(rel_path)[1]
-            })
+            file_registry["files"].append(
+                {
+                    "path": rel_path,
+                    "size_bytes": stat.st_size,
+                    "last_modified": str(
+                        datetime.datetime.fromtimestamp(stat.st_mtime)
+                    ),
+                    "file_type": os.path.splitext(rel_path)[1],
+                }
+            )
             # Also record directories encountered
             dir_name = os.path.dirname(rel_path)
             if dir_name and dir_name not in processed_dirs:
@@ -83,37 +96,47 @@ def generate_inventory(project_root: str = ".") -> Dict[str, Any]:
 
     file_registry["summary"] = {
         "total_files": total_files,
-        "total_directories": total_dirs
+        "total_directories": total_dirs,
     }
     return file_registry
 
-def write_system_inventory_md(file_registry: Dict[str, Any], output_path: str = "SYSTEM_INVENTORY.md"):
+
+def write_system_inventory_md(
+    file_registry: Dict[str, Any], output_path: str = "SYSTEM_INVENTORY.md"
+):
     """
     Generates a human-readable SYSTEM_INVENTORY.md from the file registry.
     """
     with open(output_path, "w") as f:
-        f.write(f"# System Inventory\n\n")
+        f.write("# System Inventory\n\n")
         f.write(f"Generated on: {file_registry['timestamp']}\n")
         f.write(f"Scanned path: `{file_registry['scanned_path']}`\n\n")
-        f.write(f"## Summary\n")
+        f.write("## Summary\n")
         f.write(f"- Total Files: {file_registry['summary']['total_files']}\n")
-        f.write(f"- Total Directories: {file_registry['summary']['total_directories']}\n\n")
+        f.write(
+            f"- Total Directories: {file_registry['summary']['total_directories']}\n\n"
+        )
 
-        f.write(f"## Directories\n")
+        f.write("## Directories\n")
         # Sort directories for consistent output
-        sorted_dirs = sorted([d['path'] for d in file_registry['directories']])
+        sorted_dirs = sorted([d["path"] for d in file_registry["directories"]])
         for dir_path in sorted_dirs:
             f.write(f"- `{dir_path}/`\n")
-        f.write(f"\n")
+        f.write("\n")
 
-        f.write(f"## Files\n")
+        f.write("## Files\n")
         # Sort files by path for consistent output
-        sorted_files = sorted(file_registry['files'], key=lambda x: x['path'])
+        sorted_files = sorted(file_registry["files"], key=lambda x: x["path"])
         for file_data in sorted_files:
-            f.write(f"- `{file_data['path']}` (Size: {file_data['size_bytes']} bytes, Last Modified: {file_data['last_modified']})\n")
+            f.write(
+                f"- `{file_data['path']}` (Size: {file_data['size_bytes']} bytes, Last Modified: {file_data['last_modified']})\n"
+            )
+
 
 def main():
-    project_root = os.getenv("PROJECT_ROOT", ".") # Allow PROJECT_ROOT to be set via env var
+    project_root = os.getenv(
+        "PROJECT_ROOT", "."
+    )  # Allow PROJECT_ROOT to be set via env var
     file_registry = generate_inventory(project_root)
 
     registry_path = os.path.join("workspace-automation", "file_registry.json")
@@ -123,7 +146,8 @@ def main():
     print(f"File registry created at {registry_path}")
 
     write_system_inventory_md(file_registry)
-    print(f"SYSTEM_INVENTORY.md generated.")
+    print("SYSTEM_INVENTORY.md generated.")
+
 
 if __name__ == "__main__":
     main()

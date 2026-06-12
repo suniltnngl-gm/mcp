@@ -9,15 +9,27 @@ from mcp.types import Tool, CallToolResult
 from mcp import ClientSession, StdioServerParameters
 
 # Import our abstract base class
-from src.llm_wrapper.mcp.interfaces import MCPClient 
+from src.llm_wrapper.mcp.interfaces import MCPClient
+
 
 class StdioMCPClient(MCPClient):
     """
     An MCPClient implementation for connecting to a local MCP server via stdio.
     This client manages the lifecycle of the subprocess and the MCP session.
     """
+
     def __init__(self, server_params: StdioServerParameters):
         self.server_params = server_params
+        # Backwards compatibility: older code expects command line as a list
+        cmd = getattr(self.server_params, "command", None)
+        args = getattr(self.server_params, "args", None) or []
+        if isinstance(cmd, (list, tuple)):
+            self._command_line = list(cmd) + list(args)
+        elif cmd is None:
+            self._command_line = list(args)
+        else:
+            self._command_line = [str(cmd)] + list(args)
+
         self._session: Optional[ClientSession] = None
         self._process: Optional[asyncio.subprocess.Process] = None
 
@@ -30,26 +42,34 @@ class StdioMCPClient(MCPClient):
         if self._session:
             raise RuntimeError("StdioMCPClient is already connected.")
 
-        print(f"Starting stdio client with command: {' '.join(self.server_params.command_line)}")
-        
+        # Build a printable command line from available fields for compatibility
+        cmd = getattr(self.server_params, "command", None)
+        args = getattr(self.server_params, "args", None) or []
+        if isinstance(cmd, (list, tuple)):
+            command_line = list(cmd) + list(args)
+        elif cmd is None:
+            command_line = list(args)
+        else:
+            command_line = [str(cmd)] + list(args)
+
+        print(f"Starting stdio client with command: {' '.join(command_line)}")
+
         try:
-            # stdio_client is an async context manager that returns a ClientSession and the process
-            async with stdio_client(self.server_params) as (session, process):
-                self._session = session
-                self._process = process
-                print(f"Stdio client connected. Process PID: {self._process.pid}")
-                yield self
-            
-            # Ensure session and process are cleaned up after exiting the context
+            # stdio_client is an async context manager that returns read/write streams
+            async with stdio_client(self.server_params) as (read_stream, write_stream):
+                async with ClientSession(read_stream, write_stream) as session:
+                    self._session = session
+                    print("Stdio client connected.")
+                    yield self
+
+            # Ensure session is cleaned up after exiting the context
             self._session = None
-            self._process = None
             print("Stdio client disconnected gracefully.")
         except Exception as e:
             print(f"Error connecting StdioMCPClient: {e}")
-            if self._process:
-                await self.disconnect() # Attempt to clean up process if it started and failed
-            raise # Re-raise the exception
-
+            if self._session:
+                await self.disconnect()
+            raise  # Re-raise the exception
 
     async def list_tools(self) -> List[Tool]:
         """
@@ -58,7 +78,7 @@ class StdioMCPClient(MCPClient):
         """
         if not self._session:
             raise RuntimeError("StdioMCPClient is not connected. Call connect() first.")
-        
+
         response = await self._session.list_tools()
         return response.tools
 
@@ -69,43 +89,30 @@ class StdioMCPClient(MCPClient):
         """
         if not self._session:
             raise RuntimeError("StdioMCPClient is not connected. Call connect() first.")
-        
+
         return await self._session.call_tool(name, arguments)
 
     async def disconnect(self):
         """
-        Explicitly disconnects the client and terminates the subprocess.
+        Explicitly disconnects the client session.
         This method is primarily for explicit control if not using the 'connect'
         async context manager, or for error cleanup.
         """
-        if self._process and self._process.returncode is None:
-            print(f"Terminating stdio client process (PID: {self._process.pid})...")
-            self._process.terminate()
+        if self._session:
             try:
-                await asyncio.wait_for(self._process.wait(), timeout=5)
-                print(f"Process {self._process.pid} terminated gracefully.")
-            except asyncio.TimeoutError:
-                print(f"Process {self._process.pid} did not terminate gracefully, killing...")
-                self._process.kill()
-                await self._process.wait() # Wait for it to be truly dead
-                print(f"Process {self._process.pid} killed.")
+                await self._session.__aexit__(None, None, None)
+                print("Stdio client session disconnected.")
             except Exception as e:
-                print(f"Error during process termination: {e}")
+                print(f"Error disconnecting StdioMCPClient session: {e}")
             finally:
-                self._process = None
                 self._session = None
-                print("Stdio client fully disconnected and process cleaned up.")
-        elif self._session:
-            # If session exists but process is already gone
-            self._session = None
-            print("Stdio client session cleared (process already terminated or not started).")
+
 
 # --- Test Utilities (for development and demonstration) ---
 async def create_dummy_mcp_server_script(path: Path):
     """Creates a dummy MCP server Python script for testing."""
     dummy_server_content = """
-import asyncio
-from mcp.server.stdio import StdioServer
+from mcp.server.fastmcp import FastMCP
 from mcp.types import Tool, CallToolResult
 from pydantic import BaseModel
 
@@ -123,39 +130,21 @@ async def echo_tool_function(input: EchoToolInput) -> CallToolResult:
     print(f"Dummy server echoing for echo_tool: {input.text}", flush=True)
     return CallToolResult(content=input.text)
 
-my_server = StdioServer(
+my_server = FastMCP(
     name="my_test_server",
     tools=[
-        Tool(name="my_tool", description="A test tool", input_schema=MyToolInput.model_json_schema()),
-        Tool(name="echo_tool", description="Echoes text", input_schema=EchoToolInput.model_json_schema())
-    ]
-)
+        Tool(name="my_tool", description="A test tool", inputSchema=MyToolInput.model_json_schema()),
+        Tool(name="echo_tool", description="Echoes text", inputSchema=EchoToolInput.model_json_schema())
 
-my_server.register_tool_function("my_tool", my_tool_function)
-my_server.register_tool_function("echo_tool", echo_tool_function)
-
-if __name__ == "__main__":
-    print("Dummy MCP server starting...", flush=True)
-    asyncio.run(my_server.run_forever())
-    print("Dummy MCP server stopped.", flush=True)
-"""
-    if not path.is_file():
-        path.write_text(dummy_server_content)
-        print(f"Created dummy MCP server script: {path}")
-
-async def cleanup_dummy_mcp_server_script(path: Path):
-    """Cleans up the dummy MCP server Python script."""
-    if path.is_file():
-        path.unlink()
-        print(f"Cleaned up dummy MCP server script: {path}")
-
-if __name__ == "__main__":
     async def test_stdio_client():
         print("--- Testing StdioMCPClient ---")
         dummy_server_path = Path("my_mcp_server.py")
         await create_dummy_mcp_server_script(dummy_server_path)
-        
-        server_params = StdioServerParameters(command_line=["python", str(dummy_server_path)])
+
+        server_params = StdioServerParameters(
+            command=["python", str(dummy_server_path)],
+            args=[],
+        )
         client = StdioMCPClient(server_params)
 
         try:
@@ -166,11 +155,15 @@ if __name__ == "__main__":
                     print(f"- {tool.name}: {tool.description}")
 
                 print("\nCalling 'my_tool':")
-                result = await connected_client.call_tool("my_tool", {"message": "Hello from client!"})
+                result = await connected_client.call_tool(
+                    "my_tool", {"message": "Hello from client!"}
+                )
                 print(f"Result for my_tool: {result.content}")
 
                 print("\nCalling 'echo_tool':")
-                echo_result = await connected_client.call_tool("echo_tool", {"text": "This is an echo test."})
+                echo_result = await connected_client.call_tool(
+                    "echo_tool", {"text": "This is an echo test."}
+                )
                 print(f"Result for echo_tool: {echo_result.content}")
 
         except Exception as e:

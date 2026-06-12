@@ -30,11 +30,6 @@ dev = [
     "pre-commit",
 ]
 
-[tool.uv]
-# UV configuration for faster package installation
-# UV will use Python 3.10+ and resolve dependencies efficiently
-python-version = "3.10"
-
 [tool.ruff]
 line-length = 100
 target-version = "py310"

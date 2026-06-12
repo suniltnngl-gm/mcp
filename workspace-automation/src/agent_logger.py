@@ -1,8 +1,8 @@
 import datetime
 import os
-import inspect
 import json
 from typing import Any, Dict, Optional
+
 
 class AgentLogger:
     def __init__(self, log_file_path: str = "AGENT_LOG.md"):
@@ -17,8 +17,12 @@ class AgentLogger:
         if not os.path.exists(self.log_file_path):
             with open(self.log_file_path, "w") as f:
                 f.write("# Agent Operation Log\n\n")
-                f.write("This document tracks significant actions and decisions made by the AI agent.\n")
-                f.write("Each entry includes details on *Why*, *What*, *How*, and *When* the action was performed.\n\n")
+                f.write(
+                    "This document tracks significant actions and decisions made by the AI agent.\n"
+                )
+                f.write(
+                    "Each entry includes details on *Why*, *What*, *How*, and *When* the action was performed.\n\n"
+                )
 
     def log_action(
         self,
@@ -27,7 +31,7 @@ class AgentLogger:
         how: str,
         result: str,
         task_id: Optional[str] = None,
-        context: Optional[Dict[str, Any]] = None
+        context: Optional[Dict[str, Any]] = None,
     ):
         """
         Logs a significant action performed by the agent.
@@ -60,6 +64,7 @@ class AgentLogger:
 
         print(f"Logged action to {self.log_file_path}")
 
+
 # Example Usage (for demonstration, agent will call this directly)
 if __name__ == "__main__":
     logger = AgentLogger("AGENT_LOG.md")
@@ -69,5 +74,5 @@ if __name__ == "__main__":
         how="Called AgentLogger.log_action function.",
         result="Log entry successfully written to AGENT_LOG.md.",
         task_id="TEST-001",
-        context={"test_param": "value", "another_detail": 123}
+        context={"test_param": "value", "another_detail": 123},
     )

@@ -5,6 +5,8 @@ httpx
 boto3
 mypy
 git-changelog
+pydantic
 pydantic-settings
+psutil
 google-generativeai
 mcp>=1.2.0

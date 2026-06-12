@@ -1,15 +1,19 @@
 from typing import Any, Dict, List
 
+
 class MCPToolExecutor:
     """
     Placeholder for executing MCP tools.
     This component would interact with the MCPClient to discover and execute tools.
     """
-    def __init__(self, mcp_client: Any): # mcp_client would be an instance of MCPClient
+
+    def __init__(self, mcp_client: Any):  # mcp_client would be an instance of MCPClient
         self.mcp_client = mcp_client
         print("Placeholder MCPToolExecutor initialized.")
 
-    async def execute_tool(self, tool_name: str, args: Dict[str, Any], server_id: str = None) -> Any:
+    async def execute_tool(
+        self, tool_name: str, args: Dict[str, Any], server_id: str = None
+    ) -> Any:
         """
         Placeholder: Executes a specific MCP tool.
         """

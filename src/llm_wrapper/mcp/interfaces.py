@@ -4,6 +4,7 @@ from typing import List, Dict, Any
 # Import actual mcp types
 from mcp.types import Tool, CallToolResult
 
+
 class MCPServer(abc.ABC):
     """
     Abstract Base Class for an MCP Server.
@@ -22,7 +23,9 @@ class MCPServer(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    async def call_tool(self, tool_name: str, arguments: Dict[str, Any]) -> CallToolResult:
+    async def call_tool(
+        self, tool_name: str, arguments: Dict[str, Any]
+    ) -> CallToolResult:
         """
         Executes a specific tool on this server.
 
@@ -34,6 +37,7 @@ class MCPServer(abc.ABC):
             A CallToolResult object containing the result of the tool execution.
         """
         raise NotImplementedError
+
 
 class MCPClient(abc.ABC):
     """

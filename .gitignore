@@ -46,4 +46,16 @@ pip-delete-this-directory.txt
 backups/
 artifacts/
 tmp/
+# Local config
+.gitconfig
+.shell-config.sh
 
+# Local environment and setup artifacts
+.node-version
+.tool-versions
+fnm-setup.sh
+uv-setup.sh
+git-setup.sh
+setup-tools.sh
+FNM_UV_GIT_CONFIG.md
+UV_FNM_SETUP.md

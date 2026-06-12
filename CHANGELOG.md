@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 
 <small>[Compare with latest](https://github.com/krsbox/mcp/compare/9e2cb7f44d33930c09e2cc7bf80e71e1bb9fab8c...HEAD)</small>
+### Documentation
+
+- docs: clarify workflow comments and usage assumptions in backup/sync/orchestrator scripts and system utility server internals.
 
 ### Fixed
 
