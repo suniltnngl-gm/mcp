@@ -119,7 +119,7 @@ The following tasks are organized into phases, reflecting the detailed steps req
     *   Develop `VectorDocument` structure for documents with embeddings (to be populated by LLM phase).
 
 ### Phase 7: Distributed MCP Server Development
-**Status:** pending
+**Status:** in_progress
 
 *   **Task 7.1: Cloud-Neutral MCP Server for Generic Services**
     *   **Status:** completed
@@ -128,6 +128,9 @@ The following tasks are organized into phases, reflecting the detailed steps req
 *   **Task 7.2: Cloud-Specific MCP Server Examples (e.g., AWS, Azure, GCP)**
     *   **Status:** pending
     *   Develop example MCP servers for specific cloud services (e.g., AWS DocumentDB, Azure Cosmos DB, GCP Firestore), demonstrating cloud-neutral design principles.
+*   **Task 7.3: osenv → MCP Bridge (Cross-Project Integration)**
+    *   **Status:** completed
+    *   **Note:** Implemented `osenv_server.py` wrapping Workspace osenv modules (audit, media, understand, kb) as MCP tools via FastMCP. Uses `sys.path.insert` for cross-project import — no pip install needed. Registered in dummy MCP config as `osenv_manager` server.
 
 ### Phase 8: Interactive Rules/Game Integration
 **Status:** completed
@@ -186,5 +189,5 @@ The following tasks are organized into phases, reflecting the detailed steps req
     *   **Status:** pending
     *   Add a section to `GEMINI.md` detailing the unified project management, backup strategy, and change tracking processes.
 *   **Task 11.6: Implement Agent Operation Logging**
-    *   **Status:** pending
+    *   **Status:** in_progress
     *   Develop a mechanism to systematically record significant actions, decisions, and their rationale (why, what, how, when) taken by the agent into a dedicated log (e.g., `AGENT_LOG.md` or as structured entries in `ERROR_REGISTRY.md`).
