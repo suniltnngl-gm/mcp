@@ -259,6 +259,21 @@ def create_dummy_mcp_config(path: Path, dummy_server_script_path: Path):
                         "client_config": {},
                     },
                 },
+                "ollama_cloud": {
+                    "type": "local",
+                    "config": {
+                        "command": [
+                            "python",
+                            "-m",
+                            "src.llm_wrapper.mcp.ollama_cloud_server",
+                        ],
+                        "args": [],
+                        "env": {
+                            "OLLAMA_API_KEY": "${OLLAMA_API_KEY}"
+                        },
+                        "client_config": {},
+                    },
+                },
             },
             "default_server": "local_dev_server",
         }

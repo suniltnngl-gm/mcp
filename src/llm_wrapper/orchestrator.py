@@ -1,11 +1,19 @@
 import asyncio
 import json
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 
 from mcp.types import Tool  # Use actual mcp types
 
 from src.llm_wrapper.mcp.client_manager import MultiClientManager
 from src.llm_wrapper.mcp.config import McpConfig
+from src.llm_wrapper.mcp.cooperative_strategy import (
+    CooperativeStrategy,
+    StrategyResult,
+    StrategyStep,
+    chain,
+    fallback,
+    parallel,
+)
 from src.llm_wrapper.llm.local_client import (
     LocalLLMClient,
 )  # Import the real LocalLLMClient
@@ -146,6 +154,47 @@ class LLMOrchestrator:
                 print(f"Orchestrator: Error executing provider LLM tool call: {e}")
 
         return results
+
+    async def execute_strategy(
+        self, strategy: CooperativeStrategy
+    ) -> StrategyResult:
+        """Execute a cooperative strategy (parallel, chain, fallback, router)."""
+        return await strategy.execute()
+
+    async def chain_tool_calls(
+        self,
+        tool_sequence: List[Dict[str, Any]],
+        server_name: Optional[str] = None,
+    ) -> StrategyResult:
+        """Convenience: chain multiple tool calls sequentially."""
+        steps = []
+        for i, tc in enumerate(tool_sequence):
+            name = tc.get("name", f"step_{i}")
+            args = tc.get("arguments", {})
+            srv = tc.get("server", server_name)
+            tool = tc
+
+            async def make_call(n=name, a=args, s=srv):
+                return await self._multi_client_manager.call_tool(n, a, server_name=s)
+
+            steps.append(StrategyStep(name=name, action=make_call, description=str(tool)))
+        return await ChainStrategy(steps).execute()
+
+    async def parallel_tool_calls(
+        self,
+        tool_calls: List[Dict[str, Any]],
+        server_name: Optional[str] = None,
+    ) -> StrategyResult:
+        """Convenience: run multiple tool calls in parallel."""
+        steps = []
+        for tc in tool_calls:
+            name = tc.get("name", "unnamed")
+            args = tc.get("arguments", {})
+            srv = tc.get("server", server_name)
+            async def make_call(n=name, a=args, s=srv):
+                return await self._multi_client_manager.call_tool(n, a, server_name=s)
+            steps.append(StrategyStep(name=name, action=make_call, description=str(tc)))
+        return await ParallelStrategy(steps).execute()
 
 
 if __name__ == "__main__":
