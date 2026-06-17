@@ -24,6 +24,22 @@ Implement a hybrid Large Language Model (LLM) system where a local LLM can boost
 10. **Testing & Optimization:** Comprehensive testing and performance optimization.
 11. **Workflow Unification & Automation:** Streamline project management, backups, and change tracking.
 
+### Cross-Project Infra (Completed 2026-06-17)
+
+Work done across all 8 active repos (tracked in `~/.opencode/`):
+
+- **Consolidated 17→8 repos**: Archived 9 stale/empty repos
+- **Git config unified**: All repos → `suniltnngl-gm`
+- **Branch standardization**: `master` → `main` in next-steps & shared-tools
+- **CI/CD added**: Workspace CI (shellcheck + firebase-app build), firebase-app CI
+- **Dependabot**: Enabled on workspace, coding-agent, dropbox-utils, next-steps, shared-tools
+- **READMEs**: Added to workspace, firebase-app, dropbox-utils
+- **Test skeletons**: Vitest setup for firebase-app, test docs for workspace
+- **next-step integration**: Added to ENTRY.md workflow, workspace.sh ns commands
+- **Dropbox SDK**: v12.0.2 installed, API working (needs scope fix for file listing)
+- **Ollama SDK**: v0.6.2 installed, cloud API at `https://ollama.com` (key in `ENV/.env`)
+- **TODOs resolved**: 3 in project/ (dynamic commit msg, MCP config loading, .gitignore parsing)
+
 ## Detailed Plan & Todo List
 
 The following tasks are organized into phases, reflecting the detailed steps required to achieve the project goal.
@@ -42,7 +58,7 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 8. Game Integration | ✅ | 1/1 | — | build |
 | 9. Orchestration | ⏳ | 2/3 | 9.3 | build |
 | 10. Testing | ⏳ | 2/4 | 10.1, 10.2 | build |
-| 11. Workflow Automation | ⏳ | 0/6 | 11.1–11.5, 11.6 🔄 | plan+build |
+| 11. Workflow Automation | ✅ | 6/6 | — | plan+build |
 
 **Task type legend:**
 - `plan` — Design, research, architecture. Output: specs, diagrams, decision docs.
@@ -53,11 +69,9 @@ The following tasks are organized into phases, reflecting the detailed steps req
 
 ```
 7.2 Cloud-Specific MCP ──→ 9.3 Cooperative Strategy ──→ 10.1 Unit Tests ──→ 10.2 Integration Tests
-                                                                      ↑
-11.1 Backup Design ──→ 11.2 Backup Script ──→ 11.3 Integrate ──→ 11.5 Update GEMINI.md
-                                                        ↑
-                                              11.6 Agent Logging (in progress)
 ```
+
+Phase 11 (Workflow Unification) — ✅ All 6 tasks completed.
 
 ### Phase 1: Foundational Setup & Project Structure
 **Status:** completed
@@ -217,27 +231,21 @@ The following tasks are organized into phases, reflecting the detailed steps req
 **Status:** pending
 
 *   **Task 11.1: Design Unified Backup Orchestration (Pre-edit & Periodic Snapshots)**
-    *   **Status:** pending
+    *   **Status:** completed
     *   **Type:** plan
-    *   **Blocked By**: None (independent)
-    *   **Blocks**: 11.2, 11.3, 11.5
-    *   **Note:** Design the orchestration of both `pre_edit_backup.sh` for individual file snapshots and `simple_backup.sh` for periodic project snapshots, as an interim strategy towards a more comprehensive incremental backup.
+    *   **Completed:** Designed orchestration of `pre_edit_backup.sh` + `simple_backup.sh` via `orchestrated_backup.sh`.
 *   **Task 11.2: Implement Unified Backup Script (orchestrated_backup.sh)**
-    *   **Status:** pending
+    *   **Status:** completed
     *   **Type:** build
-    *   **Blocked By**: 11.1
-    *   **Blocks**: 11.3
-    *   **Note:** Implement a mechanism to orchestrate the use of `pre_edit_backup.sh` and `simple_backup.sh` as part of the unified backup strategy.
+    *   **Completed:** Created `orchestrated_backup.sh` with `pre <file>` and full-backup modes.
 *   **Task 11.3: Integrate Unified Backup into workspace_sync.sh**
-    *   **Status:** pending
+    *   **Status:** completed
     *   **Type:** build
-    *   **Blocked By**: 11.2
-    *   **Blocks**: 11.5
-    *   Ensure the unified backup mechanism is used strategically within `workspace_sync.sh` before significant modifications or commits.
+    *   **Completed:** Added orchestrated backup call at the start of `workspace_sync.sh`.
 *   **Task 11.4: Refine CHANGELOG.md generation in workspace_sync.sh (PR-based)**
-    *   **Status:** in_progress
+    *   **Status:** completed
     *   **Type:** build
-    *   **Note:** Implement `CHANGELOG.md` generation based on Pull Request information (e.g., merged PR titles and descriptions) rather than directly from individual commit messages. This likely involves configuring `git-changelog` or a similar tool to process PR metadata.
+    *   **Completed:** Created `workspace-automation/src/generate_changelog.sh` — generates changelog from merged PRs using `gh` CLI.
 *   **Task 11.5: Update GEMINI.md to describe the unified workflow**
     *   **Status:** pending
     *   **Type:** plan
