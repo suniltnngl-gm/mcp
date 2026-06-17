@@ -28,6 +28,32 @@ Implement a hybrid Large Language Model (LLM) system where a local LLM can boost
 
 The following tasks are organized into phases, reflecting the detailed steps required to achieve the project goal.
 
+### Progress Summary
+
+| Phase | Status | Tasks Done | Tasks Pending |
+|-------|--------|------------|---------------|
+| 1. Foundational Setup | ✅ | 5/5 | — |
+| 2. Pre-LLM Wrapper | ✅ | 2/2 | — |
+| 3. Local LLM | ✅ | 2/2 | — |
+| 4. Provider LLM | ✅ | 3/3 | — |
+| 5. MCP Foundational | ✅ | 3/3 | — |
+| 6. Document Management | ✅ | 3/3 | — |
+| 7. Distributed MCP Servers | 🔄 | 2/3 | 7.2 |
+| 8. Game Integration | ✅ | 1/1 | — |
+| 9. Orchestration | ⏳ | 2/3 | 9.3 |
+| 10. Testing | ⏳ | 2/4 | 10.1, 10.2 |
+| 11. Workflow Automation | ⏳ | 0/6 | 11.1–11.5, 11.6 🔄 |
+
+### Dependency Map (Pending Tasks)
+
+```
+7.2 Cloud-Specific MCP ──→ 9.3 Cooperative Strategy ──→ 10.1 Unit Tests ──→ 10.2 Integration Tests
+                                                                      ↑
+11.1 Backup Design ──→ 11.2 Backup Script ──→ 11.3 Integrate ──→ 11.5 Update GEMINI.md
+                                                        ↑
+                                              11.6 Agent Logging (in progress)
+```
+
 ### Phase 1: Foundational Setup & Project Structure
 **Status:** pending
 
@@ -127,6 +153,8 @@ The following tasks are organized into phases, reflecting the detailed steps req
     *   Develop an MCP server to expose capabilities for generic distributed services, not tied to a specific cloud provider.
 *   **Task 7.2: Cloud-Specific MCP Server Examples (e.g., AWS, Azure, GCP)**
     *   **Status:** pending
+    *   **Blocked By**: None (independent)
+    *   **Blocks**: 9.3 (Cooperative Strategy needs full MCP server suite)
     *   Develop example MCP servers for specific cloud services (e.g., AWS DocumentDB, Azure Cosmos DB, GCP Firestore), demonstrating cloud-neutral design principles.
 *   **Task 7.3: osenv → MCP Bridge (Cross-Project Integration)**
     *   **Status:** completed
@@ -152,6 +180,8 @@ The following tasks are organized into phases, reflecting the detailed steps req
     *   Implement a mechanism for the orchestration layer to discover and register all available MCP servers (local and provider-based).
 *   **Task 9.3: Cooperative Strategy Implementation**
     *   **Status:** pending
+    *   **Blocked By**: 7.2 (needs full MCP server suite to orchestrate against)
+    *   **Blocks**: 10.1 (tests need complete orchestration logic)
     *   Define and implement strategies for "co-operative" behavior between LLMs and MCP servers, including chaining calls and parallel execution for enhanced capabilities.
 
 ### Phase 10: Testing & Optimization
@@ -159,9 +189,13 @@ The following tasks are organized into phases, reflecting the detailed steps req
 
 *   **Task 10.1: Write Comprehensive Unit Tests**
     *   **Status:** pending
+    *   **Blocked By**: 9.3 (orchestration logic must be complete)
+    *   **Blocks**: 10.2
     *   Develop unit tests for each class and function across the system.
 *   **Task 10.2: Develop Integration Tests**
     *   **Status:** pending
+    *   **Blocked By**: 10.1 (unit tests first)
+    *   **Blocks**: None
     *   Create integration tests to verify seamless interaction between components.
 *   **Task 10.3: Perform Performance Benchmarking**
     *   **Status:** completed
@@ -175,18 +209,26 @@ The following tasks are organized into phases, reflecting the detailed steps req
 
 *   **Task 11.1: Design Unified Backup Orchestration (Pre-edit & Periodic Snapshots)**
     *   **Status:** pending
+    *   **Blocked By**: None (independent)
+    *   **Blocks**: 11.2, 11.3, 11.5
     *   **Note:** Design the orchestration of both `pre_edit_backup.sh` for individual file snapshots and `simple_backup.sh` for periodic project snapshots, as an interim strategy towards a more comprehensive incremental backup.
 *   **Task 11.2: Implement Unified Backup Script (orchestrated_backup.sh)**
     *   **Status:** pending
+    *   **Blocked By**: 11.1
+    *   **Blocks**: 11.3
     *   **Note:** Implement a mechanism to orchestrate the use of `pre_edit_backup.sh` and `simple_backup.sh` as part of the unified backup strategy.
 *   **Task 11.3: Integrate Unified Backup into workspace_sync.sh**
     *   **Status:** pending
+    *   **Blocked By**: 11.2
+    *   **Blocks**: 11.5
     *   Ensure the unified backup mechanism is used strategically within `workspace_sync.sh` before significant modifications or commits.
 *   **Task 11.4: Refine CHANGELOG.md generation in workspace_sync.sh (PR-based)**
     *   **Status:** in_progress
     *   **Note:** Implement `CHANGELOG.md` generation based on Pull Request information (e.g., merged PR titles and descriptions) rather than directly from individual commit messages. This likely involves configuring `git-changelog` or a similar tool to process PR metadata.
 *   **Task 11.5: Update GEMINI.md to describe the unified workflow**
     *   **Status:** pending
+    *   **Blocked By**: 11.1, 11.2, 11.3 (workflow must be designed and implemented)
+    *   **Blocks**: None
     *   Add a section to `GEMINI.md` detailing the unified project management, backup strategy, and change tracking processes.
 *   **Task 11.6: Implement Agent Operation Logging**
     *   **Status:** in_progress
