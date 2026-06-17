@@ -65,7 +65,38 @@ The following tasks are organized into phases, reflecting the detailed steps req
 - `build` — Code, implement, test. Output: working code, passing tests.
 - `plan+build` — Both design and implementation in one task.
 
-All phases complete. Phase 11 (Workflow Unification) — ✅ All 6 tasks completed.
+All 11 project phases complete. Phase 12 (Cross-Project Integrations) follows below — tracked in `~/.opencode/CROSS_PROJECT.md`.
+
+### Phase 12: Cross-Project Integrations
+
+**Status:** in progress
+
+| # | Integration | Status | Blocked By | Blocks |
+|---|-------------|--------|------------|--------|
+| 1 | osenv → MCP Bridge | ✅ Completed | — | #2 |
+| 2 | Antigravity Agent → MCP | ✅ Completed | #1 | — |
+| 3 | Firebase Auth as MCP Identity | ⏳ Pending | — | #5 |
+| 4 | Shared Tools & Configs | ⏳ Pending | — | — |
+| 5 | Data Sharing (Firestore) | ⏳ Pending | #3 | — |
+
+**Dependency chain:** `#3 → #5` (tools & configs #4 independent).
+
+#### Task 12.3: Firebase Auth as MCP Identity
+- **Status:** pending
+- **Type:** build
+- **Blocks**: #5
+- Add Firebase Admin SDK token verification middleware to MCP servers. Authenticate MCP clients via Firebase ID tokens, enabling per-user identity in tool calls.
+
+#### Task 12.4: Shared Tools & Configs
+- **Status:** pending
+- **Type:** build
+- Create shared ruff/mypy/pytest configs and reusable GitHub Actions workflows for consistent code quality across all repos. Reference from `~/.opencode/`.
+
+#### Task 12.5: Data Sharing (Firestore)
+- **Status:** pending
+- **Type:** build
+- **Blocked By**: #3 (needs Firebase Auth identity)
+- Replace local SQLite in MCP doc manager with Firestore-backed document service for real-time sync + auth across projects.
 
 ### Phase 1: Foundational Setup & Project Structure
 **Status:** completed
