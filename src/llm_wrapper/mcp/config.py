@@ -246,6 +246,19 @@ def create_dummy_mcp_config(path: Path, dummy_server_script_path: Path):
                         "client_config": {},
                     },
                 },
+                "osenv_manager": {
+                    "type": "local",
+                    "config": {
+                        "command": [
+                            "python",
+                            "-m",
+                            "src.llm_wrapper.mcp.osenv_server",
+                        ],
+                        "args": [],
+                        "env": {},
+                        "client_config": {},
+                    },
+                },
             },
             "default_server": "local_dev_server",
         }
