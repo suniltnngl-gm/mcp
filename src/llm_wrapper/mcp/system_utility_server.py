@@ -311,7 +311,6 @@ class SystemUtilityServer:
             target_path.mkdir(parents=True, exist_ok=True)
 
             # Exclude heavy/generated directories from snapshot copies.
-            # TODO: optionally align this with parsed .gitignore patterns.
             exclude_dirs = [
                 ".git",
                 "__pycache__",
@@ -321,12 +320,22 @@ class SystemUtilityServer:
                 "data",
             ]
 
+            gitignore_patterns = set()
+            gitignore_path = Path(os.getcwd()) / ".gitignore"
+            if gitignore_path.is_file():
+                for line in gitignore_path.read_text().splitlines():
+                    stripped = line.strip()
+                    if stripped and not stripped.startswith("#"):
+                        gitignore_patterns.add(stripped.rstrip("/"))
+
             def ignore_patterns(path, names):
                 ignored_names = []
                 for name in names:
-                    if (Path(path) / name).is_dir() and name in exclude_dirs:
+                    entry_path = Path(path) / name
+                    if entry_path.is_dir() and name in exclude_dirs:
                         ignored_names.append(name)
-                    # Additional ignore rules can be added here if needed.
+                    elif name in gitignore_patterns:
+                        ignored_names.append(name)
                 return set(ignored_names)
 
             print(f"Creating project snapshot to {target_path}...")

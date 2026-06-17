@@ -4,7 +4,8 @@ from src.llm_wrapper.core.router import RequestRouter
 from src.llm_wrapper.providers.local_client import LocalCLIClient
 from src.llm_wrapper.providers.remote_client import ProviderSDKClient
 from src.llm_wrapper.mcp.manager import MCPManager
-from src.llm_wrapper.core.enricher import ContextEnricher  # Import ContextEnricher
+from src.llm_wrapper.mcp.config import load_mcp_config, LocalServerConfig
+from src.llm_wrapper.core.enricher import ContextEnricher
 from src.data_models.llm_wrapper import InferenceRequest, InferenceResponse
 import logging
 import datetime
@@ -42,19 +43,19 @@ class MCPOrchestrator:
     async def startup(self):
         """
         Performs startup operations, such as connecting to MCP servers.
+        Loads server configurations from mcp.json if available.
         """
         logger.info("Starting up MCPOrchestrator...")
-        # TODO: Load MCP server configurations from a dedicated config file
-        await self.mcp_manager.register_server(
-            "filesystem",
-            "npx",
-            [
-                "-y",
-                "@modelcontextprotocol/server-filesystem",
-                "/tmp",
-            ],  # Use /tmp for now as a safe default
-        )
-        # Register other servers as needed
+        mcp_config = load_mcp_config()
+        if mcp_config:
+            for name, server_def in mcp_config.mcpServers.items():
+                if server_def.type == "local" and isinstance(server_def.config, LocalServerConfig):
+                    command = server_def.config.command[0] if server_def.config.command else "python"
+                    args = server_def.config.command[1:] + (server_def.config.args or [])
+                    await self.mcp_manager.register_server(name, command, args)
+                    logger.info(f"Registered MCP server '{name}' from config.")
+        else:
+            logger.warning("No mcp.json found; skipping MCP server registration.")
 
         await self.mcp_manager.initialize_all()
         logger.info("MCPOrchestrator startup complete.")

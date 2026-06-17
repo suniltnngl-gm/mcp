@@ -15,12 +15,8 @@ git add workspace-automation/file_registry.json SYSTEM_INVENTORY.md
 echo "file_registry.json and SYSTEM_INVENTORY.md staged."
 
 # 2) Generate commit message text.
-# NOTE: This is currently a placeholder, not dynamic generation.
-# Replace this block with your LLM/templated commit-message pipeline when ready.
-echo "Generating AI-driven commit message (placeholder)..."
-# Example integration point:
-# COMMIT_MESSAGE=$(python3 -c "from your_llm_utils import generate_commit_message; print(generate_commit_message())")
-COMMIT_MESSAGE="feat: Implemented comprehensive hybrid LLM system including core engine, specialized MCP services, resilience, and benchmarking. Updated documentation."
+# Dynamically generate commit message from recent git history.
+COMMIT_MESSAGE=$(git log --oneline -5 | head -1 | sed 's/^[a-f0-9]* //')
 echo "Generated commit message: \"$COMMIT_MESSAGE\""
 
 # 3) Commit current workspace state.
