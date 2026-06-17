@@ -76,6 +76,6 @@ Tracks plan → build → review cycles. Each cycle delivers one or more tasks.
 | Total cycles | 8 |
 | Cycles this week | 8 |
 | Avg cycle duration | 1d |
-| Tasks completed | 31 |
+| Tasks completed | 28 |
 | Tasks in progress | 2 |
 | Tasks pending | 8 |
