@@ -76,7 +76,7 @@ All 11 project phases complete. Phase 12 (Cross-Project Integrations) follows be
 | 1 | osenv → MCP Bridge | ✅ Completed | — | #2 |
 | 2 | Antigravity Agent → MCP | ✅ Completed | #1 | — |
 | 3 | Firebase Auth as MCP Identity | ⏳ Pending | — | #5 |
-| 4 | Shared Tools & Configs | ⏳ Pending | — | — |
+| 4 | Shared Tools & Configs | ✅ Completed | — | — |
 | 5 | Data Sharing (Firestore) | ⏳ Pending | #3 | — |
 
 **Dependency chain:** `#3 → #5` (tools & configs #4 independent).
@@ -88,9 +88,9 @@ All 11 project phases complete. Phase 12 (Cross-Project Integrations) follows be
 - Add Firebase Admin SDK token verification middleware to MCP servers. Authenticate MCP clients via Firebase ID tokens, enabling per-user identity in tool calls.
 
 #### Task 12.4: Shared Tools & Configs
-- **Status:** pending
+- **Status:** completed
 - **Type:** build
-- Create shared ruff/mypy/pytest configs and reusable GitHub Actions workflows for consistent code quality across all repos. Reference from `~/.opencode/`.
+- **Note:** Created `~/.opencode/shared/` with canonical pyproject.toml, .editorconfig, .pre-commit-config.yaml, python-ci.yml, shellcheck.yml. Wired into project/ (updated CI, added pre-commit), Workspace/ (added .editorconfig), repositories/ (added pyproject.toml, .editorconfig, CI).
 
 #### Task 12.5: Data Sharing (Firestore)
 - **Status:** pending
