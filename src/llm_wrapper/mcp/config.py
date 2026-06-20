@@ -274,6 +274,21 @@ def create_dummy_mcp_config(path: Path, dummy_server_script_path: Path):
                         "client_config": {},
                     },
                 },
+                "firebase_auth": {
+                    "type": "local",
+                    "config": {
+                        "command": [
+                            "python",
+                            "-m",
+                            "src.llm_wrapper.mcp.firebase_auth_server",
+                        ],
+                        "args": [],
+                        "env": {
+                            "FIREBASE_SERVICE_ACCOUNT_PATH": "${FIREBASE_SERVICE_ACCOUNT_PATH:-~/Public/Workspace/firebase-app/agent/service-account.json}"
+                        },
+                        "client_config": {},
+                    },
+                },
             },
             "default_server": "local_dev_server",
         }
