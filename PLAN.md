@@ -61,13 +61,14 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 11. Workflow Automation | ✅ | 6/6 | — | plan+build |
 | 12. Cross-Project Integrations | 🔄 | 4/5 | 1 (#5) | build |
 | 13. Automated Review Cycle | 🔄 | 0/5 | 5 | build |
+| 14. Automated Knowledge Base | 🔄 | 4/5 | 1 | build |
 
 **Task type legend:**
 - `plan` — Design, research, architecture. Output: specs, diagrams, decision docs.
 - `build` — Code, implement, test. Output: working code, passing tests.
 - `plan+build` — Both design and implementation in one task.
 
-Phases 1–11 complete. Phase 12 (Cross-Project Integrations) follows below — 4/5 integrations done (#3 Firebase Auth, #4 Shared Tools complete). #5 (Firestore Data Sharing) unblocked.
+Phases 1–11 complete. Phase 12 (Cross-Project Integrations) — 4/5 done (#5 unblocked). Phase 13 (Automated Review Cycle) — 13.1 done. Phase 14 (Automated Knowledge Base) — 14.1–14.4 done.
 
 ### Phase 12: Cross-Project Integrations
 
@@ -119,6 +120,20 @@ Automated system that periodically reviews all active repos, plans next actions,
 | 13.5 Scoring & Trends — health score, dashboard badge | ⏳ Pending | build |
 
 **Dependency chain:** `13.1 → 13.2 → 13.3 → 13.4 → 13.5`
+
+### Phase 14: Automated Knowledge Base
+
+**Status:** in progress
+
+Auto-discovering, cross-repo knowledge base that indexes all code and docs, providing ranked search results. See `autokb/` for implementation.
+
+| Task | Status | Type |
+|------|--------|------|
+| 14.1 Indexer — scan all 8 repos, build inverted index | ✅ Completed | build |
+| 14.2 Search — ranked results with fuzzy matching, --json, --fast | ✅ Completed | build |
+| 14.3 Unify KB.md + osenv/kb.py + raw code into one query | ✅ Completed | build |
+| 14.4 workspace.sh commands (kb-auto search/scan/stats) | ✅ Completed | build |
+| 14.5 Auto-index on schedule (cron / git hook) | ⏳ Pending | build |
 
 ### Phase 1: Foundational Setup & Project Structure
 **Status:** completed
