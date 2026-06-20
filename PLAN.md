@@ -24,7 +24,7 @@ Implement a hybrid Large Language Model (LLM) system where a local LLM can boost
 10. **Testing & Optimization:** Comprehensive testing and performance optimization.
 11. **Workflow Unification & Automation:** Streamline project management, backups, and change tracking.
 
-### Cross-Project Infra (Completed 2026-06-17)
+### Cross-Project Integrations (Phase 12 — 4/5 done)
 
 Work done across all 8 active repos (tracked in `~/.opencode/`):
 
@@ -59,13 +59,14 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 9. Orchestration | ✅ | 3/3 | — | build |
 | 10. Testing | ✅ | 4/4 | — | build |
 | 11. Workflow Automation | ✅ | 6/6 | — | plan+build |
+| 12. Cross-Project Integrations | 🔄 | 4/5 | 1 (#5) | build |
 
 **Task type legend:**
 - `plan` — Design, research, architecture. Output: specs, diagrams, decision docs.
 - `build` — Code, implement, test. Output: working code, passing tests.
 - `plan+build` — Both design and implementation in one task.
 
-All 11 project phases complete. Phase 12 (Cross-Project Integrations) follows below — tracked in `~/.opencode/CROSS_PROJECT.md`.
+Phases 1–11 complete. Phase 12 (Cross-Project Integrations) follows below — 4/5 integrations done (#3 Firebase Auth, #4 Shared Tools complete). #5 (Firestore Data Sharing) unblocked.
 
 ### Phase 12: Cross-Project Integrations
 
@@ -75,17 +76,21 @@ All 11 project phases complete. Phase 12 (Cross-Project Integrations) follows be
 |---|-------------|--------|------------|--------|
 | 1 | osenv → MCP Bridge | ✅ Completed | — | #2 |
 | 2 | Antigravity Agent → MCP | ✅ Completed | #1 | — |
-| 3 | Firebase Auth as MCP Identity | ⏳ Pending | — | #5 |
+| 3 | Firebase Auth as MCP Identity | ✅ Completed | — | #5 |
 | 4 | Shared Tools & Configs | ✅ Completed | — | — |
-| 5 | Data Sharing (Firestore) | ⏳ Pending | #3 | — |
+| 5 | Data Sharing (Firestore) | ⏳ Pending | — | — |
 
-**Dependency chain:** `#3 → #5` (tools & configs #4 independent).
+**Dependency chain:** `#3 → #5` (tools & configs #4 independent). #3 complete — #5 unblocked.
 
 #### Task 12.3: Firebase Auth as MCP Identity
-- **Status:** pending
+- **Status:** completed
 - **Type:** build
-- **Blocks**: #5
-- Add Firebase Admin SDK token verification middleware to MCP servers. Authenticate MCP clients via Firebase ID tokens, enabling per-user identity in tool calls.
+- **Delivered:**
+  - `firebase_auth_middleware.py` — stateless token verification, `IdentityContext` dataclass, 4 error types (`TOKEN_EXPIRED`, `TOKEN_INVALID`, `TOKEN_REVOKED`, `SERVICE_ACCOUNT_MISSING`) with parseable JSON contracts
+  - `firebase_auth_server.py` — MCP server exposing `verify_auth_token` and `get_user_claims` tools
+  - Registered in `mcp.json` as `firebase_auth`, wired into Antigravity agent (`agent/main.py`)
+  - `workspace.sh` — `auth-verify` and `auth-claims` CLI commands
+  - ✅ Passes CEG: stateless (no disk writes), modular CC (10–15), parseable JSON error contracts
 
 #### Task 12.4: Shared Tools & Configs
 - **Status:** completed
@@ -95,7 +100,7 @@ All 11 project phases complete. Phase 12 (Cross-Project Integrations) follows be
 #### Task 12.5: Data Sharing (Firestore)
 - **Status:** pending
 - **Type:** build
-- **Blocked By**: #3 (needs Firebase Auth identity)
+- **Unblocked** by #3 completion.
 - Replace local SQLite in MCP doc manager with Firestore-backed document service for real-time sync + auth across projects.
 
 ### Phase 1: Foundational Setup & Project Structure
@@ -189,7 +194,7 @@ All 11 project phases complete. Phase 12 (Cross-Project Integrations) follows be
     *   Develop `VectorDocument` structure for documents with embeddings (to be populated by LLM phase).
 
 ### Phase 7: Distributed MCP Server Development
-**Status:** in_progress
+**Status:** completed
 
 *   **Task 7.1: Cloud-Neutral MCP Server for Generic Services**
     *   **Status:** completed
@@ -212,7 +217,7 @@ All 11 project phases complete. Phase 12 (Cross-Project Integrations) follows be
     *   Focus on managing game state and player interactions (e.g., yes/no/irrelevant questions).
 
 ### Phase 9: Hybrid LLM/MCP Orchestration & Refinement
-**Status:** pending
+**Status:** completed
 
 *   **Task 9.1: Hybrid LLM Orchestrator**
     *   **Status:** completed
@@ -227,7 +232,7 @@ All 11 project phases complete. Phase 12 (Cross-Project Integrations) follows be
      *   **Note:** Built `cooperative_strategy.py` with 4 composable patterns (ParallelStrategy, ChainStrategy, FallbackStrategy, RouterStrategy). Integrated into `LLMOrchestrator` via `execute_strategy()`, `chain_tool_calls()`, `parallel_tool_calls()` methods. 15 unit tests pass.
 
 ### Phase 10: Testing & Optimization
-**Status:** pending
+**Status:** completed
 
 *   **Task 10.1: Write Comprehensive Unit Tests**
      *   **Status:** completed
@@ -245,7 +250,7 @@ All 11 project phases complete. Phase 12 (Cross-Project Integrations) follows be
     *   Enhance error handling mechanisms, logging, and implement strategies to ensure the system's robustness and graceful degradation under various failure scenarios.
 
 ### Phase 11: Workflow Unification & Automation
-**Status:** pending
+**Status:** completed
 
 *   **Task 11.1: Design Unified Backup Orchestration (Pre-edit & Periodic Snapshots)**
     *   **Status:** completed
@@ -264,12 +269,10 @@ All 11 project phases complete. Phase 12 (Cross-Project Integrations) follows be
     *   **Type:** build
     *   **Completed:** Created `workspace-automation/src/generate_changelog.sh` — generates changelog from merged PRs using `gh` CLI.
 *   **Task 11.5: Update GEMINI.md to describe the unified workflow**
-    *   **Status:** pending
+    *   **Status:** completed
     *   **Type:** plan
-    *   **Blocked By**: 11.1, 11.2, 11.3 (workflow must be designed and implemented)
-    *   **Blocks**: None
-    *   Add a section to `GEMINI.md` detailing the unified project management, backup strategy, and change tracking processes.
+    *   **Note:** GEMINI.md updated to cover unified project management, backup strategy, and change tracking.
 *   **Task 11.6: Implement Agent Operation Logging**
-    *   **Status:** in_progress
+    *   **Status:** completed
     *   **Type:** build
-    *   Develop a mechanism to systematically record significant actions, decisions, and their rationale (why, what, how, when) taken by the agent into a dedicated log (e.g., `AGENT_LOG.md` or as structured entries in `ERROR_REGISTRY.md`).
+    *   **Note:** `AGENT_LOG.md` in `.opencode/` tracks all sessions with structured entries. Agent activity is recorded in `AGENT_LOG.md` with per-session entries.
