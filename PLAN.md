@@ -60,6 +60,7 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 10. Testing | ✅ | 4/4 | — | build |
 | 11. Workflow Automation | ✅ | 6/6 | — | plan+build |
 | 12. Cross-Project Integrations | 🔄 | 4/5 | 1 (#5) | build |
+| 13. Automated Review Cycle | 🔄 | 0/5 | 5 | build |
 
 **Task type legend:**
 - `plan` — Design, research, architecture. Output: specs, diagrams, decision docs.
@@ -102,6 +103,22 @@ Phases 1–11 complete. Phase 12 (Cross-Project Integrations) follows below — 
 - **Type:** build
 - **Unblocked** by #3 completion.
 - Replace local SQLite in MCP doc manager with Firestore-backed document service for real-time sync + auth across projects.
+
+### Phase 13: Automated Review Cycle
+
+**Status:** in progress
+
+Automated system that periodically reviews all active repos, plans next actions, and optionally builds suggestions. See `REVIEW_CYCLE_PLAN.md` for full design.
+
+| Task | Status | Type |
+|------|--------|------|
+| 13.1 Foundation — scanners (git, tests, tasks) | 🔄 In progress | build |
+| 13.2 Review Engine — scoring, baseline, reports | ⏳ Pending | plan+build |
+| 13.3 Automation — cron workflow, watch mode, hooks | ⏳ Pending | build |
+| 13.4 Auto-fix & PR — known patterns, approval gate | ⏳ Pending | build |
+| 13.5 Scoring & Trends — health score, dashboard badge | ⏳ Pending | build |
+
+**Dependency chain:** `13.1 → 13.2 → 13.3 → 13.4 → 13.5`
 
 ### Phase 1: Foundational Setup & Project Structure
 **Status:** completed
