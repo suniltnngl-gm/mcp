@@ -62,13 +62,14 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 12. Cross-Project Integrations | 🔄 | 4/5 | 1 (#5) | build |
 | 13. Automated Review Cycle | 🔄 | 0/5 | 5 | build |
 | 14. Automated Knowledge Base | 🔄 | 4/5 | 1 | build |
+| 15. Auto Gap-Find & Fix Pipeline | 🔄 | 5/5 | — | build |
 
 **Task type legend:**
 - `plan` — Design, research, architecture. Output: specs, diagrams, decision docs.
 - `build` — Code, implement, test. Output: working code, passing tests.
 - `plan+build` — Both design and implementation in one task.
 
-Phases 1–11 complete. Phase 12 (Cross-Project Integrations) — 4/5 done (#5 unblocked). Phase 13 (Automated Review Cycle) — 13.1 done. Phase 14 (Automated Knowledge Base) — 14.1–14.4 done.
+Phases 1–11 complete. Phase 12 — 4/5 done. Phase 13 — 13.1 done. Phase 14 — 14.1–14.4 done. Phase 15 — all 5 tasks done.
 
 ### Phase 12: Cross-Project Integrations
 
@@ -134,6 +135,20 @@ Auto-discovering, cross-repo knowledge base that indexes all code and docs, prov
 | 14.3 Unify KB.md + osenv/kb.py + raw code into one query | ✅ Completed | build |
 | 14.4 workspace.sh commands (kb-auto search/scan/stats) | ✅ Completed | build |
 | 14.5 Auto-index on schedule (cron / git hook) | ⏳ Pending | build |
+
+### Phase 15: Auto Gap-Find & Fix Pipeline
+
+**Status:** completed
+
+Automated pipeline that detects gaps, fixes trivial ones, rebuilds the knowledge base, and integrates with the plan/build workflow. See `autofix/` for implementation.
+
+| Task | Status | Type |
+|------|--------|------|
+| 15.1 Gap detectors — missing docs, tests, .env.example, orphaned files, stale tracking | ✅ Completed | build |
+| 15.2 Auto-fixers — registry of 6 fixers with approval gate | ✅ Completed | build |
+| 15.3 Auto-rebuild autokb after pipeline run | ✅ Completed | build |
+| 15.4 workspace.sh auto command (run/plan/status/fixable) | ✅ Completed | build |
+| 15.5 Integrated with review cycle + plan/build workflow | ✅ Completed | build |
 
 ### Phase 1: Foundational Setup & Project Structure
 **Status:** completed
