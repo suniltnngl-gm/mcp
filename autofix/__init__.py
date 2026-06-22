@@ -8,6 +8,8 @@ from pathlib import Path
 from typing import List, Optional
 
 from autofix.fixers import get_fixer, list_fixable_categories
+from review_cycle.autofix.approval_gate import needs_approval
+from review_cycle.autofix.pr_generator import generate_pr
 from autofix.gaps import (
     scan_docs_gaps,
     scan_env_gaps,
@@ -27,6 +29,7 @@ def run_auto_pipeline(
     apply: bool = False,
     scanners: Optional[List[str]] = None,
     skip_kb_rebuild: bool = False,
+    use_pr: bool = False,
 ) -> ReviewReport:
     findings: List[ScanFinding] = []
     gap_scanners = {
@@ -77,12 +80,24 @@ def run_auto_pipeline(
             f for f in findings if f.category in list_fixable_categories()
         ]
         for finding in auto_fixable:
+            if use_pr and needs_approval(finding.category):
+                pr_result = generate_pr(finding, dry_run=False)
+                if pr_result["success"]:
+                    status_icon = "🔄"
+                    detail = f"PR: {pr_result['branch']}"
+                    if pr_result.get("pr_url"):
+                        detail += f" ({pr_result['pr_url']})"
+                    print(f"  {status_icon} PR created [{finding.category}] {finding.summary}")
+                    print(f"     {detail}")
+                else:
+                    print(f"  ❌ PR failed [{finding.category}] {finding.summary}: {pr_result['error']}")
+                continue
             fixer = get_fixer(finding.category)
             if fixer:
                 try:
                     result = fixer(finding)
                     if result.applied:
-                        status = "✅" if not result.requires_approval else "🔄"
+                        status = "✅" if not needs_approval(finding.category) else "🔄"
                         print(f"  {status} Fixed [{finding.category}] {finding.summary}")
                         print(f"     {result.message}")
                     else:
@@ -146,6 +161,7 @@ def main():
     parser.add_argument("--scanners", nargs="*",
                         help="Scanners to run (default: all)")
     parser.add_argument("--skip-kb", action="store_true", help="Skip KB rebuild")
+    parser.add_argument("--pr", action="store_true", help="Create PRs for complex fixes instead of direct commit")
     args = parser.parse_args()
 
     if args.command == "fixable":
@@ -191,7 +207,7 @@ def main():
         return
 
     print("=== Auto Pipeline ===")
-    report = run_auto_pipeline(apply=args.apply, scanners=args.scanners, skip_kb_rebuild=args.skip_kb)
+    report = run_auto_pipeline(apply=args.apply, scanners=args.scanners, skip_kb_rebuild=args.skip_kb, use_pr=args.pr)
     s = report.summary
     print(f"\n✅ Pipeline complete — Score: {s.score:.1f}/100")
     print(f"   {s.total_findings} findings: {s.blockers}b/{s.critical}c/{s.warnings}w/{s.infos}i")
