@@ -68,6 +68,8 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 18. Git Todo Monitor | 🔄 | 1/4 | 3 | build |
 | 19. DevEnvSync | 🔄 | 0/4 | 4 | build |
 | 20. DevFlow Wiki | 🔄 | 1/N | ~46 | docs |
+| 21. Softr API Integration | ✅ | 9/9 | — | build |
+| 22. Replit API Integration | ✅ | 11/11 | — | build |
 
 **Task type legend:**
 - `plan` — Design, research, architecture. Output: specs, diagrams, decision docs.
@@ -77,6 +79,7 @@ The following tasks are organized into phases, reflecting the detailed steps req
 Phases 1–11 complete. Phase 12 — 5/5 done. Phase 13 — 13.1 done. Phase 14 — 14.1–14.4 done. Phase 15 — all 5 tasks done.
 Phases 16–17 complete (historical projects discovered during repo audit).
 Phases 18–20 discovered during repo audit — each has its own git history and independent plan.
+Phases 21–22 new MCP servers — Softr and Replit API wrappers.
 
 ### Phase 12: Cross-Project Integrations
 
@@ -287,6 +290,56 @@ MkDocs site with Material theme, dark/light mode, search, Mermaid diagrams, Goog
 - Write content for all 50 pages
 - Deploy to GitHub Pages
 - Link from project README
+
+### Phase 21: Softr API Integration
+
+**Status:** completed
+
+**Repos:** `project/src/llm_wrapper/mcp/softr_server.py`
+
+MCP server wrapping the Softr Studio API (user management) and Softr Database API (table CRUD). Requires `SOFTR_API_KEY` in `~/Public/ENV/.env`.
+
+| Tool | API | Description |
+|------|-----|-------------|
+| `softr_list_databases` | Tables | List accessible databases |
+| `softr_list_tables` | Tables | List tables in a database |
+| `softr_query_records` | Tables | Query records with limit |
+| `softr_create_record` | Tables | Insert a new record |
+| `softr_update_record` | Tables | Update by record ID |
+| `softr_delete_record` | Tables | Delete by record ID |
+| `softr_create_user` | Studio | Create app user |
+| `softr_get_user` | Studio | Lookup by email |
+| `softr_delete_user` | Studio | Delete app user |
+
+**Next steps:**
+- Register `Softr-Domain` header support per-app (currently reads from tool input)
+- Add webhook event listing if Softr exposes it
+
+### Phase 22: Replit API Integration
+
+**Status:** completed
+
+**Repos:** `project/src/llm_wrapper/mcp/replit_server.py`
+
+MCP server wrapping the Replit REST API v1 (`replit.com/api/v1`). Requires `REPLIT_API_KEY` in `~/Public/ENV/.env` (generate at `replit.com/account#api-tokens`).
+
+| Tool | Endpoint | Description |
+|------|----------|-------------|
+| `replit_list_repls` | GET /repls | List all Repls |
+| `replit_create_repl` | POST /repls | Create a Repl |
+| `replit_get_repl` | GET /repls/{id} | Get Repl details |
+| `replit_update_repl` | PATCH /repls/{id} | Update Repl metadata |
+| `replit_delete_repl` | DELETE /repls/{id} | Delete a Repl |
+| `replit_deploy_repl` | POST /repls/{id}/deployments | Deploy to production |
+| `replit_list_deployments` | GET /repls/{id}/deployments | List deployments |
+| `replit_get_deployment` | GET /deployments/{id} | Get deployment details |
+| `replit_delete_deployment` | DELETE /deployments/{id} | Remove deployment |
+| `replit_get_user` | GET /user or /users/{username} | Get current/public user |
+| `replit_list_user_repls` | GET /users/{username}/repls | List user's public Repls |
+
+**Next steps:**
+- Add Repl file read/write if Replit exposes a filesystem API
+- Add webhook management endpoints
 
 ### Phase 1: Foundational Setup & Project Structure
 **Status:** completed
