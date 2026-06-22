@@ -75,3 +75,17 @@ Each entry follows this structure:
 - **Outcome**: committed
 - **Next**: 
 
+## 2026-06-22
+
+### Phase 13.2 — Review Engine (scoring, baseline, trends)
+- **Date**: 2026-06-22
+- **Project**: project/
+- **Phase/Task**: Phase 13.2
+- **Integration**: 
+- **Why**: Review cycle needed scoring/prioritization, baseline comparison, and trend detection to produce actionable reports.
+- **What**: Built `engine.py` with priority scoring (severity × category × recency), baseline diff against previous run (SHA256), score history persistence (90-day rolling), and trend detection (slope analysis over 3 runs). Enhanced `models.py` with finding_id, to_json(), diff-aware markdown reports. Wired into `main.py`.
+- **How**: Pure Python, no new deps. Uses `~/.opencode/reviews/latest.json` as baseline and `score_history.json` for trends.
+- **Files**: `review_cycle/engine.py` (new), `review_cycle/models.py` (modified), `review_cycle/main.py` (modified)
+- **Outcome**: committed (docs + code)
+- **Next**: Phase 13.3 — Automation (cron, watch mode, hooks)
+

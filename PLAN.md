@@ -131,7 +131,7 @@ Automated system that periodically reviews all active repos, plans next actions,
 | Task | Status | Type |
 |------|--------|------|
 | 13.1 Foundation — scanners (git, tests, tasks) | 🔄 In progress | build |
-| 13.2 Review Engine — scoring, baseline, reports | ⏳ Pending | plan+build |
+| 13.2 Review Engine — scoring, baseline, reports | ✅ Completed | plan+build |
 | 13.3 Automation — cron workflow, watch mode, hooks | ⏳ Pending | build |
 | 13.4 Auto-fix & PR — known patterns, approval gate | ⏳ Pending | build |
 | 13.5 Scoring & Trends — health score, dashboard badge | ⏳ Pending | build |

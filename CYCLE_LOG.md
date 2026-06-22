@@ -20,6 +20,16 @@ Tracks plan → build → review cycles. Each cycle delivers one or more tasks.
 
 ## Active Cycle
 
+### Cycle 17: Review Scoring Engine
+- **Started**: 2026-06-22
+- **Completed**: 2026-06-22
+- **Tasks**: Phase 13.2 — Review Engine (scoring, baseline, trends)
+- **Mode Path**: 📋→🔨→🔍
+- **Duration**: 1d (plan 0.2d, build 0.6d, review 0.2d)
+- **Delivered**: engine.py (scoring, baseline diff, trend detection), enhanced models.py (finding_id, to_json, diff-aware markdown), main.py wired with scoring + baseline + trend
+- **Blockers**: None
+- **Learnings**: SHA256 finding IDs enable reliable cross-run diff. Score history in JSON is simple and works for 90-day rolling window.
+
 ### Cycle 8: Tracking System Enhancement
 - **Started**: 2026-06-17
 - **Completed**: 2026-06-17
@@ -60,6 +70,7 @@ Tracks plan → build → review cycles. Each cycle delivers one or more tasks.
 
 | # | Cycle | Dates | Duration | Outcome |
 |---|-------|-------|----------|---------|
+| 17 | Review Scoring Engine | 2026-06-22 | 1d | Phase 13.2 — scoring, baseline, trends |
 | 8 | Tracking System | 2026-06-17 | 1d | Entry point, dashboard, mode tracking |
 | 7 | osenv MCP Bridge | 2026-06-17 | 1d | Cross-project integration #1 done |
 | 6 | Workspace Scripts | 2026-06-17 | 1d | Snapshot/knowledge/structure tools |
@@ -73,9 +84,9 @@ Tracks plan → build → review cycles. Each cycle delivers one or more tasks.
 
 | Metric | Value |
 |--------|-------|
-| Total cycles | 8 |
-| Cycles this week | 8 |
+| Total cycles | 17 |
+| Cycles this week | 9 |
 | Avg cycle duration | 1d |
-| Tasks completed | 28 |
-| Tasks in progress | 2 |
-| Tasks pending | 8 |
+| Tasks completed | 31 |
+| Tasks in progress | 0 |
+| Tasks pending | 7 |
