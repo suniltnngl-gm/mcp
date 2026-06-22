@@ -60,8 +60,8 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 10. Testing | ✅ | 4/4 | — | build |
 | 11. Workflow Automation | ✅ | 6/6 | — | plan+build |
 | 12. Cross-Project Integrations | ✅ | 5/5 | — | build |
-| 13. Automated Review Cycle | 🔄 | 0/5 | 5 | build |
-| 14. Automated Knowledge Base | 🔄 | 4/5 | 1 | build |
+| 13. Automated Review Cycle | ✅ | 5/5 | — | build |
+| 14. Automated Knowledge Base | ✅ | 5/5 | — | build |
 | 15. Auto Gap-Find & Fix Pipeline | ✅ | 5/5 | — | build |
 | 16. DevFlow Intelligence | ✅ | Complete | — | build |
 | 17. Code Review Consolidation | ✅ | Complete | — | build |
@@ -76,7 +76,7 @@ The following tasks are organized into phases, reflecting the detailed steps req
 - `build` — Code, implement, test. Output: working code, passing tests.
 - `plan+build` — Both design and implementation in one task.
 
-Phases 1–11 complete. Phase 12 — 5/5 done. Phase 13 — 13.1 done. Phase 14 — 14.1–14.4 done. Phase 15 — all 5 tasks done.
+Phases 1–11 complete. Phase 12 — 5/5 done. Phase 13 — 13.1–13.5 done. Phase 14 — 14.1–14.5 done. Phase 15 — all 5 tasks done.
 Phases 16–17 complete (historical projects discovered during repo audit).
 Phases 18–20 discovered during repo audit — each has its own git history and independent plan.
 Phases 21–22 new MCP servers — Softr and Replit API wrappers.
@@ -130,11 +130,11 @@ Automated system that periodically reviews all active repos, plans next actions,
 
 | Task | Status | Type |
 |------|--------|------|
-| 13.1 Foundation — scanners (git, tests, tasks) | 🔄 In progress | build |
+| 13.1 Foundation — scanners (git, tests, tasks) | ✅ Completed | build |
 | 13.2 Review Engine — scoring, baseline, reports | ✅ Completed | plan+build |
-| 13.3 Automation — cron workflow, watch mode, hooks | ⏳ Pending | build |
-| 13.4 Auto-fix & PR — known patterns, approval gate | ⏳ Pending | build |
-| 13.5 Scoring & Trends — health score, dashboard badge | ⏳ Pending | build |
+| 13.3 Automation — cron workflow, watch mode, hooks | ✅ Completed | build |
+| 13.4 Auto-fix & PR — known patterns, approval gate | ✅ Completed | build |
+| 13.5 Scoring & Trends — health score, dashboard badge | ✅ Completed | build |
 
 **Dependency chain:** `13.1 → 13.2 → 13.3 → 13.4 → 13.5`
 
@@ -152,7 +152,7 @@ Existing implementation has been confirmed in `devflow-intelligence/src/intellig
 | 14.2 Search — ranked results with fuzzy matching, --json, --fast | ✅ Completed | build |
 | 14.3 Unify KB.md + osenv/kb.py + raw code into one query | ✅ Completed | build |
 | 14.4 `Workspace/workspace.sh` commands (kb-auto search/scan/stats) | ✅ Completed | build |
-| 14.5 Auto-index on schedule (cron / git hook) | ⏳ Pending | build |
+| 14.5 Auto-index on schedule (cron / git hook) | ✅ Completed | build |
 
 ### Phase 15: Auto Gap-Find & Fix Pipeline
 
