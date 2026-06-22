@@ -59,7 +59,7 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 9. Orchestration | ✅ | 3/3 | — | build |
 | 10. Testing | ✅ | 4/4 | — | build |
 | 11. Workflow Automation | ✅ | 6/6 | — | plan+build |
-| 12. Cross-Project Integrations | 🔄 | 4/5 | 1 (#5) | build |
+| 12. Cross-Project Integrations | ✅ | 5/5 | — | build |
 | 13. Automated Review Cycle | 🔄 | 0/5 | 5 | build |
 | 14. Automated Knowledge Base | 🔄 | 4/5 | 1 | build |
 | 15. Auto Gap-Find & Fix Pipeline | ✅ | 5/5 | — | build |
@@ -74,7 +74,7 @@ The following tasks are organized into phases, reflecting the detailed steps req
 - `build` — Code, implement, test. Output: working code, passing tests.
 - `plan+build` — Both design and implementation in one task.
 
-Phases 1–11 complete. Phase 12 — 4/5 done. Phase 13 — 13.1 done. Phase 14 — 14.1–14.4 done. Phase 15 — all 5 tasks done.
+Phases 1–11 complete. Phase 12 — 5/5 done. Phase 13 — 13.1 done. Phase 14 — 14.1–14.4 done. Phase 15 — all 5 tasks done.
 Phases 16–17 complete (historical projects discovered during repo audit).
 Phases 18–20 discovered during repo audit — each has its own git history and independent plan.
 
@@ -88,9 +88,9 @@ Phases 18–20 discovered during repo audit — each has its own git history and
 | 2 | Antigravity Agent → MCP | ✅ Completed | #1 | — |
 | 3 | Firebase Auth as MCP Identity | ✅ Completed | — | #5 |
 | 4 | Shared Tools & Configs | ✅ Completed | — | — |
-| 5 | Data Sharing (Firestore) | ⏳ Pending | — | — |
+| 5 | Data Sharing (Firestore) | ✅ Completed | — | — |
 
-**Dependency chain:** `#3 → #5` (tools & configs #4 independent). #3 complete — #5 unblocked.
+**Dependency chain:** `#3 → #5` (tools & configs #4 independent). #3 complete — #5 unblocked. #5 complete.
 
 #### Task 12.3: Firebase Auth as MCP Identity
 - **Status:** completed
@@ -108,10 +108,16 @@ Phases 18–20 discovered during repo audit — each has its own git history and
 - **Note:** Created `~/.opencode/shared/` with canonical pyproject.toml, .editorconfig, .pre-commit-config.yaml, python-ci.yml, shellcheck.yml. Wired into project/ (updated CI, added pre-commit), Workspace/ (added .editorconfig), repositories/ (added pyproject.toml, .editorconfig, CI).
 
 #### Task 12.5: Data Sharing (Firestore)
-- **Status:** pending
+- **Status:** completed
 - **Type:** build
 - **Unblocked** by #3 completion.
-- Replace local SQLite in MCP doc manager with Firestore-backed document service for real-time sync + auth across projects.
+- **Delivered:**
+  - `firestore_doc_service.py` — Firestore-backed document storage replacing local SQLite. Lazy Firebase Admin init, SHA256-hashed doc IDs, client-side search for full-text matching, batch delete support.
+  - `doc_manager_server.py` — Updated to use Firestore via `firestore_doc_service`. Added `list_documents` and `delete_document` tools. Removed SQLite dependency.
+  - `project/mcp.json` — Updated doc_manager entry: uses `uv run` for dependency resolution, service account env var instead of DB_PATH.
+  - `~/.gemini/config/mcp_config.json` — Updated doc_manager env with `FIREBASE_SERVICE_ACCOUNT_PATH`.
+  - Wired into Antigravity agent (`agent/main.py`) — already registered as `doc_manager` MCP server. No agent config change needed.
+- Removes SQLite dependency from doc manager. Enables real-time document sync across projects with Firebase Auth isolation.
 
 ### Phase 13: Automated Review Cycle
 
