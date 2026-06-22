@@ -1,9 +1,16 @@
 """Fast Ollama cloud client for workspace AI assistance."""
 
 import os
+from pathlib import Path
 from typing import Optional
 
 import ollama
+from dotenv import load_dotenv
+
+
+ENV_FILE = Path.home() / "Public" / "ENV" / ".env"
+if ENV_FILE.exists():
+    load_dotenv(ENV_FILE)
 
 
 CLOUD_HOST = "https://ollama.com"

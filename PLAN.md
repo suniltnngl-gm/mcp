@@ -62,7 +62,12 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 12. Cross-Project Integrations | 🔄 | 4/5 | 1 (#5) | build |
 | 13. Automated Review Cycle | 🔄 | 0/5 | 5 | build |
 | 14. Automated Knowledge Base | 🔄 | 4/5 | 1 | build |
-| 15. Auto Gap-Find & Fix Pipeline | 🔄 | 5/5 | — | build |
+| 15. Auto Gap-Find & Fix Pipeline | ✅ | 5/5 | — | build |
+| 16. DevFlow Intelligence | ✅ | Complete | — | build |
+| 17. Code Review Consolidation | ✅ | Complete | — | build |
+| 18. Git Todo Monitor | 🔄 | 1/4 | 3 | build |
+| 19. DevEnvSync | 🔄 | 0/4 | 4 | build |
+| 20. DevFlow Wiki | 🔄 | 1/N | ~46 | docs |
 
 **Task type legend:**
 - `plan` — Design, research, architecture. Output: specs, diagrams, decision docs.
@@ -70,6 +75,8 @@ The following tasks are organized into phases, reflecting the detailed steps req
 - `plan+build` — Both design and implementation in one task.
 
 Phases 1–11 complete. Phase 12 — 4/5 done. Phase 13 — 13.1 done. Phase 14 — 14.1–14.4 done. Phase 15 — all 5 tasks done.
+Phases 16–17 complete (historical projects discovered during repo audit).
+Phases 18–20 discovered during repo audit — each has its own git history and independent plan.
 
 ### Phase 12: Cross-Project Integrations
 
@@ -151,6 +158,129 @@ Automated pipeline that detects gaps, fixes trivial ones, rebuilds the knowledge
 | 15.3 Auto-rebuild autokb after pipeline run | ✅ Completed | build |
 | 15.4 workspace.sh auto command (run/plan/status/fixable) | ✅ Completed | build |
 | 15.5 Integrated with review cycle + plan/build workflow | ✅ Completed | build |
+
+### Phase 16: DevFlow Intelligence Platform
+
+**Status:** completed (historical)
+
+**Repos:** `progressive-build/` (build docs, archive), `devflow-intelligence/` (code, 7K lines Python)
+
+A completed AI-powered development automation platform with 20+ production modules, built via iterative progressive build methodology. Combines knowledge base, pattern recognition, safety checks, smart git operations, and workflow automation.
+
+| Module | Lines | Confidence |
+|--------|-------|------------|
+| Core (config, safety, secrets, subprocess, plugins, validation) | ~1,200 | 90–95% |
+| Intelligence (knowledge base, pattern recognition, code gen, self-improvement) | ~900 | 87–92% |
+| Automation (backup, health monitor, task manager, test gen, workflow) | ~1,100 | 85–90% |
+| Git integration (safe merge, smart add) | ~400 | 90% |
+| Analysis (duplication detector) | ~200 | 87% |
+| CLI (interactive) | ~125 | 85% |
+| **Total** | **~3,925** | **87–95%** |
+
+**Next steps:**
+- Archive `progressive-build/` build docs (keep only FINAL_REPORT.md + CLEANUP_PLAN.md)
+- Fix broken symlinks in `devflow-intelligence/` (consolidation-docs, toolkit)
+- Evaluate if devflow-intelligence code should merge into main `project/` or stay standalone
+
+### Phase 17: Code Review Consolidation
+
+**Status:** completed (historical)
+
+**Repo:** `consolidation/` — 11-phase migration of code-review logic from 8 projects into `shared-tools/code-review-toolkit/`
+
+Migrated duplicate code-review logic from coding-agent, unified-devflow, dev-refactor, ai-orchestra, coding-tools-wrapper, todo-automator, and unified-project into a single shared Python package.
+
+| Phase | Description | Status |
+|-------|-------------|--------|
+| 1 | Shared package created (AICodeReviewer, ReviewCache, CustomRuleEngine, PatternLearner) | ✅ Complete |
+| 2 | coding-agent migrated | ✅ Complete |
+| 3–10 | Remaining 7 projects migrated | ✅ Complete |
+| 11 | Finalization | ✅ Complete |
+
+**Results:** 0% code duplication, 80%+ maintenance reduction, 4x faster feature deployment.
+
+**Next steps:**
+- Archive `consolidation/` repo (keep only FINAL_STATUS.md)
+- Ensure `shared-tools/code-review-toolkit/` still exists and is importable
+
+### Phase 18: Git Todo Monitor
+
+**Status:** v1.0 shipped, v2.0+ planned
+
+**Repo:** `todo-automator/` — TODO tracking CLI with AI summaries
+
+Current v1.0 monitors git repos for TODO/FIXME comments, sends AI summaries via OpenAI, and displays Ubuntu desktop notifications. 903 lines Python across 7 modules.
+
+| Milestone | Target | Progress | Features |
+|-----------|--------|----------|----------|
+| v1.0 | Shipped | ✅ 100% | Core monitoring, AI summaries, cron/hook scheduling |
+| v2.0 | 2025-11-11 | ⏳ 0% | GitHub Issues sync, PR Review Automation, Commit Analysis |
+| v2.1 | 2025-12-11 | ⏳ 0% | Multi-repo config, aggregated summaries, repo comparison |
+| v3.0 | 2026-01-10 | ⏳ 0% | Web dashboard, analytics, interactive charts, export |
+
+**Next steps:**
+- Replace OpenAI dependency with free Ollama cloud models (OLLAMA_API_KEY already loaded)
+- Build v2.0: GitHub Issues integration via `gh` CLI
+- Build v2.1: Multi-repo support
+- Build v3.0: Web dashboard
+
+### Phase 19: DevEnvSync
+
+**Status:** active, needs restructure
+
+**Repo:** `DevEnvSync/` — Professional dev environment sync tool (57MB, 174 Python files, 26K lines)
+
+Windows-focused CLI tool with MCP server, AWS integration, AI agent, context management, and race-detection systems. Large repo due to heavy planning/documentation overhead.
+
+| Component | Files | Lines | Description |
+|-----------|-------|-------|-------------|
+| `devenv_sync/` package | ~40 | ~8,000 | CLI app, core engine, services, AWS integration |
+| Root scripts | ~30 | ~6,000 | MCP server, AI manager, context manager |
+| `scripts/` | ~40 | ~5,000 | Automation agents, git managers, AWS cost tools |
+| Tests | 18+ | ~5,000 | Integration, unit, performance tests |
+| Config/docs/batch | ~133 files | — | Planning artifacts, docs, CI/CD, batch files |
+
+**Planned restructure** (REFACTOR_PROGRESS.json, 40 tasks, 0%):
+| Phase | Days | Goal |
+|-------|------|------|
+| 1. Architecture Streamlining | 5d | Reduce complexity 30%, eliminate circular imports |
+| 2. MCP Integration Enhancement | 3d | Improve MCP server architecture |
+| 3. Logging & Output System | 3d | Structured logging, JSON output |
+| 4. Integration & Testing | 2d | 80% test coverage, 2s startup time |
+
+**Next steps:**
+- Clean up planning artifacts (REFACTOR_PROGRESS.json is 504 lines of planning at 0%)
+- Fix hardcoded Windows paths in restructure_plan.py
+- Evaluate cross-platform compatibility
+- Determine if this should merge into main `project/` or stay standalone
+
+### Phase 20: DevFlow Wiki
+
+**Status:** partial — infrastructure ready, content missing
+
+**Repo:** `devflow-wiki/` — MkDocs wiki for DevFlow Intelligence platform
+
+MkDocs site with Material theme, dark/light mode, search, Mermaid diagrams, Google Analytics, GitHub Pages auto-deploy. 50-page structure defined in mkdocs.yml, but only 4 content pages written.
+
+| Section | Pages | Status |
+|---------|-------|--------|
+| Getting Started | 4 pages | 1/4 written |
+| Core Concepts | 5 pages | 0/5 |
+| Components | 6 pages | 0/6 |
+| User Guides | 5 pages | 0/5 |
+| API Reference | 5 pages | 0/5 |
+| Tutorials | 4 pages | 0/4 |
+| Reference | 4 pages | 0/4 |
+| Best Practices | 4 pages | 0/4 |
+| Troubleshooting | 4 pages | 0/4 |
+| Contributing | 4 pages | 0/4 |
+| About | 4 pages | 0/4 |
+| **Total** | **~50 pages** | **4/50 written** |
+
+**Next steps:**
+- Write content for all 50 pages
+- Deploy to GitHub Pages
+- Link from project README
 
 ### Phase 1: Foundational Setup & Project Structure
 **Status:** completed

@@ -15,8 +15,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
 
+from dotenv import load_dotenv
+
 
 HOME = Path.home()
+ENV_FILE = HOME / "Public" / "ENV" / ".env"
+if ENV_FILE.exists():
+    load_dotenv(ENV_FILE)
 BASE = HOME / "Public"
 INDEX_DIR = HOME / ".opencode" / "autokb"
 INDEX_FILE = INDEX_DIR / "index.json"
