@@ -1,6 +1,7 @@
 """Auto pipeline — detect gaps, fix trivial ones, rebuild KB, report."""
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -14,6 +15,7 @@ from autofix.gaps import (
     scan_test_gaps,
     scan_tracking_gaps,
 )
+from brain import LessonCache
 from review_cycle.main import run_review, _persist_report
 from review_cycle.models import ReviewReport, ReviewSummary, ScanFinding
 
@@ -52,6 +54,22 @@ def run_auto_pipeline(
                         score=0.5,
                     )
                 )
+
+    lesson_cache = LessonCache()
+    filtered = []
+    suppressed = 0
+    for f in findings:
+        should_suppress, lid = lesson_cache.should_suppress(f.category, f.summary)
+        if should_suppress and lid:
+            lesson_cache.record_suppressed(lid)
+            suppressed += 1
+            continue
+        filtered.append(f)
+    lesson_cache.save()
+    if suppressed:
+        print(f"  🧠 Brain suppressed {suppressed} known findings")
+    findings = filtered
+
     final_report = ReviewReport(findings=findings)
     _persist_report(final_report)
     if apply:
@@ -73,7 +91,34 @@ def run_auto_pipeline(
                     print(f"  ❌ Fix failed [{finding.category}] {finding.summary}: {e}")
     if not skip_kb_rebuild:
         _rebuild_kb()
+    if os.environ.get("OLLAMA_API_KEY"):
+        _ai_enhance(final_report)
     return final_report
+
+
+def _ai_enhance(report: ReviewReport) -> None:
+    try:
+        from ai_assist.suggest import suggest_priority
+        from ai_assist.summarize import summarize_report
+        reviews_dir = Path.home() / ".opencode" / "reviews"
+        priority = suggest_priority(report.findings)
+        summary = summarize_report(report.findings, report.summary)
+        print(f"\n  🤖 AI Priority: {priority[:200]}")
+        print(f"  🤖 AI Summary: {summary[:200]}")
+        enh_path = reviews_dir / f"ai_{report.timestamp[:10]}.md"
+        enh_path.write_text(
+            f"# AI Enhancement — {report.timestamp[:10]}\n\n"
+            f"## Summary\n{summary}\n\n"
+            f"## Priority\n{priority}\n"
+        )
+    except Exception as e:
+        print(f"  ⚠️  AI enhancement skipped: {e}")
+    try:
+        from brain import overnight_sync
+        result = overnight_sync()
+        print(f"  🧠 Brain overnight sync: {result['context_entries']} context entries")
+    except Exception as e:
+        print(f"  ⚠️  Brain sync skipped: {e}")
 
 
 def _rebuild_kb() -> None:

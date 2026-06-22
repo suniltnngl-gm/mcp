@@ -128,12 +128,14 @@ Automated system that periodically reviews all active repos, plans next actions,
 
 Auto-discovering, cross-repo knowledge base that indexes all code and docs, providing ranked search results. See `autokb/` for implementation.
 
+Existing implementation has been confirmed in `devflow-intelligence/src/intelligence/knowledge_base.py`, `devflow-intelligence/scripts/populate_kb_with_patterns.py`, `devflow-intelligence/examples/kb_demo.py`, and the workspace search wrapper `./kb.sh`. The remaining work is operational integration, scheduled refresh, and workflow attachment.
+
 | Task | Status | Type |
 |------|--------|------|
 | 14.1 Indexer — scan all 8 repos, build inverted index | ✅ Completed | build |
 | 14.2 Search — ranked results with fuzzy matching, --json, --fast | ✅ Completed | build |
 | 14.3 Unify KB.md + osenv/kb.py + raw code into one query | ✅ Completed | build |
-| 14.4 workspace.sh commands (kb-auto search/scan/stats) | ✅ Completed | build |
+| 14.4 `Workspace/workspace.sh` commands (kb-auto search/scan/stats) | ✅ Completed | build |
 | 14.5 Auto-index on schedule (cron / git hook) | ⏳ Pending | build |
 
 ### Phase 15: Auto Gap-Find & Fix Pipeline

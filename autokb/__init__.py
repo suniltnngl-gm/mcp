@@ -5,6 +5,7 @@ and provides fast unified search across code, docs, KB.md, and osenv/kb.py.
 """
 
 import json
+import os
 import re
 import subprocess
 import sys
@@ -45,6 +46,7 @@ class IndexEntry:
     ext: str
     lines: int
     mtime: str
+    source: str = ""  # traceable source (session, connector, or file ref)
     terms: Dict[str, List[int]] = field(default_factory=dict)
 
     def to_dict(self) -> dict:
@@ -54,6 +56,7 @@ class IndexEntry:
             "ext": self.ext,
             "lines": self.lines,
             "mtime": self.mtime,
+            "source": self.source,
             "terms": self.terms,
         }
 
@@ -121,6 +124,7 @@ class AutoKBIndexer:
                     mtime=datetime.fromtimestamp(
                         full_path.stat().st_mtime, tz=timezone.utc
                     ).isoformat(),
+                    source=f"file:{rel_path}",
                     terms=self._extract_terms(text, lines),
                 )
                 self.entries.append(entry)
@@ -152,6 +156,7 @@ class AutoKBIndexer:
                 ext=".md",
                 lines=len(lines),
                 mtime=datetime.fromtimestamp(KB_MD.stat().st_mtime, tz=timezone.utc).isoformat(),
+                source="kbfile:.opencode/KB.md",
                 terms=self._extract_terms(text, lines),
             )
             self.entries.append(entry)
@@ -171,6 +176,7 @@ class AutoKBIndexer:
                 ext=".json",
                 lines=len(lines),
                 mtime=datetime.fromtimestamp(OSENV_KB.stat().st_mtime, tz=timezone.utc).isoformat(),
+                source="osenv:kb.json",
                 terms=self._extract_terms(text, lines),
             )
             self.entries.append(entry)
@@ -347,6 +353,7 @@ def main():
     parser.add_argument("--top-k", type=int, default=15, help="Max results (default: 15)")
     parser.add_argument("--json", action="store_true", help="Output as JSON")
     parser.add_argument("--fast", action="store_true", help="Use ripgrep (slower but more precise)")
+    parser.add_argument("--explain", action="store_true", help="Add AI explanation of results")
 
     args = parser.parse_args()
 
@@ -403,6 +410,17 @@ def main():
                     text = line_text[:120].strip()
                     print(f"    L{line_num}: {text}")
                 print()
+            if args.explain and os.environ.get("OLLAMA_API_KEY"):
+                try:
+                    from ai_assist.summarize import explain_search_results
+                    result_dicts = [
+                        {"repo": r.repo, "path": r.path, "score": r.score}
+                        for r in results[:5]
+                    ]
+                    explanation = explain_search_results(query, result_dicts)
+                    print(f"  🤖 {explanation}")
+                except Exception as e:
+                    print(f"  ⚠️  AI explanation unavailable: {e}")
 
 
 if __name__ == "__main__":

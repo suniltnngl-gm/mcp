@@ -1,51 +1,40 @@
 # Development Task Checklist
 
-This checklist outlines the standard steps for executing any development task within this project, ensuring consistency, quality, and thoroughness.
+This checklist outlines the standard steps for executing any development task within this workspace.
 
 ## Phase 1: Understanding and Planning
 
-*   [ ] **Understand the Request:**
-    *   Clearly comprehend the user's objective and specific requirements.
-    *   Identify any ambiguities and seek clarification.
+*   [ ] **Understand the Request:** Clearly comprehend the objective and specific requirements.
 *   [ ] **Contextual Analysis:**
     *   Investigate relevant codebase areas, existing files, dependencies, and project conventions.
-    *   Utilize `codebase_investigator` for complex analysis or `search_file_content`/`glob` for targeted searches.
-*   [ ] **Formulate a Plan:**
-    *   Outline a clear, coherent, and grounded approach to address the request.
-    *   Break down complex tasks into smaller, manageable subtasks.
-    *   Use the `write_todos` tool to track progress on subtasks.
-*   [ ] **Identify Testing Strategy:**
-    *   Determine how to verify the changes, including unit, integration, or end-to-end tests.
-    *   Plan for new tests if necessary, or identify existing tests to modify/run.
+    *   Search KB: `workspace.sh kb-auto <query>` or `workspace.sh kb-auto <query> --explain`
+    *   Review PLAN.md for phase/task context.
+*   [ ] **Formulate a Plan:** Outline a clear approach. Break complex tasks into subtasks.
+*   [ ] **Identify Testing Strategy:** Plan for new tests or identify existing tests to run.
 
 ## Phase 2: Implementation
 
-*   [ ] **Adhere to Conventions:**
-    *   Strictly follow existing project style, formatting, naming, and architectural patterns.
-    *   Mimic surrounding code for idiomatic changes.
-*   [ ] **Implement Changes:**
-    *   Use appropriate tools (`replace`, `write_file`, `run_shell_command`) to make the planned modifications.
-    *   Add comments sparingly, focusing on *why* complex logic exists.
+*   [ ] **Adhere to Conventions:** Follow existing style, formatting, naming, and architectural patterns. See `DESIGN_GUIDELINES.md`.
+*   [ ] **Implement Changes:** Make modifications using appropriate tools.
+*   [ ] **Run Auto Pipeline:**
+    ```bash
+    workspace.sh review           # Check current health
+    workspace.sh auto plan        # See what would be auto-fixed
+    workspace.sh brain learn <task> <fix>  # Log any corrections
+    ```
 
-## Phase 3: Verification and Finalization
+## Phase 3: Verification
 
-*   [ ] **Run Tests:**
-    *   Execute all identified relevant tests (unit, integration, etc.).
-    *   Ensure all tests pass and no regressions are introduced.
-*   [ ] **Check Standards (Linting, Type-checking, Build):**
-    *   Run project-specific linting tools (e.g., `ruff check .`, `npm run lint`).
-    *   Perform type-checking (e.g., `tsc`).
-    *   Execute build commands to ensure the project compiles successfully.
-*   [ ] **Review Changes (Self-review):**
-    *   Carefully review all modifications, new code, and deleted code.
-    *   Ensure the changes directly address the request and maintain code quality.
-*   [ ] **Commit Changes:**
-    *   Create clear, concise, and descriptive commit messages.
-    *   Ensure all relevant files are staged and committed.
+*   [ ] **Run Tests:** `uv run pytest .` or `uv run pytest tests/<module>/`
+*   [ ] **Check Standards:**
+    *   `uv run ruff check . --fix` — linting
+    *   `uv run ruff format . --check` — formatting
+*   [ ] **Review Changes:** Self-review all modifications for quality and completeness.
+*   [ ] **Commit Changes:** Use Conventional Commits format (see `CONTRIBUTING.md`).
 
 ## Phase 4: Post-Completion
 
-*   [ ] **Document (if necessary):**
-    *   Update project documentation (`PLAN.md`, `ERROR_REGISTRY.md`, `CHANGELOG.md`) as appropriate.
-*   [ ] **Awaiting Next Instruction:**
-    *   Confirm completion and await further user input.
+*   [ ] **Update Documents:** Update `PLAN.md`, `ERROR_REGISTRY.md`, `CHANGELOG.md` as appropriate.
+*   [ ] **Rebuild KB:** `workspace.sh kb-auto scan`
+*   [ ] **Sync Brain:** `workspace.sh brain sync`
+*   [ ] **Confirm completion** and await further input.

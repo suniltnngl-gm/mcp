@@ -64,8 +64,8 @@ Build an automated system that periodically reviews all active repos, plans next
 |---------|---------------|----------|
 | GitHub Actions schedule | `.github/workflows/review.yml` with `cron: '0 6 * * *'` | Daily 6am review |
 | Git pre-push hook | `.git/hooks/pre-push` that runs quick scan | Catch issues before push |
-| Manual | `./workspace.sh review` | On-demand review |
-| Watch mode | `./workspace.sh review --watch 30` | Poll every 30 min during dev |
+| Manual | `./Workspace/workspace.sh review` | On-demand review |
+| Watch mode | `./Workspace/workspace.sh review --watch 30` | Poll every 30 min during dev |
 
 ### 2. Scan Layer — Scanners
 
@@ -91,6 +91,7 @@ class ScanFinding:
 | `test_runner` | Run `pytest` in project/, check test results | Pass/fail counts, failures |
 | `task_checker` | Compare PLAN.md tasks against actual file state | Stale tasks, unblocked items |
 | `doc_drift_detector` | Check if tracking docs match reality | Outdated entries |
+| `kb_scanner` | Check KB docs, workspace KB search readiness, and knowledge base freshness | KB health findings |
 | `dependency_scanner` | Check uv.lock, package.json for outdated deps | Outdated packages |
 | `disk_scanner` | Check disk usage, large files, temp artifacts | Space warnings |
 
@@ -167,6 +168,7 @@ Non-trivial changes go through **approval gate**: creates a branch + PR instead 
 - [ ] Build `git_scanner.py` — check 8 repos for dirty state, unpushed commits
 - [ ] Build `test_runner.py` — run pytest, parse results
 - [ ] Build `task_checker.py` — compare PLAN.md tasks vs file system
+- [ ] Build `kb_scanner.py` — verify KB docs, workspace KB search readiness, and knowledge base freshness
 - [ ] Add `review` command to `workspace.sh` (manual trigger)
 
 ### Phase 13.2: Review Engine (plan+build, ~2h)
@@ -177,7 +179,7 @@ Non-trivial changes go through **approval gate**: creates a branch + PR instead 
 
 ### Phase 13.3: Automation (build, ~1.5h)
 - [ ] Create `review.yml` GitHub Actions workflow (daily cron)
-- [ ] Add watch mode to `workspace.sh review`
+- [ ] Add watch mode to `./Workspace/workspace.sh review`
 - [ ] Add pre-push hook support
 - [ ] Notification file output
 

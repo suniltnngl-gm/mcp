@@ -13,5 +13,50 @@
     "CHECKLIST_PROJECT_GROWTH.md",
     "CHECKLIST_CODE_REVIEW.md",
     "CHANGELOG.md"
-  ]
+  ],
+  "mcp": {
+    "ollama_cloud": {
+      "type": "local",
+      "command": ["uv", "run", "python3", "-m", "src.llm_wrapper.mcp.ollama_cloud_server"],
+      "cwd": "/home/sunil-kr/Public/project",
+      "enabled": true,
+      "environment": {
+        "OLLAMA_API_KEY": "${OLLAMA_API_KEY}"
+      }
+    },
+    "osenv_manager": {
+      "type": "local",
+      "command": ["uv", "run", "python3", "-m", "src.llm_wrapper.mcp.osenv_server"],
+      "cwd": "/home/sunil-kr/Public/project",
+      "enabled": true,
+      "environment": {}
+    },
+    "firebase_auth": {
+      "type": "local",
+      "command": ["uv", "run", "python3", "-m", "src.llm_wrapper.mcp.firebase_auth_server"],
+      "cwd": "/home/sunil-kr/Public/project",
+      "enabled": true,
+      "environment": {
+        "FIREBASE_SERVICE_ACCOUNT_PATH": "${FIREBASE_SERVICE_ACCOUNT_PATH}"
+      }
+    },
+    "system_utility": {
+      "type": "local",
+      "command": ["uv", "run", "python3", "-m", "src.llm_wrapper.mcp.system_utility_server"],
+      "cwd": "/home/sunil-kr/Public/project",
+      "enabled": true,
+      "environment": {
+        "SANDBOX_ROOT": "./llm_sandbox"
+      }
+    },
+    "doc_manager": {
+      "type": "local",
+      "command": ["uv", "run", "python3", "-m", "src.llm_wrapper.mcp.doc_manager_server"],
+      "cwd": "/home/sunil-kr/Public/project",
+      "enabled": true,
+      "environment": {
+        "DB_PATH": "./data/docs.db"
+      }
+    }
+  }
 }

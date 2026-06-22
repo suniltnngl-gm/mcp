@@ -1,40 +1,56 @@
 # Contributing Guidelines
 
-We welcome contributions to the "AWS MCP Servers" project! By following these guidelines, you help us maintain code quality, consistency, and a smooth development workflow.
+This project is an LLM-Enhanced Distributed MCP Servers workspace under `suniltnngl-gm/mcp`. By following these guidelines, you help maintain code quality, consistency, and a smooth development workflow.
 
 ## How to Contribute
 
-1.  **Fork the Repository:** Start by forking the `awslab/mcp` repository to your GitHub account.
-2.  **Clone Your Fork:** Clone your forked repository to your local machine:
+1.  **Clone the Repository:**
     ```bash
-    git clone https://github.com/YOUR_USERNAME/mcp.git
+    git clone https://github.com/suniltnngl-gm/mcp.git
     cd mcp
     ```
-3.  **Create a New Branch:** Always create a new branch for your work. Use a descriptive name (e.g., `feature/add-documentdb-server`, `fix/login-bug`).
+2.  **Set Up Your Environment:**
+    ```bash
+    uv sync              # Install Python deps
+    pre-commit install   # Install lint hooks
+    ```
+3.  **Create a New Branch:** Use a descriptive name (e.g., `feature/doc-manager`, `fix/auth-timing`).
     ```bash
     git checkout -b feature/your-feature-name
     ```
-4.  **Make Your Changes:** Implement your feature or bug fix.
+4.  **Make Your Changes:**
     *   Adhere to the project's coding style and conventions (refer to `CHECKLIST_DEVELOPMENT.md`).
-    *   Write clear, concise code.
+    *   Write clear, concise code. Run the auto pipeline before committing.
     *   Add tests for new functionality or bug fixes.
-    *   Ensure all existing tests pass.
-    *   Run linting and type-checking (`uv run ruff check .`, `uv run mypy .`).
+    *   Ensure all existing tests pass (`uv run pytest .`).
+    *   Run linting (`uv run ruff check . --fix`).
 5.  **Write Meaningful Commit Messages:** Follow the Conventional Commits specification (detailed below).
-6.  **Push Your Branch:** Push your changes to your fork:
+6.  **Push Your Branch:**
     ```bash
     git push origin feature/your-feature-name
     ```
 7.  **Create a Pull Request:**
-    *   Go to the original `awslab/mcp` repository on GitHub.
+    *   Go to the original `suniltnngl-gm/mcp` repository on GitHub.
     *   Open a new Pull Request from your branch to the `main` branch.
     *   Fill out the Pull Request template (refer to `.github/PULL_REQUEST_TEMPLATE.md`).
     *   Ensure all CI checks pass.
     *   Address any feedback from reviewers.
 
+## Workspace Automation
+
+This project integrates with `~/Public/workspace.sh` for automation:
+
+- `./workspace.sh review` — run review cycle (git, tests, tasks)
+- `./workspace.sh auto` — detect gaps, fix trivial issues, rebuild KB
+- `./workspace.sh auto --apply` — apply auto-fixes
+- `./workspace.sh ai ask <q>` — ask Ollama cloud AI for help
+- `./workspace.sh brain learn <task> <fix>` — log a correction as a lesson
+
+All commits should go through the standard cycle: review → auto → fix → commit.
+
 ## Conventional Commits
 
-We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification for all commit messages. This helps us generate consistent changelogs, understand the nature of changes at a glance, and automate versioning.
+We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
 
 A commit message should be structured as follows:
 
@@ -48,78 +64,43 @@ A commit message should be structured as follows:
 
 ### Type
 
-The `type` is a mandatory keyword that describes the kind of change this commit is introducing. Common types include:
-
 *   **`feat`**: A new feature
 *   **`fix`**: A bug fix
 *   **`docs`**: Documentation only changes
-*   **`style`**: Changes that do not affect the meaning of the code (white-space, formatting, missing semicolons, etc.)
+*   **`style`**: Changes that do not affect the meaning of the code
 *   **`refactor`**: A code change that neither fixes a bug nor adds a feature
 *   **`perf`**: A code change that improves performance
 *   **`test`**: Adding missing tests or correcting existing tests
-*   **`build`**: Changes that affect the build system or external dependencies (e.g., `uv`, `pip`)
-*   **`ci`**: Changes to our CI configuration files and scripts (e.g., GitHub Actions)
+*   **`build`**: Changes that affect the build system or external dependencies
+*   **`ci`**: Changes to CI configuration files and scripts
 *   **`chore`**: Other changes that don't modify src or test files
 *   **`revert`**: Reverts a previous commit
 
 ### Scope (Optional)
 
-The `scope` provides additional contextual information about the change. It is enclosed in parentheses and placed after the `type`.
-Examples: `feat(parser)`, `fix(api)`, `docs(readme)`.
+Provides additional contextual information (e.g., `feat(auth)`, `fix(parser)`).
 
 ### Description
 
-The `description` is a concise, imperative statement of the change. It should:
-
-*   Be a short, one-line summary.
-*   Use the imperative mood ("add", "change", "fix") rather than past tense ("added", "changed", "fixed").
-*   Not be capitalized.
-*   Not end with a period.
-
-### Body (Optional)
-
-The `body` provides more detailed contextual information about the change. It should start one blank line after the description.
-
-### Footer (Optional)
-
-The `footer` can contain information about breaking changes or reference issues.
-
-*   **Breaking Changes:** Indicate breaking changes with `BREAKING CHANGE:`.
-*   **Referencing Issues:** Use `Closes #123`, `Refs #456`, `Fixes #789` to link to issue trackers.
+Use the imperative mood ("add", "fix") not past tense ("added", "fixed").
 
 ### Examples
 
-*   `feat(authentication): add user login feature`
-*   `fix(bug): correct invalid input validation`
-*   `docs: update README with installation instructions`
-*   `ci: add dependabot configuration`
-*   `chore(deps): update requests to v2.30.0`
-*   `refactor(auth): simplify token generation logic`
+- `feat(auth): add Firebase token verification middleware`
+- `fix(parser): handle null input in topic extractor`
+- `docs: update CONTRIBUTING.md with workspace automation guide`
+- `chore(deps): update ollama-sdk to v0.6.2`
 
 ## Security Issue Notifications
 
-If you discover a security vulnerability, please report it responsibly by contacting [maintainer-email@example.com] instead of opening a public issue. This allows us to address the issue privately before a public disclosure.
+If you discover a security vulnerability, report it privately by opening a GitHub Security Advisory on the `suniltnngl-gm/mcp` repository instead of opening a public issue.
 
-## File Editing and Backup Workflow (No-Pypass Measure)
+## File Editing and Backup Workflow
 
-To ensure the integrity and history of our work, especially for crucial files, we implement a "no-pypass" measure before making edits. This relies on the `pre_edit_backup.sh` helper script.
+Before editing a crucial file, create a timestamped snapshot:
 
-**Purpose:** Always create a timestamped snapshot of a file *before* you begin editing it. This provides an immediate, local backup that can be used for quick reverts if changes go awry, or for reviewing previous states.
+```bash
+./pre_edit_backup.sh <path/to/file>
+```
 
-**How to Use:**
-
-1.  **Before opening a file for editing:** Navigate to your terminal and run the `pre_edit_backup.sh` script, providing the path to the file you intend to modify:
-
-    ```bash
-    ./pre_edit_backup.sh <path/to/your/file.py>
-    ```
-
-    *Example:* `./pre_edit_backup.sh src/main.py`
-
-2.  The script will create a timestamped copy of the file (e.g., `src/main_20251216_103000.py`) in the `backups/pre_edit_snapshots` directory, preserving its original directory structure.
-
-3.  **Proceed with your edits:** After the backup is confirmed, you can safely open and modify the original file (`<path/to/your/file.py>`).
-
-**Importance (No-Pypass):** Adhering to this workflow is crucial. It acts as your first line of defense against accidental data loss or unwanted changes, providing granular local history beyond what Git stages. Consider this a mandatory step for any significant file modification. The `backups/pre_edit_snapshots` directory is `.gitignored`, so these snapshots will remain local to your development environment.
-
----
+This creates a copy in `backups/pre_edit_snapshots/` as a local safety net beyond Git history.
