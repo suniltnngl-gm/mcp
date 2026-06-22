@@ -65,7 +65,7 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 15. Auto Gap-Find & Fix Pipeline | ✅ | 5/5 | — | build |
 | 16. DevFlow Intelligence | ✅ | Complete | — | build |
 | 17. Code Review Consolidation | ✅ | Complete | — | build |
-| 18. Git Todo Monitor | 🔄 | 1/4 | 3 | build |
+| 18. Git Todo Monitor | ✅ | 4/4 | — | build |
 | 19. DevEnvSync | 🔄 | 0/4 | 4 | build |
 | 20. DevFlow Wiki | 🔄 | 1/N | ~46 | docs |
 | 21. Softr API Integration | ✅ | 9/9 | — | build |
@@ -76,7 +76,7 @@ The following tasks are organized into phases, reflecting the detailed steps req
 - `build` — Code, implement, test. Output: working code, passing tests.
 - `plan+build` — Both design and implementation in one task.
 
-Phases 1–11 complete. Phase 12 — 5/5 done. Phase 13 — 13.1–13.5 done. Phase 14 — 14.1–14.5 done. Phase 15 — all 5 tasks done.
+Phases 1–11 complete. Phase 12 — 5/5 done. Phase 13 — 13.1–13.5 done. Phase 14 — 14.1–14.5 done. Phase 15 — all 5 tasks done. Phase 18 v2.0 shipped.
 Phases 16–17 complete (historical projects discovered during repo audit).
 Phases 18–20 discovered during repo audit — each has its own git history and independent plan.
 Phases 21–22 new MCP servers — Softr and Replit API wrappers.
@@ -223,7 +223,7 @@ Current v1.0 monitors git repos for TODO/FIXME comments, sends AI summaries via 
 | Milestone | Target | Progress | Features |
 |-----------|--------|----------|----------|
 | v1.0 | Shipped | ✅ 100% | Core monitoring, AI summaries, cron/hook scheduling |
-| v2.0 | 2025-11-11 | ⏳ 0% | GitHub Issues sync, PR Review Automation, Commit Analysis |
+| v2.0 | 2026-06-22 | ✅ 100% | Ollama cloud AI, GitHub Issues sync via gh CLI, Commit Analysis |
 | v2.1 | 2025-12-11 | ⏳ 0% | Multi-repo config, aggregated summaries, repo comparison |
 | v3.0 | 2026-01-10 | ⏳ 0% | Web dashboard, analytics, interactive charts, export |
 
