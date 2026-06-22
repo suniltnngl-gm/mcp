@@ -1,0 +1,22 @@
+name: Daily Review
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - uses: astral-sh/setup-uv@v5
+    - name: Run review cycle
+      run: uv run python3 -m review_cycle.main --output markdown
+    - name: Upload report
+      uses: actions/upload-artifact@v4
+      with:
+        name: review-report
+        path: ~/.opencode/reviews/latest.json

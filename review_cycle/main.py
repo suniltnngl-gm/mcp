@@ -108,6 +108,38 @@ def _write_markdown(report: ReviewReport) -> str:
     return str(output_path)
 
 
+def _install_hooks():
+    import shutil
+    hooks_src = Path(__file__).resolve().parent / "hooks"
+    for repo_root in [Path.home() / "Public" / p for p in
+                      ["project", "Workspace", ".opencode", "repositories",
+                       "coding-agent", "next-steps", "shared-tools", "Docs",
+                       "todo-automator", "DevEnvSync", "devflow-intelligence",
+                       "devflow-wiki", "consolidation", "progressive-build"]]:
+        hook_dst = repo_root / ".git" / "hooks" / "pre-push"
+        if not repo_root.exists() or not (repo_root / ".git").exists():
+            continue
+        src = hooks_src / "pre-push"
+        if src.exists():
+            shutil.copy2(str(src), str(hook_dst))
+            hook_dst.chmod(0o755)
+            print(f"  Installed pre-push hook: {hook_dst}")
+    print("Done. Hooks will run on git push.")
+
+
+def _watch_loop(interval_minutes: int, scanners: Optional[List[str]]):
+    import time
+    print(f"Watch mode: scanning every {interval_minutes} minute(s). Ctrl+C to stop.")
+    while True:
+        report = run_review(scanners=scanners, output="report")
+        s = report.summary
+        trend_icon = {"improving": "↑", "declining": "↓", "stable": "→"}.get(s.trend, "→")
+        new_count = len(report.new_findings)
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] Health: {s.score:.1f}/100 ({s.trend} {trend_icon})"
+              f" — {s.total_findings} findings ({new_count} new)")
+        time.sleep(interval_minutes * 60)
+
+
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Run automated review cycle")
@@ -121,7 +153,24 @@ def main():
         default="report",
         help="Output format (default: report — both persist + latest.json)",
     )
+    parser.add_argument(
+        "--watch", type=int, default=0,
+        help="Watch mode: run every N minutes (e.g. --watch 30)",
+    )
+    parser.add_argument(
+        "--install-hooks", action="store_true",
+        help="Install pre-push hooks in all repos",
+    )
     args = parser.parse_args()
+
+    if args.install_hooks:
+        _install_hooks()
+        return
+
+    if args.watch > 0:
+        _watch_loop(args.watch, args.scanners)
+        return
+
     report = run_review(scanners=args.scanners, output=args.output)
     s = report.summary
     trend_icon = {"improving": "↑", "declining": "↓", "stable": "→"}.get(s.trend, "→")

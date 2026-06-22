@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# pre-push hook — quick review scan before every push
+# Installed via: python3 -m review_cycle.main --install-hooks
+set -euo pipefail
+
+PROJECT_DIR="$(cd "$(dirname "$0")/../../.." && pwd)"
+REVIEW_DIR="$HOME/.opencode/reviews"
+mkdir -p "$REVIEW_DIR"
+
+echo "=== Pre-push Review ==="
+uv run --directory "$PROJECT_DIR" python3 -m review_cycle.main --scanners git --output json 2>/dev/null || true
+
+LATEST="$REVIEW_DIR/latest.json"
+if [ -f "$LATEST" ]; then
+  BLOCKERS=$(python3 -c "import json; d=json.load(open('$LATEST')); print(d['summary']['blockers'])" 2>/dev/null || echo "0")
+  if [ "$BLOCKERS" -gt 0 ]; then
+    echo "⚠️  $BLOCKERS blocker(s) found — review before pushing"
+  else
+    echo "✅ Review passed"
+  fi
+fi
+echo "=== End Pre-push Review ==="
