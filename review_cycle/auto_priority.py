@@ -90,10 +90,20 @@ def find_next_priority(phases, phase_name_map, tasks_map):
     return priorities
 
 
+def get_inventory_gaps():
+    try:
+        from review_cycle.systems_inventory import inventory as inv, compute_gaps
+        state = inv()
+        return compute_gaps(state)
+    except Exception:
+        return None
+
+
 def main():
     phases, phase_name_map, tasks_map = parse_plan()
     blockers = check_blockers()
     priorities = find_next_priority(phases, phase_name_map, tasks_map)
+    gaps = get_inventory_gaps()
 
     print()
 
@@ -103,12 +113,25 @@ def main():
             print(f"     • {b}")
         print()
 
+    if gaps:
+        build_phases = [p for p in priorities if gaps.get(str(p["phase"]), {}).get("needs_build")]
+        ready_phases = [p for p in priorities if not gaps.get(str(p["phase"]), {}).get("needs_build", True)]
+        if build_phases and ready_phases:
+            print(f"  💡 Gap analysis: {len(build_phases)} need setup, {len(ready_phases)} ready to build")
+            for p in ready_phases[:1]:
+                print(f"     Ready now: Phase {p['phase']} — {p['name']}")
+            print()
+
     if priorities:
         next_p = priorities[0]
-        print(f"  ▶ Next Priority: Phase {next_p['phase']} — {next_p['name']}")
+        gap = gaps.get(str(next_p["phase"]), {}) if gaps else {}
+        ready_icon = "✅" if gap.get("tools_ready") and not gap.get("needs_build") else "🛠"
+        print(f"  {ready_icon} Next Priority: Phase {next_p['phase']} — {next_p['name']}")
         print(f"     {next_p['done']}/{next_p['total']} done, {len(next_p['pending_tasks'])} pending")
         if next_p['pending_tasks']:
             print(f"     Next task: {next_p['pending_tasks'][0]}")
+        if gap.get("missing_keys"):
+            print(f"     ⛔ Missing: {', '.join(gap['missing_keys'])}")
         print()
 
         if len(priorities) > 1:
