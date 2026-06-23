@@ -537,6 +537,17 @@ Integrate Hugging Face Hub APIs — search models/datasets, download, push. No G
 
 **⏱ Estimated total: ~1.5h**
 
+**⚠ Criticism:** HF_TOKEN is a manual step (sign up at huggingface.co → generate token). Rate limits on free tier (60 req/hr for unauthenticated, higher with token). Large models (6B+ params) are impractical to download on this machine (3.7GB RAM, no GPU) — this tool is primarily for small models/tokenizers/datasets. The CLI adds value only if you regularly interact with HF Hub; for one-off usage, the browser is faster.
+
+**💬 Discussion — Alternatives considered:**
+| Option | Pros | Cons |
+|--------|------|------|
+| `huggingface_hub` SDK (Python) | Full feature set, caching built-in | Heavy dependency (20+ deps), complex API |
+| Raw cURL scripts | Zero deps, simple | No resume logic, no structured output |
+| **This approach (Python + requests)** | Lightweight, resume support, structured JSON | Need to implement caching ourselves |
+
+The SDK was rejected to keep the dependency footprint minimal. cURL alone lacks structured error handling. Python strikes the right balance.
+
 | Task | Status | Type | ⏱ |
 |------|--------|------|----|
 | 19.1 HF API client — search models/datasets, list files | ⏳ Pending | build | 20min |
@@ -560,6 +571,17 @@ Extend existing review_cycle autofix pipeline: auto-create issues from scan find
 
 **⏱ Estimated total: ~1h**
 
+**⚠ Criticism:** Issue creation from every finding can generate noise — needs dedup logic. PR labeling by path only works if PRs touch predictable paths. `gh` CLI rate limits apply (5000 req/hr for authenticated users). If the scan runs hourly and finds 10 issues each time, that's 240 issues/day — useless. Dedup and severity thresholds are essential.
+
+**💬 Discussion — Alternatives considered:**
+| Option | Pros | Cons |
+|--------|------|------|
+| GitHub API via Python (requests) | Full control, batch operations | Need token management, pagination logic |
+| **gh CLI** | Already authenticated, simple subprocess | Slower (spawns process per call), less flexible |
+| Webhook server (listen for events) | Real-time, event-driven | Need to host a server, more complex |
+
+gh CLI was chosen because it's already authenticated and requires zero setup. If we hit rate limits or need batch operations, we can migrate to the API.
+
 | Task | Status | Type | ⏱ |
 |------|--------|------|----|
 | 20.1 Auto-issue creator — scan findings → GitHub Issues | ⏳ Pending | build | 25min |
@@ -582,6 +604,18 @@ Lightweight web UI for workspace health, scan results, logs. Supabase for persis
 
 **⏱ Estimated total: ~2h**
 
+**⚠ Criticism:** Dashboard is "nice to have" not "need to have" — the existing DASHBOARD.md + `./workspace.sh dashboard` already works. Adding a full web stack (FastAPI + Next.js + Supabase + Vercel) is significant maintenance surface for a read-only display. Supabase free tier is 500MB, 2 projects — if we ever need more, it's $25/mo. Vercel free tier: 100GB bandwidth, 6000 build minutes/mo — sufficient for now but not infinite.
+
+**💬 Discussion — Alternatives considered:**
+| Option | Pros | Cons |
+|--------|------|------|
+| Static HTML + JS (no framework) | Zero deps, CDN-hosted | Manual state management, no SSR |
+| Python Flask + Jinja templates | Simple, server-rendered | No real-time updates, no SPA feel |
+| **Next.js + Vercel** | Auto-deploy, SSR, React ecosystem | Heavier build step, Node.js dependency |
+| Grafana + Prometheus | Already exists for metrics | Overkill for our scale, complex setup |
+
+Next.js + Vercel was chosen because it gives us auto-deploy on git push (zero config) and preview URLs per branch. The health endpoint stays in Python (our stack). If the dashboard proves low-value, it can be retired independently — the FastAPI endpoint is useful standalone.
+
 | Task | Status | Type | ⏱ |
 |------|--------|------|----|
 | 21.1 Health endpoint — FastAPI JSON API from review_cycle + autokb | ⏳ Pending | build | 30min |
@@ -602,6 +636,18 @@ Sync workspace backups, snapshots, and KB to Dropbox, S3-compatible, or Google D
 
 **⏱ Estimated total: ~1h**
 
+**⚠ Criticism:** Backup is only as good as its restore process — untested restores are false security. Dropbox free tier is 2GB which fills quickly with model files. rclone needs manual auth setup (OAuth flow). S3 costs money (even minimal usage is ~$1-2/mo). Local backups to a second disk would be simpler and faster — cloud sync only helps if the machine itself is lost.
+
+**💬 Discussion — Alternatives considered:**
+| Option | Pros | Cons |
+|--------|------|------|
+| Local USB/external disk backup | Fast, simple, no cloud costs | Not offsite, requires physical access |
+| **rclone + Dropbox** | Existing token, already partially set up | 2GB free limit, slow for large files |
+| restic (encrypted backup) | Built-in encryption, dedup, S3/Wasabi | New tool to learn, more complex |
+| boto3 (direct S3) | Full AWS control | Heavy dependency, AWS free tier expires |
+
+rclone + Dropbox is the fastest path to offsite backup (existing token). If we need more space, rclone can switch to Wasabi (S3-compatible, $6/TB/mo) with a config change — no code change.
+
 | Task | Status | Type | ⏱ |
 |------|--------|------|----|
 | 22.1 Dropbox sync — extend existing dropbox-utils with cron trigger | ⏳ Pending | build | 25min |
@@ -621,6 +667,18 @@ One-command deploy to Render or Vercel. Auto-deploy on git push.
 **Why this approach:** Dockerfile + render.yaml is the standard Render blueprint — minimal config. Vercel auto-deploys from git (no config needed). No need for Kubernetes or complex CD — our scale is 1-2 services. gh action CI already exists, just needs deploy step.
 
 **⏱ Estimated total: ~45min**
+
+**⚠ Criticism:** Render free tier spins down web services after 15 minutes of inactivity — first request after idle takes 30+ seconds (cold start). No custom domain on free tier (`.onrender.com` subdomain). Free PostgreSQL on Render is limited to 256MB. If the dashboard or API gets real usage, we'll need to upgrade ($7-19/mo). Vercel free tier is more generous (100GB bandwidth) but serverless functions have 10s timeout — too short for model inference.
+
+**💬 Discussion — Alternatives considered:**
+| Option | Pros | Cons |
+|--------|------|------|
+| **Render (backend) + Vercel (frontend)** | Auto-deploy from git, free tiers exist | Cold starts, no custom domain on free |
+| Fly.io | Always-on low-power VMs ($1.68/mo minimum) | Credit card required, more config |
+| Cloudflare Pages + Workers | 100k req/day free, global CDN | Workers have 30ms CPU time limit per request |
+| Railway | Similar to Render, generous free tier | Newer platform, smaller community |
+
+Render + Vercel split was chosen because each does one thing well: Render for persistent backend services (Python), Vercel for static frontends (Next.js). Migrating either to a different provider is independent of the other.
 
 | Task | Status | Type | ⏱ |
 |------|--------|------|----|

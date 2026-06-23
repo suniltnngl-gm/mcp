@@ -115,13 +115,28 @@ def get_inventory_gaps():
         return None
 
 
+def get_vote_top():
+    try:
+        from review_cycle.vote import compute_scores
+        return compute_scores()
+    except Exception:
+        return None
+
+
 def main():
     phases, phase_name_map, tasks_map = parse_plan()
     blockers = check_blockers()
     priorities = find_next_priority(phases, phase_name_map, tasks_map)
     gaps = get_inventory_gaps()
+    vote = get_vote_top()
 
     print()
+
+    if vote:
+        top_unblocked = [v for v in vote if not v["blocked_by"]]
+        print(f"  🗳 Vote: #{vote[0]['phase']} ({vote[0]['weighted']}/100) wins raw,",
+              f"#{top_unblocked[0]['phase']} ({top_unblocked[0]['weighted']}/100) best unblocked" if top_unblocked else "")
+        print()
 
     if blockers:
         print("  ⛔ Blockers:")
