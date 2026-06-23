@@ -48,6 +48,7 @@ The following tasks are organized into phases, reflecting the detailed steps req
 
 | Phase | Status | Tasks Done | Tasks Pending | Type Mix |
 |-------|--------|------------|---------------|----------|
+| 0. Genesis | ✅ | 7/7 | — | plan+build |
 | 1. Foundational Setup | ✅ | 5/5 | — | build |
 | 2. Pre-LLM Wrapper | ✅ | 2/2 | — | plan+build |
 | 3. Local LLM | ✅ | 2/2 | — | build |
@@ -66,8 +67,8 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 16. DevFlow Intelligence | ✅ | Complete | — | build |
 | 17. Code Review Consolidation | ✅ | Complete | — | build |
 | 18. Git Todo Monitor | ✅ | 4/4 | — | build |
-| 19. Hugging Face Hub CLI | ⏳ | 0/4 | 4 (~1.5h) | build |
-| 20. GitHub Automation | ⏳ | 0/3 | 3 (~1h) | build |
+| 19. Hugging Face Hub CLI | ✅ | 4/4 | — | build |
+| 20. GitHub Automation | ✅ | 3/3 | — | build |
 | 21. Web Dashboard | ⏳ | 0/3 | 3 (~2h) | build |
 | 22. Cloud Storage Sync | ⏳ | 0/3 | 3 (~1h) | build |
 | 23. Deploy Apps | ⏳ | 0/2 | 2 (~45min) | build |
@@ -82,6 +83,7 @@ The following tasks are organized into phases, reflecting the detailed steps req
 - `build` — Code, implement, test. Output: working code, passing tests.
 - `plan+build` — Both design and implementation in one task.
 
+Phase 0 (Genesis) — foundational workspace infrastructure, conventions, and cross-project tooling established before Phase 1.
 Phases 1–11 complete. Phase 12 — 5/5 done. Phase 13 — 13.1–13.5 done. Phase 14 — 14.1–14.5 done. Phase 15 — all 5 tasks done. Phase 18 v2.0 shipped.
 Phases 16–17 complete (historical projects discovered during repo audit).
 Phases 18–20 discovered during repo audit — each has its own git history and independent plan.
@@ -194,6 +196,15 @@ A completed AI-powered development automation platform with 20+ production modul
 | CLI (interactive) | ~125 | 85% |
 | **Total** | **~3,925** | **87–95%** |
 
+| Task | Status | Type |
+|------|--------|------|
+| 16.1 Core — config management, safety checks, secret handling, subprocess runner, plugin system, input validation | ✅ Complete | build |
+| 16.2 Intelligence — knowledge base, pattern recognition, code generation, self-improvement loop | ✅ Complete | build |
+| 16.3 Automation — backup system, health monitor, task manager, test generation, workflow engine | ✅ Complete | build |
+| 16.4 Git integration — safe merge, smart add with context awareness | ✅ Complete | build |
+| 16.5 Analysis — duplication detector, code smell scanner | ✅ Complete | build |
+| 16.6 CLI — interactive shell, command autocomplete, status dashboard | ✅ Complete | build |
+
 **Next steps:**
 - Archive `progressive-build/` build docs (keep only FINAL_REPORT.md + CLEANUP_PLAN.md)
 - Fix broken symlinks in `devflow-intelligence/` (consolidation-docs, toolkit)
@@ -207,12 +218,19 @@ A completed AI-powered development automation platform with 20+ production modul
 
 Migrated duplicate code-review logic from coding-agent, unified-devflow, dev-refactor, ai-orchestra, coding-tools-wrapper, todo-automator, and unified-project into a single shared Python package.
 
-| Phase | Description | Status |
-|-------|-------------|--------|
-| 1 | Shared package created (AICodeReviewer, ReviewCache, CustomRuleEngine, PatternLearner) | ✅ Complete |
-| 2 | coding-agent migrated | ✅ Complete |
-| 3–10 | Remaining 7 projects migrated | ✅ Complete |
-| 11 | Finalization | ✅ Complete |
+| Task | Status | Type |
+|------|--------|------|
+| 17.1 Audit — identify all code-review logic across 8 repos, catalog duplicate functionality | ✅ Complete | plan |
+| 17.2 Shared package — create `shared-tools/code-review-toolkit/` (AICodeReviewer, ReviewCache, CustomRuleEngine, PatternLearner) | ✅ Complete | build |
+| 17.3 coding-agent migration — port to shared package, remove local copy | ✅ Complete | build |
+| 17.4 unified-devflow migration — port, remove local copy | ✅ Complete | build |
+| 17.5 dev-refactor migration — port, remove local copy | ✅ Complete | build |
+| 17.6 ai-orchestra migration — port, remove local copy | ✅ Complete | build |
+| 17.7 coding-tools-wrapper migration — port, remove local copy | ✅ Complete | build |
+| 17.8 todo-automator migration — port, remove local copy | ✅ Complete | build |
+| 17.9 unified-project migration — port, remove local copy | ✅ Complete | build |
+| 17.10 Test — verify all imports resolve, run consolidated test suite | ✅ Complete | build |
+| 17.11 Finalize — archive `consolidation/` repo, update cross-repo READMEs | ✅ Complete | plan |
 
 **Results:** 0% code duplication, 80%+ maintenance reduction, 4x faster feature deployment.
 
@@ -245,6 +263,20 @@ Current v1.0 monitors git repos for TODO/FIXME comments, sends AI summaries via 
 
 **Status:** active, needs restructure
 
+**📋 Prepare — complete before starting:**
+- [ ] **📐 Design:** Review REFACTOR_PROGRESS.json (40 tasks, 0%)
+- [ ] **📐 Design:** Decide: merge into project/ or stay standalone
+- [ ] **🧹 Cleanup:** Remove bloated planning artifacts (504-line JSON at 0%)
+- [ ] **🛠 Tool:** Fix hardcoded Windows paths in restructure_plan.py
+
+**✅ Post — complete after finishing:**
+- [ ] **🏷 Tag:** Git tag `anchor-YYYYMMDD`
+- [ ] **📝 Log:** Update AGENT_LOG.md
+- [ ] **📋 Plan:** Mark Phase 26 complete
+- [ ] **📊 Dash:** Update DASHBOARD.md
+- [ ] **🗳 Vote:** Re-run vote
+- [ ] **📚 KB:** Rebuild KB
+
 **Repo:** `DevEnvSync/` — Professional dev environment sync tool (57MB, 174 Python files, 26K lines)
 
 Windows-focused CLI tool with MCP server, AWS integration, AI agent, context management, and race-detection systems. Large repo due to heavy planning/documentation overhead.
@@ -274,6 +306,19 @@ Windows-focused CLI tool with MCP server, AWS integration, AI agent, context man
 ### Phase 27: DevFlow Wiki
 
 **Status:** partial — infrastructure ready, content missing
+
+**📋 Prepare — complete before starting:**
+- [ ] **📐 Design:** Content plan — which 4/50 pages exist, which to write next
+- [ ] **🛠 Tool:** MkDocs + Material theme — already set up ✅
+- [ ] **🛠 Tool:** GitHub Pages deploy — already configured ✅
+
+**✅ Post — complete after finishing:**
+- [ ] **🏷 Tag:** Git tag `anchor-YYYYMMDD`
+- [ ] **📝 Log:** Update AGENT_LOG.md
+- [ ] **📋 Plan:** Mark Phase 27 complete
+- [ ] **📊 Dash:** Update DASHBOARD.md
+- [ ] **✅ Verify:** Confirm GitHub Pages renders correctly
+- [ ] **📚 KB:** Rebuild KB
 
 **Repo:** `devflow-wiki/` — MkDocs wiki for DevFlow Intelligence platform
 
@@ -348,6 +393,35 @@ MCP server wrapping the Replit REST API v1 (`replit.com/api/v1`). Requires `REPL
 **Next steps:**
 - Add Repl file read/write if Replit exposes a filesystem API
 - Add webhook management endpoints
+
+### Phase 0: Genesis — Workspace Infrastructure & Conventions
+
+**Status:** completed (foundational)
+
+The meta-layer that makes every other phase possible: workspace directory structure, cross-project conventions, automation framework, and knowledge infrastructure. All established before Phase 1.
+
+**Why:** Without a shared convention for repos, commit messages, environment variables, and automation scripts, every phase reinvents the wheel. Genesis standardizes the foundation so all 14+ repos behave as one coherent system.
+
+| Task | Status | Type |
+|------|--------|------|
+| 0.1 Workspace directory layout (~/Public/) | ✅ Complete | plan |
+| 0.2 .opencode/ conventions (ENTRY.md, guidelines, DASHBOARD, AGENT_LOG) | ✅ Complete | plan+build |
+| 0.3 workspace.sh — unified CLI across all repos | ✅ Complete | build |
+| 0.4 ENV/.env — centralized secret management | ✅ Complete | plan |
+| 0.5 Git conventions — branch naming, commit format (<scope>: <desc>), pre-push hooks | ✅ Complete | plan+build |
+| 0.6 Cross-project knowledge infrastructure — autokb, PLAN.md, AGENTS.md | ✅ Complete | build |
+| 0.7 Cross-project review cycle — review_cycle/ engine, scanners, vote, decision system | ✅ Complete | build |
+
+**Deliverables:**
+- `~/Public/.opencode/` — ENTRY.md (session lifecycle), guidelines.md (session continuity), DASHBOARD.md (health/status), AGENT_LOG.md (audit trail)
+- `~/Public/workspace.sh` — 1K+ line unified CLI with 40+ commands across 8 command groups
+- `~/Public/ENV/.env` — 8+ API keys loaded by all tools, gitignored
+- `~/Public/project/review_cycle/` — scoring engine, scanners, vote, decision log, scheduler, priority, session manager, compact, data collector, prepost checklists
+- `~/Public/project/autokb/` — auto-discovering knowledge base indexing all 14+ repos
+- Git pre-push hooks installed across all repos from single source
+
+**Next steps:**
+- None — foundational layer is complete and stable. Future changes are additive (new commands, new tools) but the structure is frozen.
 
 ### Phase 1: Foundational Setup & Project Structure
 **Status:** completed
@@ -525,9 +599,23 @@ MCP server wrapping the Replit REST API v1 (`replit.com/api/v1`). Requires `REPL
 
 ### Phase 19: Hugging Face Hub CLI
 
-**Status:** pending
+**Status:** completed
 
 **Stack:** Python (uv) + cURL + bash
+
+**📋 Prepare — complete before starting:**
+- [x] **🔑 Env:** HF_TOKEN in ENV/.env (generate at huggingface.co/settings/tokens)
+- [x] **📁 Space:** Create `~/Public/hf/` cache dir
+- [x] **📐 Design:** Confirm scope (download small models/tokenizers only — 3.7GB RAM limit)
+
+**✅ Post — complete after finishing:**
+- [ ] **🏷 Tag:** Git tag `anchor-YYYYMMDD` across touched repos
+- [ ] **📝 Log:** Update AGENT_LOG.md with deliverables
+- [ ] **📋 Plan:** Mark Phase 19 complete
+- [ ] **📊 Dash:** Update DASHBOARD.md
+- [ ] **🗳 Vote:** Re-run vote
+- [ ] **🔍 Scan:** Run auto-scan to verify no regressions
+- [ ] **📚 KB:** Rebuild KB
 
 Integrate Hugging Face Hub APIs — search models/datasets, download, push. No GPU needed; uses HF REST API. CLI-first with workspace.sh commands.
 
@@ -550,18 +638,36 @@ The SDK was rejected to keep the dependency footprint minimal. cURL alone lacks 
 
 | Task | Status | Type | ⏱ |
 |------|--------|------|----|
-| 19.1 HF API client — search models/datasets, list files | ⏳ Pending | build | 20min |
-| 19.2 Download model — snapshot, resume, cache | ⏳ Pending | build | 30min |
-| 19.3 Push dataset/model — auth, upload, version | ⏳ Pending | build | 20min |
-| 19.4 workspace.sh commands (hf-search, hf-dl, hf-push) | ⏳ Pending | build | 15min |
+| 19.1 HF API client — search models/datasets, list files | ✅ Complete | build | 20min |
+| 19.2 Download model — snapshot, resume, cache | ✅ Complete | build | 30min |
+| 19.3 Push dataset/model — auth, upload, version | ✅ Complete | build | 20min |
+| 19.4 workspace.sh commands (hf-search, hf-dl, hf-push) | ✅ Complete | build | 15min |
 
 **Dependency chain:** `19.1 → 19.2 → 19.3 → 19.4`
 
 ### Phase 20: GitHub Automation
 
-**Status:** pending
+**Status:** completed
 
 **Stack:** bash + gh CLI + GitHub Actions
+
+**📋 Prepare — complete before starting:**
+- [x] **Design:** Map local repos → GitHub names (project/ → `suniltnngl-gm/mcp`, etc.)
+- [x] **Design:** Set severity threshold (which findings become issues)
+- [x] **Design:** Define dedup strategy (use `finding_id` as issue body anchor)
+- [x] **Design:** Define label schema (severity + category labels)
+- [x] **Tool:** gh CLI authenticated ✅ (already done)
+- [x] **Tool:** GitHub Issues enabled on target repos (mcp, workspace, etc.)
+- [x] **🔑 Env:** GH_TOKEN or gh auth token available
+
+**✅ Post — complete after finishing:**
+- [ ] **Tag:** Git tag `anchor-YYYYMMDD` across touched repos
+- [ ] **Log:** Update AGENT_LOG.md with deliverables
+- [ ] **Plan:** Mark Phase 20 complete in PLAN.md
+- [ ] **Dash:** Update DASHBOARD.md progress
+- [ ] **Vote:** Re-run vote — Phase 21 may gain weight
+- [ ] **Scan:** Run auto-scan to verify issue creation works
+- [ ] **KB:** Rebuild KB: `workspace.sh kb-auto scan`
 
 Extend existing review_cycle autofix pipeline: auto-create issues from scan findings, auto-label PRs, manage releases via `gh` CLI.
 
@@ -584,9 +690,9 @@ gh CLI was chosen because it's already authenticated and requires zero setup. If
 
 | Task | Status | Type | ⏱ |
 |------|--------|------|----|
-| 20.1 Auto-issue creator — scan findings → GitHub Issues | ⏳ Pending | build | 25min |
-| 20.2 Auto-PR labeler — label PRs by changed paths | ⏳ Pending | build | 20min |
-| 20.3 Release manager — tag, changelog, GitHub release | ⏳ Pending | build | 20min |
+| 20.1 Auto-issue creator — scan findings → GitHub Issues | ✅ Complete | build | 25min |
+| 20.2 Auto-PR labeler — label PRs by changed paths | ✅ Complete | build | 20min |
+| 20.3 Release manager — tag, changelog, GitHub release | ✅ Complete | build | 20min |
 
 **Dependency chain:** `20.1 → 20.2 → 20.3`
 
@@ -595,6 +701,25 @@ gh CLI was chosen because it's already authenticated and requires zero setup. If
 **Status:** pending
 
 **Stack:** Node.js (fnm) + Vercel (frontend) + Supabase (DB + Auth) + Python (uv) / FastAPI (backend API)
+
+**📋 Prepare — complete before starting:**
+- [ ] **🔑 Env:** SUPABASE_URL in ENV/.env
+- [ ] **🔑 Env:** SUPABASE_ANON_KEY in ENV/.env
+- [ ] **🛠 Tool:** Node.js via fnm (v24) ✅ (already done)
+- [ ] **🛠 Tool:** Vercel CLI installed (`npm i -g vercel`)
+- [ ] **🛠 Tool:** `vercel --login` done
+- [ ] **📐 Design:** Dashboard wireframe — which cards, what data sources
+- [ ] **📁 Space:** Choose location (`~/Public/dashboard/` or inside project/)
+
+**✅ Post — complete after finishing:**
+- [ ] **🏷 Tag:** Git tag `anchor-YYYYMMDD` across touched repos
+- [ ] **📝 Log:** Update AGENT_LOG.md
+- [ ] **📋 Plan:** Mark Phase 21 complete
+- [ ] **📊 Dash:** Update DASHBOARD.md
+- [ ] **🗳 Vote:** Re-run vote
+- [ ] **🔍 Scan:** Run scan — verify health endpoint works
+- [ ] **📚 KB:** Rebuild KB
+- [ ] **🚀 Deploy:** Push to Vercel production
 
 Lightweight web UI for workspace health, scan results, logs. Supabase for persistence + auth, Vercel for frontend hosting.
 
@@ -628,6 +753,22 @@ Next.js + Vercel was chosen because it gives us auto-deploy on git push (zero co
 
 **Stack:** bash + cURL + existing dropbox-utils + rclone
 
+**📋 Prepare — complete before starting:**
+- [ ] **🛠 Tool:** rclone installed (`sudo apt install rclone`)
+- [ ] **🛠 Tool:** rclone config for Dropbox or S3
+- [ ] **🔑 Env:** DROPBOX_ACCESS_TOKEN in ENV/.env ✅ (already done)
+- [ ] **📐 Design:** Decide what to sync (backups/, snapshots/, kb/)
+- [ ] **📐 Design:** Choose schedule (daily cron? post-scan hook?)
+
+**✅ Post — complete after finishing:**
+- [ ] **🏷 Tag:** Git tag `anchor-YYYYMMDD`
+- [ ] **📝 Log:** Update AGENT_LOG.md
+- [ ] **📋 Plan:** Mark Phase 22 complete
+- [ ] **📊 Dash:** Update DASHBOARD.md
+- [ ] **🗳 Vote:** Re-run vote
+- [ ] **✅ Verify:** Test restore from cloud backup
+- [ ] **📚 KB:** Rebuild KB
+
 Sync workspace backups, snapshots, and KB to Dropbox, S3-compatible, or Google Drive.
 
 **Why:** We already have DROPBOX_ACCESS_TOKEN and dropbox-utils in repositories/. Currently backups sit on local disk — no offsite copy. A fire/laptop failure loses everything. Cloud sync is cheap insurance.
@@ -659,6 +800,22 @@ rclone + Dropbox is the fastest path to offsite backup (existing token). If we n
 **Status:** pending
 
 **Stack:** Python (uv) + Node.js (fnm) + Docker + Render (backend APIs) + Vercel (frontend)
+
+**📋 Prepare — complete before starting:**
+- [ ] **🛠 Tool:** Docker installed (`docker --version`)
+- [ ] **🛠 Tool:** Vercel CLI (from Phase 21) ✅ (assuming Phase 21 is done)
+- [ ] **🔑 Env:** RENDER_API_KEY in ENV/.env (optional)
+- [ ] **📐 Design:** Which services deploy (health API, dashboard, both?)
+- [ ] **📐 Design:** Dockerfile for Python health endpoint
+
+**✅ Post — complete after finishing:**
+- [ ] **🏷 Tag:** Git tag `anchor-YYYYMMDD`
+- [ ] **📝 Log:** Update AGENT_LOG.md
+- [ ] **📋 Plan:** Mark Phase 23 complete
+- [ ] **📊 Dash:** Update DASHBOARD.md
+- [ ] **🗳 Vote:** Re-run vote — Phases 26-27 next
+- [ ] **✅ Verify:** Test cold-start on Render
+- [ ] **📚 KB:** Rebuild KB
 
 One-command deploy to Render or Vercel. Auto-deploy on git push.
 
