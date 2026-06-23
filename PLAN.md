@@ -527,7 +527,9 @@ MCP server wrapping the Replit REST API v1 (`replit.com/api/v1`). Requires `REPL
 
 **Status:** pending
 
-Integrate Hugging Face Hub APIs — download/push models, datasets, search repos, all from CLI. No GPU needed; uses HF REST API.
+**Stack:** Python (uv) + cURL + bash
+
+Integrate Hugging Face Hub APIs — search models/datasets, download, push. No GPU needed; uses HF REST API. CLI-first with workspace.sh commands.
 
 | Task | Status | Type |
 |------|--------|------|
@@ -541,6 +543,8 @@ Integrate Hugging Face Hub APIs — download/push models, datasets, search repos
 ### Phase 20: GitHub Automation
 
 **Status:** pending
+
+**Stack:** bash + gh CLI + GitHub Actions
 
 Extend existing review_cycle autofix pipeline: auto-create issues from scan findings, auto-label PRs, manage releases via `gh` CLI.
 
@@ -556,7 +560,9 @@ Extend existing review_cycle autofix pipeline: auto-create issues from scan find
 
 **Status:** pending
 
-Lightweight web UI for workspace health, scan results, logs. Static site or simple Flask/FastAPI app.
+**Stack:** Node.js (fnm) + Vercel (frontend) + Supabase (DB + Auth) + Python (uv) / FastAPI (backend API)
+
+Lightweight web UI for workspace health, scan results, logs. Static site or simple FastAPI app.
 
 | Task | Status | Type |
 |------|--------|------|
@@ -567,6 +573,8 @@ Lightweight web UI for workspace health, scan results, logs. Static site or simp
 ### Phase 22: Cloud Storage Sync
 
 **Status:** pending
+
+**Stack:** bash + cURL + existing dropbox-utils + rclone
 
 Sync workspace backups, snapshots, and KB to Dropbox, S3-compatible, or Google Drive.
 
@@ -580,7 +588,9 @@ Sync workspace backups, snapshots, and KB to Dropbox, S3-compatible, or Google D
 
 **Status:** pending
 
-One-command deploy to Render, Railway, or Fly.io. Auto-deploy on git push.
+**Stack:** Python (uv) + Node.js (fnm) + Docker + Render (backend APIs) + Vercel (frontend)
+
+One-command deploy to Render or Vercel. Auto-deploy on git push.
 
 | Task | Status | Type |
 |------|--------|------|
