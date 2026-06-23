@@ -10,6 +10,22 @@ PLAN_MD = BASE / "project" / "PLAN.md"
 DASHBOARD = BASE / ".opencode" / "DASHBOARD.md"
 ENV_FILE = BASE / "ENV" / ".env"
 
+PHASE_TIMINGS = {
+    19: {"total": "1.5h", "tasks": {"19.1": "20min", "19.2": "30min", "19.3": "20min", "19.4": "15min"}},
+    20: {"total": "1h", "tasks": {"20.1": "25min", "20.2": "20min", "20.3": "20min"}},
+    21: {"total": "2h", "tasks": {"21.1": "30min", "21.2": "1h", "21.3": "20min"}},
+    22: {"total": "1h", "tasks": {"22.1": "25min", "22.2": "30min", "22.3": "15min"}},
+    23: {"total": "45min", "tasks": {"23.1": "30min", "23.2": "15min"}},
+}
+
+PHASE_REASONING = {
+    19: "No way to find/download models from CLI. Every ML workflow starts here — search, grab, run.",
+    20: "Review cycle findings have no audit trail. Issues make them persistent. PR labels flag risk areas.",
+    21: "Health is text in a markdown file. A web UI makes it glanceable — live score, trends, next action.",
+    22: "All backups are local. A disk failure loses everything. Cloud sync is cheap insurance.",
+    23: "Nothing is deployed — no staging, no shareable URL. Deploy catches bugs early and enables demos.",
+}
+
 
 def parse_plan():
     """Parse PLAN.md progress summary table and phase task tables."""
@@ -126,18 +142,27 @@ def main():
         next_p = priorities[0]
         gap = gaps.get(str(next_p["phase"]), {}) if gaps else {}
         ready_icon = "✅" if gap.get("tools_ready") and not gap.get("needs_build") else "🛠"
-        print(f"  {ready_icon} Next Priority: Phase {next_p['phase']} — {next_p['name']}")
-        print(f"     {next_p['done']}/{next_p['total']} done, {len(next_p['pending_tasks'])} pending")
+        pn = next_p["phase"]
+        timing = PHASE_TIMINGS.get(pn, {})
+        reasoning = PHASE_REASONING.get(pn, "")
+        print(f"  {ready_icon} Next Priority: Phase {pn} — {next_p['name']}")
+        print(f"     Progress: {next_p['done']}/{next_p['total']} done, {len(next_p['pending_tasks'])} pending")
+        print(f"     ⏱ ETA: {timing.get('total', '?')}")
         if next_p['pending_tasks']:
-            print(f"     Next task: {next_p['pending_tasks'][0]}")
+            nt = next_p['pending_tasks'][0]
+            ttime = timing.get("tasks", {}).get(nt, "")
+            print(f"     Next task: {nt} {ttime}")
+        print(f"     💡 Why: {reasoning}")
         if gap.get("missing_keys"):
-            print(f"     ⛔ Missing: {', '.join(gap['missing_keys'])}")
+            print(f"     ⛔ Blocked by: {', '.join(gap['missing_keys'])}")
         print()
 
         if len(priorities) > 1:
             print("  📋 Backlog:")
             for p in priorities[1:]:
-                print(f"     • Phase {p['phase']} — {p['name']} ({p['done']}/{p['total']} done)")
+                pn2 = p["phase"]
+                t2 = PHASE_TIMINGS.get(pn2, {}).get("total", "?")
+                print(f"     • Phase {pn2} — {p['name']} (⏱{t2})")
             print()
     else:
         print("  ✅ All phases complete!")

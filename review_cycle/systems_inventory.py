@@ -11,6 +11,14 @@ from pathlib import Path
 BASE = Path.home() / "Public"
 ENV_FILE = BASE / "ENV" / ".env"
 
+PHASE_TIMINGS = {
+    19: {"total": "1.5h", "tasks": {"19.1": "20min", "19.2": "30min", "19.3": "20min", "19.4": "15min"}},
+    20: {"total": "1h", "tasks": {"20.1": "25min", "20.2": "20min", "20.3": "20min"}},
+    21: {"total": "2h", "tasks": {"21.1": "30min", "21.2": "1h", "21.3": "20min"}},
+    22: {"total": "1h", "tasks": {"22.1": "25min", "22.2": "30min", "22.3": "15min"}},
+    23: {"total": "45min", "tasks": {"23.1": "30min", "23.2": "15min"}},
+}
+
 
 def check_cmd(name: str, ver_flag: str = "--version") -> dict:
     path = shutil.which(name)
@@ -206,19 +214,27 @@ def main():
     print()
 
     print("  ── Phase Gaps (what needs building) ──")
+    tot_build_time = 0
     for phase_num in sorted(gaps.keys()):
         g = gaps[phase_num]
         status = "🛠 BUILD" if g["needs_build"] else "✅ READY"
-        print(f"    Phase {phase_num}: {g['name']:30s} {status}")
+        timing = PHASE_TIMINGS.get(int(phase_num), {})
+        eta = timing.get("total", "?")
+        print(f"    Phase {phase_num}: {g['name']:30s} {status}  ⏱{eta}")
         if g["needs_build"]:
             for mk in g["missing_keys"]:
                 print(f"       └ missing: {mk}")
+            tot_val = timing.get("total", "0")
+            if tot_val.endswith("h"):
+                tot_build_time += float(tot_val.replace("h", "")) * 60
+            elif tot_val.endswith("min"):
+                tot_build_time += float(tot_val.replace("min", ""))
         print(f"       {g['note']}")
         print()
 
     ready_count = sum(1 for g in gaps.values() if not g["needs_build"])
     build_count = sum(1 for g in gaps.values() if g["needs_build"])
-    print(f"  Summary: {ready_count} phases ready, {build_count} phases need build setup")
+    print(f"  Summary: {ready_count} phases ready, {build_count} need build (~{tot_build_time:.0f}min total)")
     print()
 
 

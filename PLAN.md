@@ -66,11 +66,11 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 16. DevFlow Intelligence | ✅ | Complete | — | build |
 | 17. Code Review Consolidation | ✅ | Complete | — | build |
 | 18. Git Todo Monitor | ✅ | 4/4 | — | build |
-| 19. Hugging Face Hub CLI | ⏳ | 0/4 | 4 | build |
-| 20. GitHub Automation | ⏳ | 0/3 | 3 | build |
-| 21. Web Dashboard | ⏳ | 0/3 | 3 | build |
-| 22. Cloud Storage Sync | ⏳ | 0/3 | 3 | build |
-| 23. Deploy Apps | ⏳ | 0/2 | 2 | build |
+| 19. Hugging Face Hub CLI | ⏳ | 0/4 | 4 (~1.5h) | build |
+| 20. GitHub Automation | ⏳ | 0/3 | 3 (~1h) | build |
+| 21. Web Dashboard | ⏳ | 0/3 | 3 (~2h) | build |
+| 22. Cloud Storage Sync | ⏳ | 0/3 | 3 (~1h) | build |
+| 23. Deploy Apps | ⏳ | 0/2 | 2 (~45min) | build |
 | 24. Softr API Integration | ✅ | 9/9 | — | build |
 | 25. Replit API Integration | ✅ | 11/11 | — | build |
 | 26. DevEnvSync | ⏳ | 0/4 | 4 | build |
@@ -531,12 +531,18 @@ MCP server wrapping the Replit REST API v1 (`replit.com/api/v1`). Requires `REPL
 
 Integrate Hugging Face Hub APIs — search models/datasets, download, push. No GPU needed; uses HF REST API. CLI-first with workspace.sh commands.
 
-| Task | Status | Type |
-|------|--------|------|
-| 19.1 HF API client — search models/datasets, list files | ⏳ Pending | build |
-| 19.2 Download model — snapshot, resume, cache | ⏳ Pending | build |
-| 19.3 Push dataset/model — auth, upload, version | ⏳ Pending | build |
-| 19.4 workspace.sh commands (hf-search, hf-dl, hf-push) | ⏳ Pending | build |
+**Why:** HF Hub is the largest model/dataset repo (1M+). Currently we have no CLI to search or download models. Every ML workflow starts with "find model → download → run." Building this avoids manual browser navigation and enables scripted model discovery.
+
+**Why this approach:** Python + cURL avoids adding heavy SDKs. HF's REST API is simple (few endpoints). We skip the full `huggingface_hub` SDK to keep the dependency footprint minimal — just `requests` or raw cURL.
+
+**⏱ Estimated total: ~1.5h**
+
+| Task | Status | Type | ⏱ |
+|------|--------|------|----|
+| 19.1 HF API client — search models/datasets, list files | ⏳ Pending | build | 20min |
+| 19.2 Download model — snapshot, resume, cache | ⏳ Pending | build | 30min |
+| 19.3 Push dataset/model — auth, upload, version | ⏳ Pending | build | 20min |
+| 19.4 workspace.sh commands (hf-search, hf-dl, hf-push) | ⏳ Pending | build | 15min |
 
 **Dependency chain:** `19.1 → 19.2 → 19.3 → 19.4`
 
@@ -548,11 +554,17 @@ Integrate Hugging Face Hub APIs — search models/datasets, download, push. No G
 
 Extend existing review_cycle autofix pipeline: auto-create issues from scan findings, auto-label PRs, manage releases via `gh` CLI.
 
-| Task | Status | Type |
-|------|--------|------|
-| 20.1 Auto-issue creator — scan findings → GitHub Issues | ⏳ Pending | build |
-| 20.2 Auto-PR labeler — label PRs by changed paths | ⏳ Pending | build |
-| 20.3 Release manager — tag, changelog, GitHub release | ⏳ Pending | build |
+**Why:** Review_cycle already generates findings. Turning findings into GitHub Issues creates a persistent audit trail. Auto-labeling PRs by changed paths surfaces risk areas (e.g., "touches auth → needs security review"). Release automation eliminates manual tag/changelog busiwork.
+
+**Why this approach:** gh CLI is already authenticated. We extend existing review_cycle code rather than adding a new service. GitHub Actions for labeling (cheap, event-driven) vs. a daemon.
+
+**⏱ Estimated total: ~1h**
+
+| Task | Status | Type | ⏱ |
+|------|--------|------|----|
+| 20.1 Auto-issue creator — scan findings → GitHub Issues | ⏳ Pending | build | 25min |
+| 20.2 Auto-PR labeler — label PRs by changed paths | ⏳ Pending | build | 20min |
+| 20.3 Release manager — tag, changelog, GitHub release | ⏳ Pending | build | 20min |
 
 **Dependency chain:** `20.1 → 20.2 → 20.3`
 
@@ -562,13 +574,19 @@ Extend existing review_cycle autofix pipeline: auto-create issues from scan find
 
 **Stack:** Node.js (fnm) + Vercel (frontend) + Supabase (DB + Auth) + Python (uv) / FastAPI (backend API)
 
-Lightweight web UI for workspace health, scan results, logs. Static site or simple FastAPI app.
+Lightweight web UI for workspace health, scan results, logs. Supabase for persistence + auth, Vercel for frontend hosting.
 
-| Task | Status | Type |
-|------|--------|------|
-| 21.1 Health endpoint — JSON API from review_cycle + autokb | ⏳ Pending | build |
-| 21.2 Dashboard UI — cards for health, findings, logs, next priority | ⏳ Pending | build |
-| 21.3 Auto-refresh + deployment — cron-updated static site or daemon | ⏳ Pending | build |
+**Why:** Currently health is text in DASHBOARD.md. A web dashboard makes it glanceable: live health score, finding trends, next priority card, logs timeline. Supabase gives us free PostgreSQL (500MB) + auth — we skip writing a DB layer. Vercel gives free hosting + preview deploys per git push.
+
+**Why this approach:** Supabase replaces building our own auth + DB (would take days). Vercel replaces managing a server. FastAPI backend is minimal — a few endpoints that read review_cycle output. Dashboard is a Next.js static export (no server runtime).
+
+**⏱ Estimated total: ~2h**
+
+| Task | Status | Type | ⏱ |
+|------|--------|------|----|
+| 21.1 Health endpoint — FastAPI JSON API from review_cycle + autokb | ⏳ Pending | build | 30min |
+| 21.2 Dashboard UI — Next.js cards for health, findings, logs, priority | ⏳ Pending | build | 1h |
+| 21.3 Auto-refresh + deploy — cron update + vercel deploy | ⏳ Pending | build | 20min |
 
 ### Phase 22: Cloud Storage Sync
 
@@ -578,11 +596,17 @@ Lightweight web UI for workspace health, scan results, logs. Static site or simp
 
 Sync workspace backups, snapshots, and KB to Dropbox, S3-compatible, or Google Drive.
 
-| Task | Status | Type |
-|------|--------|------|
-| 22.1 Dropbox sync (extend existing dropbox-utils) | ⏳ Pending | build |
-| 22.2 S3-compatible backup (rclone wrapper or boto3) | ⏳ Pending | build |
-| 22.3 Schedule + restore — cron sync, verify integrity | ⏳ Pending | build |
+**Why:** We already have DROPBOX_ACCESS_TOKEN and dropbox-utils in repositories/. Currently backups sit on local disk — no offsite copy. A fire/laptop failure loses everything. Cloud sync is cheap insurance.
+
+**Why this approach:** rclone handles S3/GDrive/Dropbox with a single config — we don't implement file transfer. Dropbox uses existing token (already works). For S3, rclone avoids adding boto3 (heavy). Cron for scheduling keeps it simple — no daemon needed.
+
+**⏱ Estimated total: ~1h**
+
+| Task | Status | Type | ⏱ |
+|------|--------|------|----|
+| 22.1 Dropbox sync — extend existing dropbox-utils with cron trigger | ⏳ Pending | build | 25min |
+| 22.2 S3-compatible backup — rclone config + bash wrapper | ⏳ Pending | build | 30min |
+| 22.3 Schedule + restore — cron sync, integrity verify script | ⏳ Pending | build | 15min |
 
 ### Phase 23: Deploy Apps
 
@@ -592,7 +616,13 @@ Sync workspace backups, snapshots, and KB to Dropbox, S3-compatible, or Google D
 
 One-command deploy to Render or Vercel. Auto-deploy on git push.
 
-| Task | Status | Type |
-|------|--------|------|
-| 23.1 Deploy blueprint — Dockerfile + render.yaml/railway.toml | ⏳ Pending | plan+build |
-| 23.2 Auto-deploy on push — GitHub Action + workspace.sh command | ⏳ Pending | build |
+**Why:** Currently nothing is deployed — no staging, no production URL. Deploying gives us shareable preview links, discovers deployment bugs early, and makes demos possible. Vercel handles frontend (free, instant rollback), Render handles backend APIs (free tier, auto-spindown after 15min idle).
+
+**Why this approach:** Dockerfile + render.yaml is the standard Render blueprint — minimal config. Vercel auto-deploys from git (no config needed). No need for Kubernetes or complex CD — our scale is 1-2 services. gh action CI already exists, just needs deploy step.
+
+**⏱ Estimated total: ~45min**
+
+| Task | Status | Type | ⏱ |
+|------|--------|------|----|
+| 23.1 Deploy blueprint — Dockerfile + render.yaml | ⏳ Pending | plan+build | 30min |
+| 23.2 Auto-deploy on push — GitHub Action + workspace.sh deploy cmd | ⏳ Pending | build | 15min |
