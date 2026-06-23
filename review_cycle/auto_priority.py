@@ -23,7 +23,7 @@ def parse_plan():
     with open(PLAN_MD) as f:
         for line in f:
             # Progress Summary table: | N. Name | ✅/🔄 | N/M | N | type |
-            m = re.match(r'^\|\s*(\d+)\.\s(.+?)\s*\|\s*([✅🔄])\s*\|\s*(\d+)/(\d+)', line)
+            m = re.match(r'^\|\s*(\d+)\.\s(.+?)\s*\|\s*([✅🔄⏳])\s*\|\s*(\d+)/(\d+)', line)
             if m:
                 num = int(m.group(1))
                 name = m.group(2).strip()
@@ -35,7 +35,7 @@ def parse_plan():
                 phases.append({
                     "num": num,
                     "name": name,
-                    "status": "done" if status == "✅" else "in_progress",
+                    "status": "done" if status == "✅" else "in_progress" if status == "🔄" else "pending",
                     "done": done,
                     "total": total,
                     "pending": pending,
@@ -71,8 +71,8 @@ def check_blockers():
 
 def find_next_priority(phases, phase_name_map, tasks_map):
     """Find the next unblocked priority across all phases."""
-    phased = [p for p in phases if p["status"] == "in_progress"]
-    phased.sort(key=lambda p: p["num"])
+    phased = [p for p in phases if p["status"] in ("in_progress", "pending")]
+    phased.sort(key=lambda p: (0 if p["status"] == "in_progress" else 1, p["num"]))
 
     priorities = []
     for p in phased:

@@ -66,10 +66,16 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 16. DevFlow Intelligence | ✅ | Complete | — | build |
 | 17. Code Review Consolidation | ✅ | Complete | — | build |
 | 18. Git Todo Monitor | ✅ | 4/4 | — | build |
-| 19. DevEnvSync | 🔄 | 0/4 | 4 | build |
-| 20. DevFlow Wiki | 🔄 | 1/N | ~46 | docs |
-| 21. Softr API Integration | ✅ | 9/9 | — | build |
-| 22. Replit API Integration | ✅ | 11/11 | — | build |
+| 19. Hugging Face Hub CLI | ⏳ | 0/4 | 4 | build |
+| 20. GitHub Automation | ⏳ | 0/3 | 3 | build |
+| 21. Web Dashboard | ⏳ | 0/3 | 3 | build |
+| 22. Cloud Storage Sync | ⏳ | 0/3 | 3 | build |
+| 23. Deploy Apps | ⏳ | 0/2 | 2 | build |
+| 24. Softr API Integration | ✅ | 9/9 | — | build |
+| 25. Replit API Integration | ✅ | 11/11 | — | build |
+| 26. DevEnvSync | ⏳ | 0/4 | 4 | build |
+| 27. DevFlow Wiki | ⏳ | 1/N | ~46 | docs |
+| 28. (reserved) | — | — | — | — |
 
 **Task type legend:**
 - `plan` — Design, research, architecture. Output: specs, diagrams, decision docs.
@@ -79,7 +85,9 @@ The following tasks are organized into phases, reflecting the detailed steps req
 Phases 1–11 complete. Phase 12 — 5/5 done. Phase 13 — 13.1–13.5 done. Phase 14 — 14.1–14.5 done. Phase 15 — all 5 tasks done. Phase 18 v2.0 shipped.
 Phases 16–17 complete (historical projects discovered during repo audit).
 Phases 18–20 discovered during repo audit — each has its own git history and independent plan.
-Phases 21–22 new MCP servers — Softr and Replit API wrappers.
+Phases 19–23 cloud/web tool ecosystem — HF Hub, GitHub auto, dashboard, cloud storage, deploy.
+Phases 24–25 MCP servers — Softr and Replit API wrappers (completed).
+Phases 26–27 discovered during repo audit — DevEnvSync, devflow-wiki.
 
 ### Phase 12: Cross-Project Integrations
 
@@ -233,7 +241,7 @@ Current v1.0 monitors git repos for TODO/FIXME comments, sends AI summaries via 
 - Build v2.1: Multi-repo support
 - Build v3.0: Web dashboard
 
-### Phase 19: DevEnvSync
+### Phase 26: DevEnvSync
 
 **Status:** active, needs restructure
 
@@ -263,7 +271,7 @@ Windows-focused CLI tool with MCP server, AWS integration, AI agent, context man
 - Evaluate cross-platform compatibility
 - Determine if this should merge into main `project/` or stay standalone
 
-### Phase 20: DevFlow Wiki
+### Phase 27: DevFlow Wiki
 
 **Status:** partial — infrastructure ready, content missing
 
@@ -514,3 +522,67 @@ MCP server wrapping the Replit REST API v1 (`replit.com/api/v1`). Requires `REPL
     *   **Status:** completed
     *   **Type:** build
     *   **Note:** `AGENT_LOG.md` in `.opencode/` tracks all sessions with structured entries. Agent activity is recorded in `AGENT_LOG.md` with per-session entries.
+
+### Phase 19: Hugging Face Hub CLI
+
+**Status:** pending
+
+Integrate Hugging Face Hub APIs — download/push models, datasets, search repos, all from CLI. No GPU needed; uses HF REST API.
+
+| Task | Status | Type |
+|------|--------|------|
+| 19.1 HF API client — search models/datasets, list files | ⏳ Pending | build |
+| 19.2 Download model — snapshot, resume, cache | ⏳ Pending | build |
+| 19.3 Push dataset/model — auth, upload, version | ⏳ Pending | build |
+| 19.4 workspace.sh commands (hf-search, hf-dl, hf-push) | ⏳ Pending | build |
+
+**Dependency chain:** `19.1 → 19.2 → 19.3 → 19.4`
+
+### Phase 20: GitHub Automation
+
+**Status:** pending
+
+Extend existing review_cycle autofix pipeline: auto-create issues from scan findings, auto-label PRs, manage releases via `gh` CLI.
+
+| Task | Status | Type |
+|------|--------|------|
+| 20.1 Auto-issue creator — scan findings → GitHub Issues | ⏳ Pending | build |
+| 20.2 Auto-PR labeler — label PRs by changed paths | ⏳ Pending | build |
+| 20.3 Release manager — tag, changelog, GitHub release | ⏳ Pending | build |
+
+**Dependency chain:** `20.1 → 20.2 → 20.3`
+
+### Phase 21: Web Dashboard
+
+**Status:** pending
+
+Lightweight web UI for workspace health, scan results, logs. Static site or simple Flask/FastAPI app.
+
+| Task | Status | Type |
+|------|--------|------|
+| 21.1 Health endpoint — JSON API from review_cycle + autokb | ⏳ Pending | build |
+| 21.2 Dashboard UI — cards for health, findings, logs, next priority | ⏳ Pending | build |
+| 21.3 Auto-refresh + deployment — cron-updated static site or daemon | ⏳ Pending | build |
+
+### Phase 22: Cloud Storage Sync
+
+**Status:** pending
+
+Sync workspace backups, snapshots, and KB to Dropbox, S3-compatible, or Google Drive.
+
+| Task | Status | Type |
+|------|--------|------|
+| 22.1 Dropbox sync (extend existing dropbox-utils) | ⏳ Pending | build |
+| 22.2 S3-compatible backup (rclone wrapper or boto3) | ⏳ Pending | build |
+| 22.3 Schedule + restore — cron sync, verify integrity | ⏳ Pending | build |
+
+### Phase 23: Deploy Apps
+
+**Status:** pending
+
+One-command deploy to Render, Railway, or Fly.io. Auto-deploy on git push.
+
+| Task | Status | Type |
+|------|--------|------|
+| 23.1 Deploy blueprint — Dockerfile + render.yaml/railway.toml | ⏳ Pending | plan+build |
+| 23.2 Auto-deploy on push — GitHub Action + workspace.sh command | ⏳ Pending | build |
