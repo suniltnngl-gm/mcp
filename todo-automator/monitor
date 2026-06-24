@@ -1,0 +1,11 @@
+#!/bin/bash
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PYTHON_SCRIPT="${SCRIPT_DIR}/src/git_todo_monitor.py"
+
+if [ ! -f "${PYTHON_SCRIPT}" ]; then
+    echo "Error: git_todo_monitor.py not found in ${SCRIPT_DIR}/src"
+    exit 1
+fi
+
+python3 "${PYTHON_SCRIPT}" "$@"

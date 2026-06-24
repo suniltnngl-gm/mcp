@@ -1,0 +1,49 @@
+### Ubuntu / Bash / OS ###
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.bash_history
+.bash_profile
+.bashrc_local
+
+### Node.js ###
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+dist/
+build/
+
+### Python ###
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.env
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.installed.cfg
+*.egg
+
+### uv (Python Package Manager) ###
+# Note: Do NOT ignore uv.lock; it is required for reproducible builds.
+.uv/
+.python-version
+# User folders
+backups/
+artifacts/
+tmp/
+

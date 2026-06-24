@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1,
+    "title": "Add GitHub Issues Integration",
+    "description": "Sync TODOs to GitHub issues automatically",
+    "priority": "high",
+    "status": "todo",
+    "tags": [
+      "feature",
+      "github"
+    ],
+    "assignee": null,
+    "created_at": "2025-10-12T14:42:35.550742",
+    "updated_at": "2025-10-12T14:42:35.550750",
+    "completed_at": null
+  },
+  {
+    "id": 2,
+    "title": "Implement PR Review Bot",
+    "description": "Analyze PRs for code quality",
+    "priority": "medium",
+    "status": "todo",
+    "tags": [
+      "feature",
+      "github",
+      "automation"
+    ],
+    "assignee": null,
+    "created_at": "2025-10-12T14:42:35.551533",
+    "updated_at": "2025-10-12T14:42:35.551539",
+    "completed_at": null
+  },
+  {
+    "id": 3,
+    "title": "Write comprehensive tests",
+    "description": "Add unit and integration tests",
+    "priority": "high",
+    "status": "todo",
+    "tags": [
+      "testing",
+      "quality"
+    ],
+    "assignee": null,
+    "created_at": "2025-10-12T14:42:35.552002",
+    "updated_at": "2025-10-12T14:42:35.552006",
+    "completed_at": null
+  }
+]

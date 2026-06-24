@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "GitHub Integration",
+    "description": "Add full GitHub integration with issues and PR analysis",
+    "version": "v2.0.0",
+    "target_date": "2025-11-11",
+    "status": "planned",
+    "features": [
+      "Sync TODOs to GitHub Issues",
+      "PR Review Automation",
+      "Commit Analysis"
+    ],
+    "progress": 0,
+    "created_at": "2025-10-12T14:42:36.108197"
+  },
+  {
+    "id": 2,
+    "title": "Multi-Repository Support",
+    "description": "Monitor multiple repositories simultaneously",
+    "version": "v2.1.0",
+    "target_date": "2025-12-11",
+    "status": "planned",
+    "features": [
+      "Multi-repo configuration",
+      "Aggregated summaries",
+      "Repository comparison"
+    ],
+    "progress": 0,
+    "created_at": "2025-10-12T14:42:36.115029"
+  },
+  {
+    "id": 3,
+    "title": "Web Dashboard",
+    "description": "Interactive web dashboard for viewing history and analytics",
+    "version": "v3.0.0",
+    "target_date": "2026-01-10",
+    "status": "planned",
+    "features": [
+      "Todo analytics and trends",
+      "Interactive charts",
+      "Export capabilities"
+    ],
+    "progress": 0,
+    "created_at": "2025-10-12T14:42:36.115650"
+  }
+]

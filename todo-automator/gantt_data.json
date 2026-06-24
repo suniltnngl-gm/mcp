@@ -1,0 +1,32 @@
+{
+  "milestones": [
+    {
+      "name": "GitHub Integration",
+      "version": "v2.0.0",
+      "start": "2025-10-12",
+      "end": "2025-11-11",
+      "progress": 0,
+      "status": "planned"
+    },
+    {
+      "name": "Multi-Repository Support",
+      "version": "v2.1.0",
+      "start": "2025-10-12",
+      "end": "2025-12-11",
+      "progress": 0,
+      "status": "planned"
+    },
+    {
+      "name": "Web Dashboard",
+      "version": "v3.0.0",
+      "start": "2025-10-12",
+      "end": "2026-01-10",
+      "progress": 0,
+      "status": "planned"
+    }
+  ],
+  "timeline": {
+    "start": "2025-11-11",
+    "end": "2026-01-10"
+  }
+}

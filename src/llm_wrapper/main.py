@@ -6,7 +6,7 @@ from src.llm_wrapper.providers.remote_client import ProviderSDKClient
 from src.llm_wrapper.mcp.manager import MCPManager
 from src.llm_wrapper.mcp.config import load_mcp_config, LocalServerConfig
 from src.llm_wrapper.core.enricher import ContextEnricher
-from src.data_models.llm_wrapper import InferenceRequest, InferenceResponse
+from src.llm_wrapper.models import InferenceRequest, InferenceResponse
 import logging
 import datetime
 

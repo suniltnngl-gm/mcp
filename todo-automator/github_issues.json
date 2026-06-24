@@ -1,0 +1,302 @@
+[
+  {
+    "title": "- Todo extraction from code files (TODO, FIXME, HACK, XXX, NOTE patterns)",
+    "body": "**Source:** `CHANGELOG.md:14`\n\n```\n- Todo extraction from code files (TODO, FIXME, HACK, XXX, NOTE patterns)\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "- Todo extraction from code files (TODO, FIXME, HACK, XXX, NOTE patterns)",
+    "body": "**Source:** `CHANGELOG.md:14`\n\n```\n- Todo extraction from code files (TODO, FIXME, HACK, XXX, NOTE patterns)\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "- Todo extraction from code files (TODO, FIXME, HACK, XXX, NOTE patterns)",
+    "body": "**Source:** `CHANGELOG.md:14`\n\n```\n- Todo extraction from code files (TODO, FIXME, HACK, XXX, NOTE patterns)\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "- Todo extraction from code files (TODO, FIXME, HACK, XXX, NOTE patterns)",
+    "body": "**Source:** `CHANGELOG.md:14`\n\n```\n- Todo extraction from code files (TODO, FIXME, HACK, XXX, NOTE patterns)\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "- Todo extraction from code files (TODO, FIXME, HACK, XXX, NOTE patterns)",
+    "body": "**Source:** `CHANGELOG.md:14`\n\n```\n- Todo extraction from code files (TODO, FIXME, HACK, XXX, NOTE patterns)\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "- \ud83d\udcdd **Todo Extraction**: Scans code files for TODO, FIXME, HACK, XXX, and NOT...",
+    "body": "**Source:** `README.md:10`\n\n```\n- \ud83d\udcdd **Todo Extraction**: Scans code files for TODO, FIXME, HACK, XXX, and NOTE comments\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "- \ud83d\udcdd **Todo Extraction**: Scans code files for TODO, FIXME, HACK, XXX, and NOT...",
+    "body": "**Source:** `README.md:10`\n\n```\n- \ud83d\udcdd **Todo Extraction**: Scans code files for TODO, FIXME, HACK, XXX, and NOTE comments\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "- \ud83d\udcdd **Todo Extraction**: Scans code files for TODO, FIXME, HACK, XXX, and NOT...",
+    "body": "**Source:** `README.md:10`\n\n```\n- \ud83d\udcdd **Todo Extraction**: Scans code files for TODO, FIXME, HACK, XXX, and NOTE comments\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "- \ud83d\udcdd **Todo Extraction**: Scans code files for TODO, FIXME, HACK, XXX, and NOT...",
+    "body": "**Source:** `README.md:10`\n\n```\n- \ud83d\udcdd **Todo Extraction**: Scans code files for TODO, FIXME, HACK, XXX, and NOTE comments\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "- \ud83d\udcdd **Todo Extraction**: Scans code files for TODO, FIXME, HACK, XXX, and NOT...",
+    "body": "**Source:** `README.md:10`\n\n```\n- \ud83d\udcdd **Todo Extraction**: Scans code files for TODO, FIXME, HACK, XXX, and NOTE comments\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "- `max_files_to_scan`: Maximum number of files to scan for TODOs, prevents sl...",
+    "body": "**Source:** `README.md:64`\n\n```\n- `max_files_to_scan`: Maximum number of files to scan for TODOs, prevents slowdowns on large repos (default: 500)\n```\n\n**Priority:** low\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement"
+    ]
+  },
+  {
+    "title": "todo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\", \"BUG\"]",
+    "body": "**Source:** `README.md:162`\n\n```\ntodo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\", \"BUG\"]\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "todo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\", \"BUG\"]",
+    "body": "**Source:** `README.md:162`\n\n```\ntodo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\", \"BUG\"]\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "todo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\", \"BUG\"]",
+    "body": "**Source:** `README.md:162`\n\n```\ntodo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\", \"BUG\"]\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "todo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\", \"BUG\"]",
+    "body": "**Source:** `README.md:162`\n\n```\ntodo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\", \"BUG\"]\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "todo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\", \"BUG\"]",
+    "body": "**Source:** `README.md:162`\n\n```\ntodo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\", \"BUG\"]\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "#  Add input validation",
+    "body": "**Source:** `example_code.py:4`\n\n```\n# TODO: Add input validation\n```\n\n**Priority:** low\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement"
+    ]
+  },
+  {
+    "title": "#  Handle edge cases for empty data",
+    "body": "**Source:** `example_code.py:5`\n\n```\n# FIXME: Handle edge cases for empty data\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "bug"
+    ]
+  },
+  {
+    "title": "#  Implement advanced statistical analysis",
+    "body": "**Source:** `example_code.py:9`\n\n```\n# TODO: Implement advanced statistical analysis\n```\n\n**Priority:** low\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement"
+    ]
+  },
+  {
+    "title": "#  This is a placeholder implementation",
+    "body": "**Source:** `example_code.py:10`\n\n```\n# NOTE: This is a placeholder implementation\n```\n\n**Priority:** low\n\n---\n*Auto-generated from code comment*\n",
+    "labels": []
+  },
+  {
+    "title": "#  Add configuration options",
+    "body": "**Source:** `example_code.py:15`\n\n```\n# TODO: Add configuration options\n```\n\n**Priority:** low\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement"
+    ]
+  },
+  {
+    "title": "#  Optimize this algorithm for large datasets",
+    "body": "**Source:** `example_code.py:19`\n\n```\n# FIXME: Optimize this algorithm for large datasets\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "bug"
+    ]
+  },
+  {
+    "title": "#  Memory leak potential here",
+    "body": "**Source:** `example_code.py:20`\n\n```\n# XXX: Memory leak potential here\n```\n\n**Priority:** low\n\n---\n*Auto-generated from code comment*\n",
+    "labels": []
+  },
+  {
+    "title": "todo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\"]",
+    "body": "**Source:** `git_todo_monitor.py:82`\n\n```\ntodo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\"]\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "todo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\"]",
+    "body": "**Source:** `git_todo_monitor.py:82`\n\n```\ntodo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\"]\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "todo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\"]",
+    "body": "**Source:** `git_todo_monitor.py:82`\n\n```\ntodo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\"]\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "todo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\"]",
+    "body": "**Source:** `git_todo_monitor.py:82`\n\n```\ntodo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\"]\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "todo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\"]",
+    "body": "**Source:** `git_todo_monitor.py:82`\n\n```\ntodo_patterns = [\"TODO\", \"FIXME\", \"HACK\", \"XXX\", \"NOTE\"]\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "prompt += f\"\\n\\nActive TODOs found ({len(todos)} total):\\n\"",
+    "body": "**Source:** `git_todo_monitor.py:138`\n\n```\nprompt += f\"\\n\\nActive TODOs found ({len(todos)} total):\\n\"\n```\n\n**Priority:** low\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement"
+    ]
+  },
+  {
+    "title": "Git Todo Monitor is a local automation system that continuously monitors a gi...",
+    "body": "**Source:** `replit.md:5`\n\n```\nGit Todo Monitor is a local automation system that continuously monitors a git repository, analyzing code changes and extracting developer todos. The system runs hourly checks to track commits, scan for TODO/FIXME comments, generates AI-powered summaries using OpenAI, and delivers insights through Ubuntu desktop notifications. This tool helps developers stay informed about repository activity and pending tasks without manual intervention.\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug"
+    ]
+  },
+  {
+    "title": "Git Todo Monitor is a local automation system that continuously monitors a gi...",
+    "body": "**Source:** `replit.md:5`\n\n```\nGit Todo Monitor is a local automation system that continuously monitors a git repository, analyzing code changes and extracting developer todos. The system runs hourly checks to track commits, scan for TODO/FIXME comments, generates AI-powered summaries using OpenAI, and delivers insights through Ubuntu desktop notifications. This tool helps developers stay informed about repository activity and pending tasks without manual intervention.\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug"
+    ]
+  },
+  {
+    "title": "- Scans code files for comment patterns: TODO, FIXME, HACK, XXX, NOTE",
+    "body": "**Source:** `replit.md:35`\n\n```\n- Scans code files for comment patterns: TODO, FIXME, HACK, XXX, NOTE\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "- Scans code files for comment patterns: TODO, FIXME, HACK, XXX, NOTE",
+    "body": "**Source:** `replit.md:35`\n\n```\n- Scans code files for comment patterns: TODO, FIXME, HACK, XXX, NOTE\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "- Scans code files for comment patterns: TODO, FIXME, HACK, XXX, NOTE",
+    "body": "**Source:** `replit.md:35`\n\n```\n- Scans code files for comment patterns: TODO, FIXME, HACK, XXX, NOTE\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "- Scans code files for comment patterns: TODO, FIXME, HACK, XXX, NOTE",
+    "body": "**Source:** `replit.md:35`\n\n```\n- Scans code files for comment patterns: TODO, FIXME, HACK, XXX, NOTE\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  },
+  {
+    "title": "- Scans code files for comment patterns: TODO, FIXME, HACK, XXX, NOTE",
+    "body": "**Source:** `replit.md:35`\n\n```\n- Scans code files for comment patterns: TODO, FIXME, HACK, XXX, NOTE\n```\n\n**Priority:** high\n\n---\n*Auto-generated from code comment*\n",
+    "labels": [
+      "enhancement",
+      "bug",
+      "tech-debt"
+    ]
+  }
+]

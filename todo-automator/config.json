@@ -1,0 +1,9 @@
+{
+  "repo_path": "/home/sunil-kr/Public",
+  "time_window_hours": 1,
+  "log_file": "todo_monitor.log",
+  "notification_timeout": 10000,
+  "max_files_to_scan": 500,
+  "github_repo": "",
+  "ollama_model": "gpt-oss:20b-cloud"
+}

@@ -108,6 +108,12 @@ def run_auto_pipeline(
         _rebuild_kb()
     if os.environ.get("OLLAMA_API_KEY"):
         _ai_enhance(final_report)
+    try:
+        from review_cycle.health_audit import run_health_audit
+        run_health_audit(output="report")
+        print("  📋 Health audit generated")
+    except Exception as e:
+        print(f"  ⚠️  Health audit skipped: {e}")
     return final_report
 
 

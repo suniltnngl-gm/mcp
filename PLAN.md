@@ -30,9 +30,9 @@ Work done across all 8 active repos (tracked in `~/.opencode/`):
 
 - **Consolidated 17→8 repos**: Archived 9 stale/empty repos
 - **Git config unified**: All repos → `suniltnngl-gm`
-- **Branch standardization**: `master` → `main` in next-steps & shared-tools
+- **Branch standardization**: `master` → `main` in next-steps & project/shared
 - **CI/CD added**: Workspace CI (shellcheck + firebase-app build), firebase-app CI
-- **Dependabot**: Enabled on workspace, coding-agent, dropbox-utils, next-steps, shared-tools
+- **Dependabot**: Enabled on workspace, coding-agent, dropbox-utils, next-steps, project/shared
 - **READMEs**: Added to workspace, firebase-app, dropbox-utils
 - **Test skeletons**: Vitest setup for firebase-app, test docs for workspace
 - **next-step integration**: Added to ENTRY.md workflow, workspace.sh ns commands
@@ -89,7 +89,7 @@ Phases 16–17 complete (historical projects discovered during repo audit).
 Phases 18–20 discovered during repo audit — each has its own git history and independent plan.
 Phases 19–23 cloud/web tool ecosystem — HF Hub, GitHub auto, dashboard, cloud storage, deploy.
 Phases 24–25 MCP servers — Softr and Replit API wrappers (completed).
-Phases 26–27 discovered during repo audit — DevEnvSync, devflow-wiki.
+Phases 26–27 discovered during repo audit — DevEnvSync, devflow-intelligence/wiki.
 
 ### Phase 12: Cross-Project Integrations
 
@@ -118,7 +118,7 @@ Phases 26–27 discovered during repo audit — DevEnvSync, devflow-wiki.
 #### Task 12.4: Shared Tools & Configs
 - **Status:** completed
 - **Type:** build
-- **Note:** Created `~/.opencode/shared/` with canonical pyproject.toml, .editorconfig, .pre-commit-config.yaml, python-ci.yml, shellcheck.yml. Wired into project/ (updated CI, added pre-commit), Workspace/ (added .editorconfig), repositories/ (added pyproject.toml, .editorconfig, CI).
+- **Note:** Created `~/.opencode/shared/` with canonical pyproject.toml, .editorconfig, .pre-commit-config.yaml, python-ci.yml, shellcheck.yml. Wired into project/ (updated CI, added pre-commit), Workspace/ (added .editorconfig), project/dropbox-utils/ (added pyproject.toml, .editorconfig, CI).
 
 #### Task 12.5: Data Sharing (Firestore)
 - **Status:** completed
@@ -206,7 +206,7 @@ A completed AI-powered development automation platform with 20+ production modul
 | 16.6 CLI — interactive shell, command autocomplete, status dashboard | ✅ Complete | build |
 
 **Next steps:**
-- Archive `progressive-build/` build docs (keep only FINAL_REPORT.md + CLEANUP_PLAN.md)
+- Archive `progressive-build/` build docs (keep only FINAL_REPORT.md + CLEANUP_PLAN.md) → ✅ archived to `archive/progressive-build/`
 - Fix broken symlinks in `devflow-intelligence/` (consolidation-docs, toolkit)
 - Evaluate if devflow-intelligence code should merge into main `project/` or stay standalone
 
@@ -214,14 +214,14 @@ A completed AI-powered development automation platform with 20+ production modul
 
 **Status:** completed (historical)
 
-**Repo:** `consolidation/` — 11-phase migration of code-review logic from 8 projects into `shared-tools/code-review-toolkit/`
+**Repo:** `consolidation/` — 11-phase migration of code-review logic from 8 projects into `project/shared/code-review-toolkit/`
 
 Migrated duplicate code-review logic from coding-agent, unified-devflow, dev-refactor, ai-orchestra, coding-tools-wrapper, todo-automator, and unified-project into a single shared Python package.
 
 | Task | Status | Type |
 |------|--------|------|
 | 17.1 Audit — identify all code-review logic across 8 repos, catalog duplicate functionality | ✅ Complete | plan |
-| 17.2 Shared package — create `shared-tools/code-review-toolkit/` (AICodeReviewer, ReviewCache, CustomRuleEngine, PatternLearner) | ✅ Complete | build |
+| 17.2 Shared package — create `project/shared/code-review-toolkit/` (AICodeReviewer, ReviewCache, CustomRuleEngine, PatternLearner) | ✅ Complete | build |
 | 17.3 coding-agent migration — port to shared package, remove local copy | ✅ Complete | build |
 | 17.4 unified-devflow migration — port, remove local copy | ✅ Complete | build |
 | 17.5 dev-refactor migration — port, remove local copy | ✅ Complete | build |
@@ -235,14 +235,14 @@ Migrated duplicate code-review logic from coding-agent, unified-devflow, dev-ref
 **Results:** 0% code duplication, 80%+ maintenance reduction, 4x faster feature deployment.
 
 **Next steps:**
-- Archive `consolidation/` repo (keep only FINAL_STATUS.md)
-- Ensure `shared-tools/code-review-toolkit/` still exists and is importable
+- Archive `consolidation/` repo (keep only FINAL_STATUS.md) → ✅ archived to `archive/consolidation/`
+- Ensure `project/shared/code-review-toolkit/` still exists and is importable
 
 ### Phase 18: Git Todo Monitor
 
 **Status:** v1.0 shipped, v2.0+ planned
 
-**Repo:** `todo-automator/` — TODO tracking CLI with AI summaries
+**Repo:** `project/todo-automator/` — TODO tracking CLI with AI summaries
 
 Current v1.0 monitors git repos for TODO/FIXME comments, sends AI summaries via OpenAI, and displays Ubuntu desktop notifications. 903 lines Python across 7 modules.
 
@@ -320,7 +320,7 @@ Windows-focused CLI tool with MCP server, AWS integration, AI agent, context man
 - [ ] **✅ Verify:** Confirm GitHub Pages renders correctly
 - [ ] **📚 KB:** Rebuild KB
 
-**Repo:** `devflow-wiki/` — MkDocs wiki for DevFlow Intelligence platform
+**Repo:** `devflow-intelligence/wiki/` — MkDocs wiki for DevFlow Intelligence platform
 
 MkDocs site with Material theme, dark/light mode, search, Mermaid diagrams, Google Analytics, GitHub Pages auto-deploy. 50-page structure defined in mkdocs.yml, but only 4 content pages written.
 

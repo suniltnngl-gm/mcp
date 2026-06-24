@@ -112,10 +112,11 @@ def _install_hooks():
     import shutil
     hooks_src = Path(__file__).resolve().parent / "hooks"
     for repo_root in [Path.home() / "Public" / p for p in
-                      ["project", "Workspace", ".opencode", "repositories",
-                       "coding-agent", "next-steps", "shared-tools", "Docs",
-                       "todo-automator", "DevEnvSync", "devflow-intelligence",
-                       "devflow-wiki", "consolidation", "progressive-build"]]:
+                      ["project", "Workspace", ".opencode",
+                       "coding-agent", "next-steps", "DevEnvSync",
+                       "devflow-intelligence",
+                       "project/docs", "project/shared", "project/dropbox-utils",
+                       "project/todo-automator"]]:
         hook_dst = repo_root / ".git" / "hooks" / "pre-push"
         if not repo_root.exists() or not (repo_root / ".git").exists():
             continue

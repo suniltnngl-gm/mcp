@@ -1,0 +1,7 @@
+{
+  "model:TinyLlama/TinyLlama-1.1B-Chat-v1.0:config.json:main": {
+    "path": "/home/sunil-kr/Public/hf/models/TinyLlama--TinyLlama-1.1B-Chat-v1.0/main/config.json",
+    "size": 608,
+    "revision": "main"
+  }
+}
