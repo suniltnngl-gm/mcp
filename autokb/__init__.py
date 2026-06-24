@@ -28,20 +28,33 @@ INDEX_FILE = INDEX_DIR / "index.json"
 KB_MD = BASE / ".opencode" / "KB.md"
 OSENV_KB = HOME / ".config" / "osenv" / "knowledge.json"
 
+STORAGE = Path("/media/sunil-kr/storage")
+
 ACTIVE_REPOS: Dict[str, Path] = {
     "Workspace": BASE / "Workspace",
     "project": BASE / "project",
-    "repositories": BASE / "repositories",
     ".opencode": BASE / ".opencode",
     "coding-agent": BASE / "coding-agent",
     "next-steps": BASE / "next-steps",
-    "shared-tools": BASE / "shared-tools",
-    "firebase-app": BASE / "Workspace" / "firebase-app",
+    "devflow-intelligence": BASE / "devflow-intelligence",
+    "DevEnvSync": BASE / "DevEnvSync",
+}
+LEGACY_REPOS: Dict[str, Path] = {
+    "legacy/user-projects": STORAGE / "user-projects",
+    "legacy/workspace": STORAGE / "workspace",
 }
 
 INCLUDE_EXTS = {".md", ".py", ".js", ".jsx", ".ts", ".tsx", ".sh", ".json", ".yaml", ".yml", ".toml", ".cfg", ".ini", ".env.example", ".txt"}
-EXCLUDE_DIRS = {".git", "node_modules", "__pycache__", ".venv", ".ruff_cache", ".pytest_cache", "backups", ".next-step"}
-EXCLUDE_PATTERNS = [re.compile(p) for p in [r"\.git/", r"node_modules/", r"\.venv/", r"__pycache__/", r"\.pytest_cache/"]]
+EXCLUDE_PATTERNS = [re.compile(p) for p in [
+    r"\.git/", r"node_modules/", r"\.venv/", r"__pycache__/",
+    r"\.pytest_cache/", r"\.mypy_cache/", r"\.ruff_cache/",
+    r"backups/", r"aider-env/", r"genai-test/",
+    r"archive/", r"project-archives/", r"opencodetmp/",
+    r"artifacts/", r"\.kiro/", r"\.versions/", r"\.gemini/",
+    r"dist/", r"build/", r"\.next/", r"\.next-step/",
+    r"\.egg-info/", r"package-lock\.json$",
+    r"file_registry_cache", r"workspace_review\.json$",
+]]
 
 
 @dataclass
@@ -89,22 +102,71 @@ class AutoKBIndexer:
             if not repo_path.exists():
                 continue
             self._scan_repo(repo_name, repo_path)
+        for repo_name, repo_path in LEGACY_REPOS.items():
+            if not repo_path.exists():
+                continue
+            self._scan_repo(repo_name, repo_path, use_rglob=True)
         self._index_kb_md()
         self._index_osenv_kb()
         self._build_term_index()
         self._save()
         return len(self.entries)
 
-    def _scan_repo(self, repo_name: str, repo_path: Path) -> None:
-        try:
+    def _scan_repo(self, repo_name: str, repo_path: Path, use_rglob: bool = False) -> None:
+        if use_rglob:
             import subprocess as sp
-            result = sp.run(
-                ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
-                cwd=repo_path, capture_output=True, text=True, timeout=60,
+            ext_pats = " -o ".join(f'-name "*{e}"' for e in INCLUDE_EXTS)
+            cmd = (
+                f"find {repo_path} -type f \\( {ext_pats} \\) "
+                f"-not -path '*/\\.git/*' "
+                f"-not -path '*/node_modules/*' "
+                f"-not -path '*/\\.venv/*' "
+                f"-not -path '*/__pycache__/*' "
+                f"-not -path '*/\\.pytest_cache/*' "
+                f"-not -path '*/\\.mypy_cache/*' "
+                f"-not -path '*/\\.ruff_cache/*' "
+                f"-not -path '*/backups/*' "
+                f"-not -path '*/aider-env/*' "
+                f"-not -path '*/genai-test/*' "
+                f"-not -path '*/archive/*' "
+                f"-not -path '*/project-archives/*' "
+                f"-not -path '*/opencodetmp/*' "
+                f"-not -path '*/artifacts/*' "
+                f"-not -path '*/\\.kiro/*' "
+                f"-not -path '*/\\.versions/*' "
+                f"-not -path '*/\\.gemini/*' "
+                f"-not -path '*/dist/*' "
+                f"-not -path '*/build/*' "
+                f"-not -path '*/\\.next/*' "
+                f"-not -path '*/\\.next-step/*' "
+                f"-not -path '*/\\.egg-info/*' "
+                f"-not -name 'package-lock.json' "
+                f"-not -name 'file_registry_cache*' "
+                f"-not -name 'workspace_review.json'"
             )
-            files = [f for f in result.stdout.splitlines() if f.strip()]
-        except Exception:
-            files = []
+            result = sp.run(cmd, shell=True, capture_output=True, text=True, timeout=120)
+            files = [os.path.relpath(f, str(repo_path)) for f in result.stdout.splitlines() if f.strip()]
+            if not files and result.returncode != 0:
+                print(f"  ⚠️  find failed for {repo_name}, falling back to rglob")
+                files = []
+                for p in repo_path.rglob("*"):
+                    if not p.is_file():
+                        continue
+                    rel = p.relative_to(repo_path)
+                    if any(pat.search(str(rel)) for pat in EXCLUDE_PATTERNS):
+                        continue
+                    files.append(str(rel))
+        else:
+            try:
+                import subprocess as sp
+                result = sp.run(
+                    ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
+                    cwd=repo_path, capture_output=True, text=True, timeout=60,
+                )
+                files = [f for f in result.stdout.splitlines() if f.strip()]
+                files = [f for f in files if not any(p.search(f) for p in EXCLUDE_PATTERNS)]
+            except Exception:
+                files = []
             for p in repo_path.rglob("*"):
                 rel = p.relative_to(repo_path)
                 if any(pat.search(str(rel)) for pat in EXCLUDE_PATTERNS):
@@ -199,7 +261,7 @@ class AutoKBIndexer:
         data = {
             "version": 2,
             "generated": datetime.now(timezone.utc).isoformat(),
-            "repos": list(ACTIVE_REPOS.keys()) + (["osenv"] if OSENV_KB.exists() else []),
+            "repos": list(ACTIVE_REPOS.keys()) + list(LEGACY_REPOS.keys()) + (["osenv"] if OSENV_KB.exists() else []),
             "entries_count": len(self.entries),
             "terms_count": len(self.term_index),
             "entries": [e.to_dict() for e in self.entries],
