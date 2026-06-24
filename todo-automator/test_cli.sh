@@ -38,7 +38,7 @@ echo ""
 echo "3. Testing custom config flag..."
 if [ -f "config.json" ]; then
     cp config.json test_config.json
-    python3 "${PYTHON_SCRIPT}" --config test_config.json --quiet 2>&1 | grep -q "ERROR: OPENAI_API_KEY"
+    python3 "${PYTHON_SCRIPT}" --config test_config.json --quiet 2>&1 | grep -q "ERROR: OLLAMA_API_KEY"
     if [ $? -eq 0 ]; then
         echo "   ✓ --config flag works (API key check triggered as expected)"
     else
@@ -50,7 +50,7 @@ fi
 echo ""
 echo "4. Testing --quiet flag..."
 OUTPUT=$(python3 "${PYTHON_SCRIPT}" --quiet 2>&1)
-if echo "$OUTPUT" | grep -q "ERROR: OPENAI_API_KEY"; then
+if echo "$OUTPUT" | grep -q "ERROR: OLLAMA_API_KEY"; then
     echo "   ✓ --quiet flag works (no verbose output, only errors)"
 else
     echo "   ⚠ --quiet flag behavior unclear"

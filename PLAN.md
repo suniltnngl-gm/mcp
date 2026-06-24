@@ -83,7 +83,7 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 26. DevEnvSync | 🔍 Review | 0/4 | 4 | build |
 | 27. DevFlow Wiki | ⏳ | 1/N | ~46 | docs |
 | 28. Repo Restructure | ✅ | 6/6 | — | plan+build |
-| 29. KB & coding-agent overhaul | 🔄 | 0/5 | 5 (~3h) | plan+build |
+| 29. KB & coding-agent overhaul | 🔄 | 4/5 | 1 (~30min) | plan+build |
 
 **Task type legend:**
 - `plan` — Design, research, architecture. Output: specs, diagrams, decision docs.
@@ -389,10 +389,10 @@ MkDocs site with Material theme, dark/light mode, search, Mermaid diagrams, Goog
 | Task | Status | Type | ⏱ |
 |------|--------|------|----|
 | 29.1 autokb legacy+user-files — include both predecessor workspaces with user-files-only filter | ✅ Complete | build | 30min |
-| 29.2 coding-agent — consolidate 37 root .py files into agent/ package | 🔄 In progress | build | 30min |
-| 29.3 next_step.py — split monolithic 6.8K file into modules | ⏳ Pending | build | 20min |
-| 29.4 shared-tools extraction — mine 791 .py files from legacy workspace | ⏳ Pending | build | 45min |
-| 29.5 todo-automator v2.0 — replace OpenAI dependency with free Ollama cloud API | ⏳ Pending | build | 30min |
+| 29.2 coding-agent — consolidate 37 root .py files into agent/ package | ✅ Complete | build | 30min |
+| 29.3 next_step.py — split monolithic 6.8K file into modules | ✅ Complete | build | 20min |
+| 29.4 shared-tools extraction — mine 670 .py files from legacy workspace | ✅ Complete | build | 45min |
+| 29.5 todo-automator v2.0 — replace OpenAI dependency with free Ollama cloud API | ✅ Complete | docs | 10min |
 
 **What changed:**
 - autokb now indexes both legacy workspaces (`/media/sunil-kr/storage/user-projects/` and `workspace/`) labeled `legacy/` prefix

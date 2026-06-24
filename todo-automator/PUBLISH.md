@@ -90,7 +90,7 @@ Create these labels in Issues → Labels:
 
 Add these secrets in Settings → Secrets and variables → Actions:
 
-1. `OPENAI_API_KEY` - Your OpenAI API key (for AI summaries)
+1. `OLLAMA_API_KEY` - Your Ollama Cloud API key (for AI summaries)
 2. `GITHUB_TOKEN` - Auto-provided by GitHub Actions
 
 ## Step 5: Enable GitHub Actions
