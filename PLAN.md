@@ -26,9 +26,9 @@ Implement a hybrid Large Language Model (LLM) system where a local LLM can boost
 
 ### Cross-Project Integrations (Phase 12 — 4/5 done)
 
-Work done across all 8 active repos (tracked in `~/.opencode/`):
+Work done across all 6 active repos (tracked in `~/.opencode/`):
 
-- **Consolidated 17→8 repos**: Archived 9 stale/empty repos
+- **Consolidated 17→9 repos**: Archived 9 stale/empty repos, merged 5 into project/ + devflow-intelligence/
 - **Git config unified**: All repos → `suniltnngl-gm`
 - **Branch standardization**: `master` → `main` in next-steps & project/shared
 - **CI/CD added**: Workspace CI (shellcheck + firebase-app build), firebase-app CI
@@ -39,6 +39,12 @@ Work done across all 8 active repos (tracked in `~/.opencode/`):
 - **Dropbox SDK**: v12.0.2 installed, API working (needs scope fix for file listing)
 - **Ollama SDK**: v0.6.2 installed, cloud API at `https://ollama.com` (key in `ENV/.env`)
 - **TODOs resolved**: 3 in project/ (dynamic commit msg, MCP config loading, .gitignore parsing)
+- **Health audit standardized**: `review_cycle/health_audit.py` with 36 checks, integrated into auto pipeline, `workspace.sh health-audit` command
+- **Templates created**: Issue/finding + decision templates at `~/.opencode/templates/`
+- **Deep merge analysis**: All 9 repos analyzed, zero real code duplication confirmed
+- **Tests consolidated**: 40 orphan test stubs moved to respective repos
+- **ENV/ + hf/ merged** into project/ with backward-compat symlinks
+- **Renamed**: `data_models/llm_wrapper.py` → `llm_wrapper/models.py`; removed dead `enhanced_agent_v2.py`; consolidated `src/tests/` → `tests/`
 
 ## Detailed Plan & Todo List
 
@@ -74,9 +80,9 @@ The following tasks are organized into phases, reflecting the detailed steps req
 | 23. Deploy Apps | ⏳ | 0/2 | 2 (~45min) | build |
 | 24. Softr API Integration | ✅ | 9/9 | — | build |
 | 25. Replit API Integration | ✅ | 11/11 | — | build |
-| 26. DevEnvSync | ⏳ | 0/4 | 4 | build |
+| 26. DevEnvSync | 🔍 Review | 0/4 | 4 | build |
 | 27. DevFlow Wiki | ⏳ | 1/N | ~46 | docs |
-| 28. (reserved) | — | — | — | — |
+| 28. Repo Restructure | ✅ | 6/6 | — | plan+build |
 
 **Task type legend:**
 - `plan` — Design, research, architecture. Output: specs, diagrams, decision docs.
@@ -261,11 +267,11 @@ Current v1.0 monitors git repos for TODO/FIXME comments, sends AI summaries via 
 
 ### Phase 26: DevEnvSync
 
-**Status:** active, needs restructure
+**Status:** review — merge analysis complete, keep standalone
 
 **📋 Prepare — complete before starting:**
+- [x] **📐 Design:** Deep merge analysis — confirmed zero MCP overlap, Windows-specific, messy
 - [ ] **📐 Design:** Review REFACTOR_PROGRESS.json (40 tasks, 0%)
-- [ ] **📐 Design:** Decide: merge into project/ or stay standalone
 - [ ] **🧹 Cleanup:** Remove bloated planning artifacts (504-line JSON at 0%)
 - [ ] **🛠 Tool:** Fix hardcoded Windows paths in restructure_plan.py
 
@@ -279,7 +285,13 @@ Current v1.0 monitors git repos for TODO/FIXME comments, sends AI summaries via 
 
 **Repo:** `DevEnvSync/` — Professional dev environment sync tool (57MB, 174 Python files, 26K lines)
 
-Windows-focused CLI tool with MCP server, AWS integration, AI agent, context management, and race-detection systems. Large repo due to heavy planning/documentation overhead.
+Windows-focused CLI tool with "MCP" context manager (misnamed — actually a context persistence logger, not Model Context Protocol). AWS integration, AI agent, context management, and race-detection systems.
+
+**Deep merge analysis result** (2026-06-24):
+- **Zero actual MCP overlap** with project/llm_wrapper/mcp/ — DevEnvSync's `mcp_context_manager.py` writes JSON context snapshots; project/ has real MCP protocol using `mcp` PyPI library
+- **Zero Python imports** cross-repo — all repos are functionally independent
+- **Recommendation: Keep standalone.** Architectural mismatch (Windows paths, 129 files, Amazon Q dependency). Consider archiving if no active external consumers.
+- Contribution: Move `src/data_models/llm_wrapper.py` → `src/llm_wrapper/models.py` (done for project/)
 
 | Component | Files | Lines | Description |
 |-----------|-------|-------|-------------|
@@ -289,28 +301,20 @@ Windows-focused CLI tool with MCP server, AWS integration, AI agent, context man
 | Tests | 18+ | ~5,000 | Integration, unit, performance tests |
 | Config/docs/batch | ~133 files | — | Planning artifacts, docs, CI/CD, batch files |
 
-**Planned restructure** (REFACTOR_PROGRESS.json, 40 tasks, 0%):
-| Phase | Days | Goal |
-|-------|------|------|
-| 1. Architecture Streamlining | 5d | Reduce complexity 30%, eliminate circular imports |
-| 2. MCP Integration Enhancement | 3d | Improve MCP server architecture |
-| 3. Logging & Output System | 3d | Structured logging, JSON output |
-| 4. Integration & Testing | 2d | 80% test coverage, 2s startup time |
-
 **Next steps:**
+- Consider archiving if no active consumers — compare with archive/ pattern
 - Clean up planning artifacts (REFACTOR_PROGRESS.json is 504 lines of planning at 0%)
-- Fix hardcoded Windows paths in restructure_plan.py
-- Evaluate cross-platform compatibility
-- Determine if this should merge into main `project/` or stay standalone
 
 ### Phase 27: DevFlow Wiki
 
-**Status:** partial — infrastructure ready, content missing
+**Status:** partial — infrastructure ready, content missing. Wiki repo merged into devflow-intelligence/
 
 **📋 Prepare — complete before starting:**
+- [x] **📐 Design:** Deep merge analysis — keep standalone, KB is complementary to project/autokb/
 - [ ] **📐 Design:** Content plan — which 4/50 pages exist, which to write next
-- [ ] **🛠 Tool:** MkDocs + Material theme — already set up ✅
-- [ ] **🛠 Tool:** GitHub Pages deploy — already configured ✅
+- [x] **🛠 Tool:** MkDocs + Material theme — already set up ✅
+- [x] **🛠 Tool:** GitHub Pages deploy — already configured ✅
+- [x] **🧹 Merge:** `devflow-wiki/` → `devflow-intelligence/wiki/` (embedded .git removed, commits flattened)
 
 **✅ Post — complete after finishing:**
 - [ ] **🏷 Tag:** Git tag `anchor-YYYYMMDD`
@@ -320,9 +324,14 @@ Windows-focused CLI tool with MCP server, AWS integration, AI agent, context man
 - [ ] **✅ Verify:** Confirm GitHub Pages renders correctly
 - [ ] **📚 KB:** Rebuild KB
 
-**Repo:** `devflow-intelligence/wiki/` — MkDocs wiki for DevFlow Intelligence platform
+**Location:** `devflow-intelligence/wiki/` — MkDocs wiki for DevFlow Intelligence platform (merged from devflow-wiki/)
 
 MkDocs site with Material theme, dark/light mode, search, Mermaid diagrams, Google Analytics, GitHub Pages auto-deploy. 50-page structure defined in mkdocs.yml, but only 4 content pages written.
+
+**Deep merge analysis result** (2026-06-24):
+- devflow-intelligence `knowledge_base.py` is a structured KB (Pattern, Learning, BestPractice dataclasses)
+- project/autokb/ is a file-level TF-IDF search index — **zero code overlap**, complementary systems
+- Recommendation: Keep standalone for now. If merging, only merge `knowledge_base.py` as `project/shared/structured_kb.py`
 
 | Section | Pages | Status |
 |---------|-------|--------|
@@ -343,6 +352,30 @@ MkDocs site with Material theme, dark/light mode, search, Mermaid diagrams, Goog
 - Write content for all 50 pages
 - Deploy to GitHub Pages
 - Link from project README
+
+### Phase 28: Repo Restructure & Renaming
+
+**Status:** completed
+
+**Stack:** bash + git + mv
+
+**Tasks:**
+
+| Task | Status | Type |
+|------|--------|------|
+| 28.1 Deep merge/split analysis — overlap matrix, dependency graph, trade-off table | ✅ Complete | plan |
+| 28.2 Move test stubs → respective repos (40 files) | ✅ Complete | build |
+| 28.3 Merge ENV/ → project/ (symlink backward compat) | ✅ Complete | build |
+| 28.4 Merge hf/ → project/ (symlink backward compat) | ✅ Complete | build |
+| 28.5 Rename `data_models/llm_wrapper.py` → `llm_wrapper/models.py` | ✅ Complete | build |
+| 28.6 Remove dead `enhanced_agent_v2.py` | ✅ Complete | cleanup |
+
+**Key findings from deep analysis:**
+- **Zero real code duplication** across all 9 repos — all suspected overlap pairs confirmed as different concerns sharing similar names
+- `coding-agent/providers` vs `project/llm_wrapper`: ~30% domain overlap, 0% code, different architecture (sync vs async)
+- `DevEnvSync/mcp` vs `project/llm_wrapper/mcp`: Zero overlap — DevEnvSync's "MCP" is a context logger, not Model Context Protocol
+- `project/autokb` vs `devflow-intelligence/knowledge_base`: Zero overlap — file search vs structured learning
+- **project/ is not too big** (252 source files) — splitting would add friction for no gain
 
 ### Phase 21: Softr API Integration
 
@@ -661,13 +694,13 @@ The SDK was rejected to keep the dependency footprint minimal. cURL alone lacks 
 - [x] **🔑 Env:** GH_TOKEN or gh auth token available
 
 **✅ Post — complete after finishing:**
-- [ ] **Tag:** Git tag `anchor-YYYYMMDD` across touched repos
-- [ ] **Log:** Update AGENT_LOG.md with deliverables
-- [ ] **Plan:** Mark Phase 20 complete in PLAN.md
-- [ ] **Dash:** Update DASHBOARD.md progress
-- [ ] **Vote:** Re-run vote — Phase 21 may gain weight
-- [ ] **Scan:** Run auto-scan to verify issue creation works
-- [ ] **KB:** Rebuild KB: `workspace.sh kb-auto scan`
+- [x] **Tag:** Git tag `anchor-YYYYMMDD` across touched repos
+- [x] **Log:** Update AGENT_LOG.md with deliverables
+- [x] **Plan:** Mark Phase 20 complete in PLAN.md
+- [x] **Dash:** Update DASHBOARD.md progress
+- [x] **Vote:** Re-run vote — Phase 21 may gain weight
+- [x] **Scan:** Run auto-scan to verify issue creation works
+- [x] **KB:** Rebuild KB: `workspace.sh kb-auto scan`
 
 Extend existing review_cycle autofix pipeline: auto-create issues from scan findings, auto-label PRs, manage releases via `gh` CLI.
 
