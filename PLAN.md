@@ -761,14 +761,14 @@ gh CLI was chosen because it's already authenticated and requires zero setup. If
 
 ### Phase 21: Web Dashboard
 
-**Status:** pending
+**Status:** preparing
 
 **Stack:** Node.js (fnm) + Vercel (frontend) + Supabase (DB + Auth) + Python (uv) / FastAPI (backend API)
 
 **📋 Prepare — complete before starting:**
-- [ ] **🔑 Env:** SUPABASE_URL in ENV/.env
-- [ ] **🔑 Env:** SUPABASE_ANON_KEY in ENV/.env
-- [ ] **🛠 Tool:** Node.js via fnm (v24) ✅ (already done)
+- [x] **🔑 Env:** SUPABASE_URL in project/.env ✅
+- [x] **🔑 Env:** SUPABASE_ANON_KEY in project/.env ✅
+- [x] **🛠 Tool:** Node.js via fnm (v24) ✅ (already done)
 - [ ] **🛠 Tool:** Vercel CLI installed (`npm i -g vercel`)
 - [ ] **🛠 Tool:** `vercel --login` done
 - [ ] **📐 Design:** Dashboard wireframe — which cards, what data sources
