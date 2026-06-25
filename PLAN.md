@@ -773,8 +773,8 @@ gh CLI was chosen because it's already authenticated and requires zero setup. If
 - [x] **🛠 Tool:** `vercel link --project project-yewbk --scope sunil-kr-s-projects` ✅
 - [x] **📐 Design:** Dashboard wireframe ✅ — full workspace overview (health, findings, repos, next-steps, timeline, KB search)
 - [x] **📁 Space:** Choose location ✅ — `~/Public/dashboard/` (separate repo)
-- [ ] **🐘 DB:** Run SQL in Supabase Dashboard → SQL Editor (migration at `project/supabase/migrations/20250624000001_create_health_snapshots.sql`)
-- [ ] **🔑 Env:** SUPABASE_ACCESS_TOKEN re-add (compacted from session)
+- [x] **🐘 DB:** Migration applied ✅ — `health_snapshots` table created
+- [x] **🔑 Env:** SUPABASE_ACCESS_TOKEN added ✅
 
 **✅ Post — complete after finishing:**
 - [ ] **🏷 Tag:** Git tag `anchor-YYYYMMDD` across touched repos
