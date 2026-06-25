@@ -771,8 +771,10 @@ gh CLI was chosen because it's already authenticated and requires zero setup. If
 - [x] **🛠 Tool:** Node.js via fnm (v24) ✅ (already done)
 - [x] **🛠 Tool:** Vercel CLI installed (`npm i -g vercel`) ✅
 - [x] **🛠 Tool:** `vercel link --project project-yewbk --scope sunil-kr-s-projects` ✅
-- [ ] **📐 Design:** Dashboard wireframe — which cards, what data sources
-- [ ] **📁 Space:** Choose location (`~/Public/dashboard/` or inside project/)
+- [x] **📐 Design:** Dashboard wireframe ✅ — full workspace overview (health, findings, repos, next-steps, timeline, KB search)
+- [x] **📁 Space:** Choose location ✅ — `~/Public/dashboard/` (separate repo)
+- [ ] **🐘 DB:** Run SQL in Supabase Dashboard → SQL Editor (migration at `project/supabase/migrations/20250624000001_create_health_snapshots.sql`)
+- [ ] **🔑 Env:** SUPABASE_ACCESS_TOKEN re-add (compacted from session)
 
 **✅ Post — complete after finishing:**
 - [ ] **🏷 Tag:** Git tag `anchor-YYYYMMDD` across touched repos
