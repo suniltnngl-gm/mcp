@@ -1,0 +1,74 @@
+{
+  "collab_1765635722": {
+    "session_id": "collab_1765635722",
+    "participants": [
+      "gemini",
+      "kiro"
+    ],
+    "task_type": "review",
+    "status": "active",
+    "created_at": "2025-12-13T19:52:02.229754",
+    "context": {
+      "files": [
+        "roadmap_data.json",
+        "progress_tracker.py"
+      ]
+    }
+  },
+  "collab_1765635809": {
+    "session_id": "collab_1765635809",
+    "participants": [
+      "gemini",
+      "kiro"
+    ],
+    "task_type": "review",
+    "status": "active",
+    "created_at": "2025-12-13T19:53:29.412832",
+    "context": {
+      "files": [
+        "roadmap_data.json",
+        "progress_tracker.py"
+      ]
+    }
+  },
+  "collab_1765635921": {
+    "session_id": "collab_1765635921",
+    "participants": [
+      "gemini",
+      "kiro"
+    ],
+    "task_type": "review",
+    "status": "active",
+    "created_at": "2025-12-13T19:55:21.468706",
+    "context": {
+      "files": [
+        "roadmap_data.json",
+        "progress_tracker.py"
+      ]
+    }
+  },
+  "collab_1765638472": {
+    "session_id": "collab_1765638472",
+    "participants": [
+      "gemini",
+      "kiro"
+    ],
+    "task_type": "code_review",
+    "status": "active",
+    "created_at": "2025-12-13T20:37:52.260751",
+    "context": {
+      "target_file": "test_code.py",
+      "workflow_type": "review_and_refactor",
+      "participants": [
+        "gemini",
+        "kiro"
+      ],
+      "phases": [
+        "analysis",
+        "review",
+        "refactoring",
+        "consensus"
+      ]
+    }
+  }
+}

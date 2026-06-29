@@ -1,0 +1,30 @@
+[
+  {
+    "name": "merge_success_rate",
+    "value": 0.8,
+    "target": 0.95,
+    "trend": "improving",
+    "last_updated": "2025-12-11T16:02:03.636881"
+  },
+  {
+    "name": "nested_depth_efficiency",
+    "value": 0.08865248226950354,
+    "target": 0.85,
+    "trend": "improving",
+    "last_updated": "2025-12-11T16:02:03.636951"
+  },
+  {
+    "name": "docs_conversion_rate",
+    "value": 0.0,
+    "target": 0.9,
+    "trend": "stable",
+    "last_updated": "2025-12-11T16:02:03.636965"
+  },
+  {
+    "name": "todo_completion_rate",
+    "value": 0.0,
+    "target": 0.8,
+    "trend": "stable",
+    "last_updated": "2025-12-11T16:02:03.636981"
+  }
+]

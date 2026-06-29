@@ -1,0 +1,117 @@
+{
+  "workflow_result": {
+    "session_id": "collab_1765638472",
+    "phases_completed": [
+      "gemini_analysis",
+      "kiro_review"
+    ],
+    "handoffs": [
+      {
+        "from": "gemini",
+        "to": "kiro",
+        "timestamp": "2025-12-13T20:37:52.262967",
+        "data_transferred": {
+          "analyzer": "gemini",
+          "focus": "best_practices_and_patterns",
+          "findings": [
+            "Code structure analysis",
+            "Design pattern identification",
+            "Best practice recommendations",
+            "Potential optimization areas"
+          ],
+          "confidence": "high",
+          "handoff_ready": true
+        },
+        "handoff_type": "analysis_to_review"
+      }
+    ],
+    "final_recommendations": {
+      "consensus_type": "collaborative_recommendation",
+      "gemini_contributions": [
+        "Code structure analysis",
+        "Design pattern identification",
+        "Best practice recommendations",
+        "Potential optimization areas"
+      ],
+      "kiro_contributions": [
+        "Workspace compatibility check",
+        "Integration with existing tools",
+        "Context-aware improvements",
+        "Implementation feasibility"
+      ],
+      "unified_recommendations": [
+        "Apply best practices identified by Gemini",
+        "Integrate with workspace patterns per Kiro",
+        "Implement optimizations with context awareness",
+        "Maintain compatibility with existing tools"
+      ],
+      "confidence_level": "high",
+      "ready_for_implementation": true
+    }
+  },
+  "workflow_log": [
+    {
+      "step": "session_created",
+      "timestamp": "2025-12-13T20:37:52.262941",
+      "data": {
+        "session_id": "collab_1765638472",
+        "target_file": "test_code.py",
+        "timestamp": "2025-12-13T20:37:52.262916"
+      }
+    },
+    {
+      "step": "workflow_completed",
+      "timestamp": "2025-12-13T20:37:52.262982",
+      "data": {
+        "session_id": "collab_1765638472",
+        "phases_completed": [
+          "gemini_analysis",
+          "kiro_review"
+        ],
+        "handoffs": [
+          {
+            "from": "gemini",
+            "to": "kiro",
+            "timestamp": "2025-12-13T20:37:52.262967",
+            "data_transferred": {
+              "analyzer": "gemini",
+              "focus": "best_practices_and_patterns",
+              "findings": [
+                "Code structure analysis",
+                "Design pattern identification",
+                "Best practice recommendations",
+                "Potential optimization areas"
+              ],
+              "confidence": "high",
+              "handoff_ready": true
+            },
+            "handoff_type": "analysis_to_review"
+          }
+        ],
+        "final_recommendations": {
+          "consensus_type": "collaborative_recommendation",
+          "gemini_contributions": [
+            "Code structure analysis",
+            "Design pattern identification",
+            "Best practice recommendations",
+            "Potential optimization areas"
+          ],
+          "kiro_contributions": [
+            "Workspace compatibility check",
+            "Integration with existing tools",
+            "Context-aware improvements",
+            "Implementation feasibility"
+          ],
+          "unified_recommendations": [
+            "Apply best practices identified by Gemini",
+            "Integrate with workspace patterns per Kiro",
+            "Implement optimizations with context awareness",
+            "Maintain compatibility with existing tools"
+          ],
+          "confidence_level": "high",
+          "ready_for_implementation": true
+        }
+      }
+    }
+  ]
+}

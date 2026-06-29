@@ -1,0 +1,112 @@
+{
+  "id": "disc-1765638472",
+  "topic": "Collaborative code_review for session collab_1765638472",
+  "created": "2025-12-13T20:37:52.262142",
+  "status": "active",
+  "participants": [
+    "architect-ai",
+    "security-ai"
+  ],
+  "context": {
+    "gemini_context": {
+      "workspace_path": "/media/sunil-kr/workspace/user-projects",
+      "task_type": "code_review",
+      "ignore_patterns": [
+        "node_modules/",
+        ".venv/",
+        "venv/",
+        "__pycache__/",
+        "*.pyc",
+        "*.pyo",
+        "*.egg-info/",
+        "dist/",
+        "build/",
+        ".cache/",
+        ".pytest_cache/",
+        ".mypy_cache/",
+        ".ruff_cache/",
+        "*.log",
+        "*.tmp",
+        ".DS_Store",
+        ".vscode/",
+        ".idea/",
+        ".git/objects/",
+        ".git/refs/",
+        ".git/logs/",
+        "*.so",
+        "*.dylib",
+        "*.dll",
+        "*.exe",
+        "*.zip",
+        "*.tar.gz",
+        ".gemini_cache/",
+        ".gemini_temp/",
+        "*.gemini_backup",
+        ".gemini_session/",
+        "*.bin",
+        "*.safetensors",
+        "*.gguf",
+        ".collab_temp/",
+        "gemini_working_*",
+        "collaboration_sessions.json.bak",
+        "shared_context.json.tmp",
+        ".review_cache/",
+        ".unification_temp/",
+        ".ai_handoff/",
+        ".consensus_temp/"
+      ],
+      "focus_areas": [
+        "current/",
+        "shared-tools/"
+      ],
+      "collaboration_rules": {
+        "handoff_protocol": "session_based",
+        "context_sharing": "json_files",
+        "decision_tracking": "integrated_ai_discussion",
+        "conflict_resolution": "consensus_analyzer",
+        "progress_sync": "roadmap_engine"
+      },
+      "file_priorities": {
+        "high": [
+          ".py",
+          ".sh",
+          ".md",
+          ".json"
+        ],
+        "medium": [
+          ".js",
+          ".ts",
+          ".yml",
+          ".yaml"
+        ],
+        "low": [
+          ".txt",
+          ".log",
+          ".tmp"
+        ],
+        "ignore": [
+          "*.pyc",
+          "*.so",
+          "*.zip"
+        ]
+      }
+    },
+    "task_context": {
+      "target_file": "test_code.py",
+      "workflow_type": "review_and_refactor",
+      "participants": [
+        "gemini",
+        "kiro"
+      ],
+      "phases": [
+        "analysis",
+        "review",
+        "refactoring",
+        "consensus"
+      ]
+    }
+  },
+  "messages": [],
+  "decisions": [],
+  "total_cost": 0.0
+}

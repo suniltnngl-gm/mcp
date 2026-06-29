@@ -1,0 +1,53 @@
+{
+  "id": "disc-1765448612",
+  "topic": "Merge Planning: discussion_manager.py + ai_orchestra.py \u2192 integrated_discussion_orchestra.py",
+  "created": "2025-12-11T15:53:32.435717",
+  "status": "active",
+  "participants": [
+    "architect-ai",
+    "code-reviewer-ai",
+    "integration-ai"
+  ],
+  "context": {
+    "merge_type": "code_integration",
+    "source_files": [
+      "../discussions/discussion_manager.py",
+      "ai_orchestra.py"
+    ],
+    "target_file": "integrated_discussion_orchestra.py",
+    "analysis": {
+      "strategy": "selective_merge",
+      "conflicts": [
+        "__post_init__",
+        "__init__"
+      ],
+      "integration_points": [
+        "Integrate DiscussionManager with orchestration",
+        "Use OrchestratorAI for AI coordination",
+        "Use orchestrate_analysis for AI coordination"
+      ],
+      "shared_deps": [
+        "message",
+        "bool",
+        "start_time",
+        "len",
+        "AIActionTracker",
+        "datetime",
+        "str",
+        "self",
+        "SessionTracker",
+        "TRACKING_ENABLED"
+      ]
+    }
+  },
+  "messages": [
+    {
+      "id": "msg-001",
+      "participant": "merge-analyzer",
+      "timestamp": "2025-12-11T15:53:32.436734",
+      "content": "\ud83d\udd0d **Merge Analysis Complete**\n\n**Files**: discussion_manager.py + ai_orchestra.py \u2192 integrated_discussion_orchestra.py\n**Strategy**: selective_merge\n\n**Conflicts Found**: 2\n- __post_init__\n- __init__\n\n**Integration Points**:\n- Integrate DiscussionManager with orchestration\n- Use OrchestratorAI for AI coordination\n- Use orchestrate_analysis for AI coordination\n\n**Shared Dependencies**: 19\n- message\n- bool\n- start_time\n- len\n- AIActionTracker\n- datetime\n- str\n- self\n\n**Recommendations**:\n1. Review conflict resolution strategy\n2. Plan integration sequence\n3. Identify testing requirements\n4. Consider backward compatibility\n\nPlease provide your analysis and merge plan.",
+      "references": []
+    }
+  ],
+  "decisions": []
+}

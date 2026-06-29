@@ -1,0 +1,104 @@
+{
+  "id": "disc-1765635921",
+  "topic": "Collaborative review for session collab_1765635921",
+  "created": "2025-12-13T19:55:21.470387",
+  "status": "active",
+  "participants": [
+    "architect-ai",
+    "security-ai"
+  ],
+  "context": {
+    "gemini_context": {
+      "workspace_path": "/media/sunil-kr/workspace/user-projects",
+      "task_type": "review",
+      "ignore_patterns": [
+        "node_modules/",
+        ".venv/",
+        "venv/",
+        "__pycache__/",
+        "*.pyc",
+        "*.pyo",
+        "*.egg-info/",
+        "dist/",
+        "build/",
+        ".cache/",
+        ".pytest_cache/",
+        ".mypy_cache/",
+        ".ruff_cache/",
+        "*.log",
+        "*.tmp",
+        ".DS_Store",
+        ".vscode/",
+        ".idea/",
+        ".git/objects/",
+        ".git/refs/",
+        ".git/logs/",
+        "*.so",
+        "*.dylib",
+        "*.dll",
+        "*.exe",
+        "*.zip",
+        "*.tar.gz",
+        ".gemini_cache/",
+        ".gemini_temp/",
+        "*.gemini_backup",
+        ".gemini_session/",
+        "*.bin",
+        "*.safetensors",
+        "*.gguf",
+        ".collab_temp/",
+        "gemini_working_*",
+        "collaboration_sessions.json.bak",
+        "shared_context.json.tmp",
+        ".review_cache/",
+        ".unification_temp/",
+        ".ai_handoff/",
+        ".consensus_temp/"
+      ],
+      "focus_areas": [
+        "current/",
+        "shared-tools/nested-shares/"
+      ],
+      "collaboration_rules": {
+        "handoff_protocol": "session_based",
+        "context_sharing": "json_files",
+        "decision_tracking": "integrated_ai_discussion",
+        "conflict_resolution": "consensus_analyzer",
+        "progress_sync": "roadmap_engine"
+      },
+      "file_priorities": {
+        "high": [
+          ".py",
+          ".sh",
+          ".md",
+          ".json"
+        ],
+        "medium": [
+          ".js",
+          ".ts",
+          ".yml",
+          ".yaml"
+        ],
+        "low": [
+          ".txt",
+          ".log",
+          ".tmp"
+        ],
+        "ignore": [
+          "*.pyc",
+          "*.so",
+          "*.zip"
+        ]
+      }
+    },
+    "task_context": {
+      "files": [
+        "roadmap_data.json",
+        "progress_tracker.py"
+      ]
+    }
+  },
+  "messages": [],
+  "decisions": [],
+  "total_cost": 0.0
+}

@@ -1,0 +1,36 @@
+{
+  "dec-1765570744": {
+    "id": "dec-1765570744",
+    "discussion_id": "disc-1765570345",
+    "title": "Use microservices architecture",
+    "description": "Adopt microservices for better scalability and team autonomy",
+    "proposed_by": "system",
+    "proposed_at": "2025-12-13T01:49:04.420344",
+    "status": "consensus",
+    "consensus_level": "moderate",
+    "votes": {
+      "architect-ai": "agree",
+      "cost-optimizer-ai": "disagree",
+      "devops-ai": "agree"
+    },
+    "execution_plan": [],
+    "execution_status": {},
+    "results": {},
+    "updated_at": "2025-12-13T01:50:19.679067"
+  },
+  "dec-1765571168": {
+    "id": "dec-1765571168",
+    "discussion_id": "disc-1765570345",
+    "title": "Allocate budget for POC",
+    "description": "Approve $10k budget for proof-of-concept development",
+    "proposed_by": "consensus_analyzer",
+    "proposed_at": "2025-12-13T01:56:08.814348",
+    "status": "proposed",
+    "consensus_level": "no_consensus",
+    "votes": {},
+    "execution_plan": [],
+    "execution_status": {},
+    "results": {},
+    "updated_at": null
+  }
+}

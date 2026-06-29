@@ -1,0 +1,43 @@
+{
+  "file_reviewed": "/media/sunil-kr/workspace/user-projects/workspace-automation/src/extract_ai_orchestration.py",
+  "timestamp": "2025-12-13T20:52:56.743257",
+  "ai_analysis": {
+    "analyzer": "integrated_ai_discussion",
+    "discussion_id": "disc-1765639376",
+    "status": "analysis_initiated",
+    "file_info": {
+      "path": "/media/sunil-kr/workspace/user-projects/workspace-automation/src/extract_ai_orchestration.py",
+      "lines": 51,
+      "size": 1448
+    }
+  },
+  "kiro_review": {
+    "reviewer": "kiro_smart_router",
+    "selected_provider": "gemini-flash",
+    "selection_reason": "cost_optimized",
+    "fallback_chain": [
+      "gpt-3.5",
+      "claude-haiku",
+      "openrouter-free",
+      "gpt-4",
+      "claude-sonnet"
+    ],
+    "cost_estimate": 0.01995,
+    "workspace_integration": {
+      "file_location": "orchestration",
+      "compatibility_check": "passed",
+      "integration_points": [
+        "existing_ai_systems",
+        "collaboration_framework"
+      ]
+    },
+    "gemini_input_processed": true,
+    "status": "smart_routing_successful"
+  },
+  "integration_status": "fixed_api_integration_complete",
+  "cost_optimization": {
+    "provider_selected": "gemini-flash",
+    "estimated_cost": 0.01995,
+    "fallback_available": true
+  }
+}

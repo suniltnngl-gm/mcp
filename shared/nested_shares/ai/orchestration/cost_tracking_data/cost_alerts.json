@@ -1,0 +1,70 @@
+[
+  {
+    "alert_id": "alert_1765575904",
+    "timestamp": "2025-12-13T03:15:04.492300",
+    "alert_type": "budget_exceeded",
+    "threshold": 5.0,
+    "current_amount": 182645.94270000045,
+    "period": "daily",
+    "message": "Daily budget exceeded: $182645.94 > $5.00",
+    "suggested_actions": [
+      "Immediately switch to free-tier providers only",
+      "Pause non-critical AI operations",
+      "Review recent high-cost activities",
+      "Consider increasing budget limits if justified",
+      "Avoid expensive providers: gemini-flash, claude-sonnet"
+    ],
+    "acknowledged": false
+  },
+  {
+    "alert_id": "alert_1765576195",
+    "timestamp": "2025-12-13T03:19:55.422829",
+    "alert_type": "budget_exceeded",
+    "threshold": 5.0,
+    "current_amount": 191455.6653000005,
+    "period": "daily",
+    "message": "Daily budget exceeded: $191455.67 > $5.00",
+    "suggested_actions": [
+      "Immediately switch to free-tier providers only",
+      "Pause non-critical AI operations",
+      "Review recent high-cost activities",
+      "Consider increasing budget limits if justified",
+      "Avoid expensive providers: gemini-flash, claude-sonnet"
+    ],
+    "acknowledged": false
+  },
+  {
+    "alert_id": "alert_1765576464",
+    "timestamp": "2025-12-13T03:24:24.171671",
+    "alert_type": "budget_exceeded",
+    "threshold": 5.0,
+    "current_amount": 209075.11050000053,
+    "period": "daily",
+    "message": "Daily budget exceeded: $209075.11 > $5.00",
+    "suggested_actions": [
+      "Immediately switch to free-tier providers only",
+      "Pause non-critical AI operations",
+      "Review recent high-cost activities",
+      "Consider increasing budget limits if justified",
+      "Avoid expensive providers: gemini-flash, claude-sonnet"
+    ],
+    "acknowledged": false
+  },
+  {
+    "alert_id": "alert_1765576906",
+    "timestamp": "2025-12-13T03:31:46.085270",
+    "alert_type": "budget_exceeded",
+    "threshold": 5.0,
+    "current_amount": 222289.6944000006,
+    "period": "daily",
+    "message": "Daily budget exceeded: $222289.69 > $5.00",
+    "suggested_actions": [
+      "Immediately switch to free-tier providers only",
+      "Pause non-critical AI operations",
+      "Review recent high-cost activities",
+      "Consider increasing budget limits if justified",
+      "Avoid expensive providers: gemini-flash, claude-sonnet"
+    ],
+    "acknowledged": false
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "total_files": 44,
+  "duplicates_to_remove": 40,
+  "files_to_consolidate": 4,
+  "actions": [
+    {
+      "action": "keep",
+      "source_files": [
+        "/media/sunil-kr/workspace/user-projects/shared-tools/nested-shares/ai/orchestration/IMPROVEMENT_ROADMAP.md",
+        "/media/sunil-kr/workspace/user-projects/shared-tools/nested-shares/ai/orchestration/roadmap_data.json",
+        "/media/sunil-kr/workspace/user-projects/shared-tools/nested-shares/ai/orchestration/roadmap_metrics.json",
+        "/media/sunil-kr/workspace/user-projects/shared-tools/nested-shares/ai/orchestration/progress_tracker.py"
+      ],
+      "target_file": "orchestration/unified_roadmap.json",
+      "reason": "Core orchestration files - consolidate into unified system"
+    },
+    {
+      "action": "mark_for_review/archive",
+      "source_files": [
+        "archive duplicate files (40 identified)"
+      ],
+      "target_file": "",
+      "reason": "Identified duplicates in archive - to be reviewed and managed, not deleted."
+    },
+    {
+      "action": "merge",
+      "source_files": [
+        "IMPROVEMENT_ROADMAP.md",
+        "SAFETY_INTEGRATED_ROADMAP.md"
+      ],
+      "target_file": "orchestration/MASTER_ROADMAP.md",
+      "reason": "Combine roadmap documents into single source"
+    }
+  ],
+  "suggested_next_steps": [
+    "Review consolidation_plan.json for detailed actions.",
+    "cd shared-tools/nested-shares/ai/orchestration/",
+    "python3 ../collaboration/consolidation_plan.py --execute"
+  ]
+}

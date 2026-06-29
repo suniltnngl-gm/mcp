@@ -1,0 +1,28 @@
+{
+  "file_reviewed": "/media/sunil-kr/workspace/user-projects/workspace-automation/src/extract_ai_orchestration.py",
+  "timestamp": "2025-12-13T20:44:23.873569",
+  "ai_analysis": {
+    "analyzer": "real_ai_gemini_equivalent",
+    "discussion_id": "disc-1765638863",
+    "analysis_prompt": "Analyze this Python code for best practices and patterns:\n\nFile: /media/sunil-kr/workspace/user-projects/workspace-automation/src/extract_ai_orchestration.py\nLines: 51\n\nCode:\n```python\n#!/usr/bin/env python3\n\"\"\"Extract AI orchestration tools to shared-tools.\"\"\"\n\nimport shutil\nfrom pathlib import Path\n\nWORKSPACE = Path('/media/sunil-kr/workspace/user-projects')\nSOURCE = WORKSPACE / 'archive/ai-orchestra'\nTARGET = WORKSPACE / 'shared-tools/nested-shares/ai'\n\nORCHESTRATION_TOOLS = [\n    'ai_orchestra/ai_orchestra.py',\n    'ai_orchestra/enhanced_orchestra.py',\n    'ai_orchestra/ai_autoconfig.py',\n    'ai_orchestra/auto_restructure.py',\n    'orchestra_cli.py',\n    'auto_context_manager.py',\n    'context_reset_mitigation.py',\n    'universal_context_guard.py',\n    'feedback_learning_engine.py',\n    'strategic_expansion_manager.py',\n    'data_persistence.py',\n]\n\ndef extract():\n    TARGET.mkdir(parents=True, exist_ok=True)\n    extracted = []\n    \n    for tool_path in ORCHESTRATION_TOOLS:\n        src = SOURCE / tool_path\n        if not src.exists():\n            print(f\"  \u23ed  Skip (not found): {tool_path}\")\n            continue\n        \n        target_name = src.name\n        target = TARGET / target_name\n        \n        if target.exists():\n            print(f\"  \u23ed  Skip (exists): {target_name}\")\n            continue\n        \n        shutil.copy2(src, target)\n        extracted.append(target_name)\n        print(f\"  \u2713 {target_name}\")\n    \n    print(f\"\\n\u2705 Extracted {len(extracted)} AI orchestration tools\")\n    return extracted\n\nif __name__ == '__main__':\n    print(\"\ud83c\udfbc Extracting AI orchestration tools...\\n\")\n    extract()\n\n```\n\nFocus on:\n1. Code structure and organization\n2. Design patterns used\n3. Best practice adherence\n4. Potential optimizations\n5. Maintainability aspects\n\nProvide specific, actionable recommendations.",
+    "status": "ai_analysis_initiated",
+    "file_info": {
+      "path": "/media/sunil-kr/workspace/user-projects/workspace-automation/src/extract_ai_orchestration.py",
+      "lines": 51,
+      "size": 1448
+    }
+  },
+  "kiro_review": {
+    "reviewer": "fallback_kiro",
+    "error": "'SmartAIRouter' object has no attribute 'route_request'",
+    "static_review": {
+      "workspace_location": "orchestration",
+      "integration_points": [
+        "existing_ai_systems",
+        "collaboration_framework"
+      ],
+      "compatibility": "high"
+    }
+  },
+  "integration_status": "real_ai_processing_complete"
+}

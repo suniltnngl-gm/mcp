@@ -1,0 +1,99 @@
+{
+  "error_patterns": [
+    {
+      "path": "/media/sunil-kr/workspace/user-projects/shared-tools/nested-shares/ai/orchestration/integrated_ai_discussion.py",
+      "component_type": "ai_discussion",
+      "api_methods": [
+        "create_discussion",
+        "add_message",
+        "get_responses"
+      ],
+      "dependencies": [
+        "json",
+        "time",
+        "sys",
+        "pathlib",
+        "datetime",
+        "typing",
+        "dataclasses",
+        "smart_ai_router",
+        "session_tracker",
+        "ai_action_tracker"
+      ],
+      "last_verified": "2025-12-13T20:58:40.216228",
+      "integration_status": "verified"
+    },
+    {
+      "path": "/media/sunil-kr/workspace/user-projects/shared-tools/nested-shares/ai/orchestration/smart_ai_router.py",
+      "component_type": "ai_router",
+      "api_methods": [
+        "select_provider",
+        "get_fallback_chain",
+        "estimate_cost",
+        "record_usage"
+      ],
+      "dependencies": [
+        "json",
+        "time",
+        "pathlib",
+        "typing",
+        "dataclasses",
+        "datetime",
+        "sys"
+      ],
+      "last_verified": "2025-12-13T20:58:40.216992",
+      "integration_status": "verified"
+    },
+    {
+      "path": "/media/sunil-kr/workspace/user-projects/shared-tools/nested-shares/ai/orchestration/decision_tracker.py",
+      "component_type": "decision_tracker",
+      "api_methods": [
+        "create_decision",
+        "update_decision",
+        "get_decisions"
+      ],
+      "dependencies": [
+        "json",
+        "time",
+        "pathlib",
+        "datetime",
+        "typing",
+        "dataclasses",
+        "enum",
+        "sys"
+      ],
+      "last_verified": "2025-12-13T20:58:40.218232",
+      "integration_status": "verified"
+    }
+  ],
+  "improvement_history": [
+    {
+      "timestamp": "2025-12-14T03:09:14.220363",
+      "type": "duplicate_refactor",
+      "files_involved": [
+        "/media/sunil-kr/workspace/user-projects/workspace-automation/src/project_revival.py",
+        "/media/sunil-kr/workspace/user-projects/workspace-automation/src/smart_organizer.py"
+      ],
+      "strategy_used": "merge_implementations",
+      "success": true,
+      "lessons_learned": [
+        "Automated detection successful",
+        "Lean workflow initiated"
+      ]
+    },
+    {
+      "timestamp": "2025-12-14T03:09:14.223624",
+      "type": "duplicate_refactor",
+      "files_involved": [
+        "/media/sunil-kr/workspace/user-projects/workspace-automation/src/enhanced_growth_tracker.py",
+        "/media/sunil-kr/workspace/user-projects/workspace-automation/src/growth_tracker.py"
+      ],
+      "strategy_used": "inline_refactor",
+      "success": true,
+      "lessons_learned": [
+        "Automated detection successful",
+        "Lean workflow initiated"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1157 @@
+{
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_auto_optimizer.py_9b04aed50af824934bccc170c36424e4": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_auto_optimizer.py",
+    "file_hash": "9b04aed50af824934bccc170c36424e4",
+    "analysis_timestamp": "2025-12-13T02:35:21.438812",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 55.737,
+    "processing_time": 1.8358230590820312e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_batch_generator.py_0dcc11387802f171b3977cf99f5ded52": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_batch_generator.py",
+    "file_hash": "0dcc11387802f171b3977cf99f5ded52",
+    "analysis_timestamp": "2025-12-13T02:35:21.443969",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.378,
+    "processing_time": 2.1696090698242188e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_tool_improver.py_2d10fa483bdde2639d9adf3f5497f2ef": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_tool_improver.py",
+    "file_hash": "2d10fa483bdde2639d9adf3f5497f2ef",
+    "analysis_timestamp": "2025-12-13T02:35:21.446501",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 69.26700000000001,
+    "processing_time": 1.430511474609375e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_tool_selector.py_b7be396aa593a58aa3096f698b2e5503": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_tool_selector.py",
+    "file_hash": "b7be396aa593a58aa3096f698b2e5503",
+    "analysis_timestamp": "2025-12-13T02:35:21.449456",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 65.769,
+    "processing_time": 1.3828277587890625e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_test_generator.py_288c2b0e30c5b12abdabf32423c21588": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_test_generator.py",
+    "file_hash": "288c2b0e30c5b12abdabf32423c21588",
+    "analysis_timestamp": "2025-12-13T02:35:21.456003",
+    "description": "Test file for ai_test_generator",
+    "tags": [
+      "test",
+      "validation",
+      "quality"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add more edge case tests",
+      "Improve test documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.34499999999998,
+    "processing_time": 2.0742416381835938e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_enhanced_revival.py_ed549426e958fcbdedc285fc218f1b52": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_enhanced_revival.py",
+    "file_hash": "ed549426e958fcbdedc285fc218f1b52",
+    "analysis_timestamp": "2025-12-13T02:35:21.456644",
+    "description": "Python module: ai_enhanced_revival",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.411,
+    "processing_time": 1.8835067749023438e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_smart_recommender.py_71173d43cef7d9027a492744f8b4b2c9": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_smart_recommender.py",
+    "file_hash": "71173d43cef7d9027a492744f8b4b2c9",
+    "analysis_timestamp": "2025-12-13T02:35:21.460399",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 79.101,
+    "processing_time": 1.621246337890625e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_pattern_learner.py_c9b520501e992656d2eeda3282d11f64": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_pattern_learner.py",
+    "file_hash": "c9b520501e992656d2eeda3282d11f64",
+    "analysis_timestamp": "2025-12-13T02:35:21.463080",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 76.989,
+    "processing_time": 1.9550323486328125e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_workspace_advisor.py_dfd77053b950d2c712f57e84f8d8588b": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_workspace_advisor.py",
+    "file_hash": "dfd77053b950d2c712f57e84f8d8588b",
+    "analysis_timestamp": "2025-12-13T02:35:21.463687",
+    "description": "Python module: ai_workspace_advisor",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.44399999999999,
+    "processing_time": 1.811981201171875e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_potential_finder.py_c951f2ed62e7e0b763ac49315f4e91dd": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_potential_finder.py",
+    "file_hash": "c951f2ed62e7e0b763ac49315f4e91dd",
+    "analysis_timestamp": "2025-12-13T02:35:21.472885",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 49.698,
+    "processing_time": 1.7881393432617188e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_anomaly_detector.py_5622898fbe418b53aeef6725360fa140": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_anomaly_detector.py",
+    "file_hash": "5622898fbe418b53aeef6725360fa140",
+    "analysis_timestamp": "2025-12-13T02:35:21.473410",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 76.19700000000002,
+    "processing_time": 1.239776611328125e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_consolidation_advisor.py_17247712676002edf3d120e4dec6b50f": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_consolidation_advisor.py",
+    "file_hash": "17247712676002edf3d120e4dec6b50f",
+    "analysis_timestamp": "2025-12-13T02:35:21.474675",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 70.15799999999999,
+    "processing_time": 1.430511474609375e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/analyze_hardcoded.py_75461b7e7e3b98426811953e70fb3251": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/analyze_hardcoded.py",
+    "file_hash": "75461b7e7e3b98426811953e70fb3251",
+    "analysis_timestamp": "2025-12-13T02:35:21.480446",
+    "description": "Python module: analyze_hardcoded",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.34499999999998,
+    "processing_time": 2.1696090698242188e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_jit_analyzer.py_2346ad526e75ed2decf4761bae47e9bf": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_jit_analyzer.py",
+    "file_hash": "2346ad526e75ed2decf4761bae47e9bf",
+    "analysis_timestamp": "2025-12-13T02:35:21.482015",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 69.333,
+    "processing_time": 1.5020370483398438e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_code_reviewer.py_3516aba267d72d212d29198a38ad971f": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_code_reviewer.py",
+    "file_hash": "3516aba267d72d212d29198a38ad971f",
+    "analysis_timestamp": "2025-12-13T02:35:21.485328",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.312,
+    "processing_time": 1.7642974853515625e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_complete_workflow.py_af353e2b8b69f9561d01c4a4fd65a955": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_complete_workflow.py",
+    "file_hash": "af353e2b8b69f9561d01c4a4fd65a955",
+    "analysis_timestamp": "2025-12-13T02:35:21.493711",
+    "description": "Python module: ai_complete_workflow",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.44399999999999,
+    "processing_time": 2.3365020751953125e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_tool_generator.py_8ffa36a4148feb50a9693ab505902840": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_tool_generator.py",
+    "file_hash": "8ffa36a4148feb50a9693ab505902840",
+    "analysis_timestamp": "2025-12-13T02:35:21.494412",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.34499999999998,
+    "processing_time": 1.3113021850585938e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_orchestrator.py_e4e658030a753f486d1400a7665888ae": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_orchestrator.py",
+    "file_hash": "e4e658030a753f486d1400a7665888ae",
+    "analysis_timestamp": "2025-12-13T02:35:21.499988",
+    "description": "Python module: ai_orchestrator",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.279,
+    "processing_time": 2.0265579223632812e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/test_json_mode.py_c790887bcd6a304ec297bd01f07d86d4": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/test_json_mode.py",
+    "file_hash": "c790887bcd6a304ec297bd01f07d86d4",
+    "analysis_timestamp": "2025-12-13T02:35:21.501591",
+    "description": "Test file for test_json_mode",
+    "tags": [
+      "test",
+      "validation",
+      "quality"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add more edge case tests",
+      "Improve test documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 58.971,
+    "processing_time": 1.5974044799804688e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_productivity_tracker.py_37a8ecce73202bf188f4cd8c5644c103": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai_productivity_tracker.py",
+    "file_hash": "37a8ecce73202bf188f4cd8c5644c103",
+    "analysis_timestamp": "2025-12-13T02:35:21.505868",
+    "description": "Python module: ai_productivity_tracker",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.54299999999999,
+    "processing_time": 2.002716064453125e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/test_providers.py_78b1f7a01e98d43c84c056aa3fa50b25": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/test_providers.py",
+    "file_hash": "78b1f7a01e98d43c84c056aa3fa50b25",
+    "analysis_timestamp": "2025-12-13T02:35:21.511889",
+    "description": "Test file for test_providers",
+    "tags": [
+      "test",
+      "validation",
+      "quality"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add more edge case tests",
+      "Improve test documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 64.02,
+    "processing_time": 1.3828277587890625e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/workspace-automation/ai.py_739b1556fde0e81553d6fcfd21fdb5e8": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/ai.py",
+    "file_hash": "739b1556fde0e81553d6fcfd21fdb5e8",
+    "analysis_timestamp": "2025-12-13T02:35:21.516620",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 80.85,
+    "processing_time": 1.71661376953125e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/fast-review-tool/gemini_opik.py_eeeb1f8766b86deffa2943025c8716df": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/fast-review-tool/gemini_opik.py",
+    "file_hash": "eeeb1f8766b86deffa2943025c8716df",
+    "analysis_timestamp": "2025-12-13T02:35:21.517596",
+    "description": "Python module: gemini_opik",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 27.983999999999998,
+    "processing_time": 1.5497207641601562e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/coding-tools-wrapper/main.py_3ca0d3bb389a8e903c96841f6359e8c7": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/coding-tools-wrapper/main.py",
+    "file_hash": "3ca0d3bb389a8e903c96841f6359e8c7",
+    "analysis_timestamp": "2025-12-13T02:35:21.524223",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 18.15,
+    "processing_time": 1.4066696166992188e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/artifacts/python-demo/main.py_8beee5b9762be51c28ef1191bf005bb6": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/artifacts/python-demo/main.py",
+    "file_hash": "8beee5b9762be51c28ef1191bf005bb6",
+    "analysis_timestamp": "2025-12-13T02:35:21.528468",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 46.958999999999996,
+    "processing_time": 1.4781951904296875e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/strategic_expansion_manager.py_e61fbc71d2755ad0238391a7f6f56155": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/strategic_expansion_manager.py",
+    "file_hash": "e61fbc71d2755ad0238391a7f6f56155",
+    "analysis_timestamp": "2025-12-13T02:35:21.528962",
+    "description": "Python module: strategic_expansion_manager",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.675,
+    "processing_time": 1.7404556274414062e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/coding-tools-wrapper/dummy_python_script.py_1f7697fc10cd8d4db34a11fa97239cc5": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/coding-tools-wrapper/dummy_python_script.py",
+    "file_hash": "1f7697fc10cd8d4db34a11fa97239cc5",
+    "analysis_timestamp": "2025-12-13T02:35:21.531897",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 66.33,
+    "processing_time": 1.7642974853515625e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/provider_config_manager.py_99ece70046266f22998b253db21b2e73": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/provider_config_manager.py",
+    "file_hash": "99ece70046266f22998b253db21b2e73",
+    "analysis_timestamp": "2025-12-13T02:35:21.543644",
+    "description": "Configuration module",
+    "tags": [
+      "config",
+      "settings",
+      "util"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.0,
+    "improvements": [
+      "Add configuration validation",
+      "Support environment variables"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.54299999999999,
+    "processing_time": 1.9073486328125e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/test_integrated_system.py_5ee6a55983e7c2e4f473ef9f660e764f": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/test_integrated_system.py",
+    "file_hash": "5ee6a55983e7c2e4f473ef9f660e764f",
+    "analysis_timestamp": "2025-12-13T02:35:21.544226",
+    "description": "Test file for test_integrated_system",
+    "tags": [
+      "test",
+      "validation",
+      "quality"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add more edge case tests",
+      "Improve test documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.51,
+    "processing_time": 1.0967254638671875e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/cleanup_leftovers.py_362c601a7aea33f0cccce36bc7bc056d": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/cleanup_leftovers.py",
+    "file_hash": "362c601a7aea33f0cccce36bc7bc056d",
+    "analysis_timestamp": "2025-12-13T02:35:21.546241",
+    "description": "Python module: cleanup_leftovers",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.34499999999998,
+    "processing_time": 2.0265579223632812e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/feedback_learning_engine.py_3f385f1a2fdf50e7e0d24ac578bd4f18": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/feedback_learning_engine.py",
+    "file_hash": "3f385f1a2fdf50e7e0d24ac578bd4f18",
+    "analysis_timestamp": "2025-12-13T02:35:21.547869",
+    "description": "Python module: feedback_learning_engine",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.576,
+    "processing_time": 2.1457672119140625e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/setup_hf_token.py_206c6228c7f7b1505cf2a05d59c681a6": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/setup_hf_token.py",
+    "file_hash": "206c6228c7f7b1505cf2a05d59c681a6",
+    "analysis_timestamp": "2025-12-13T02:35:21.555244",
+    "description": "Python module: setup_hf_token",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.246,
+    "processing_time": 2.2649765014648438e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/fix_groq_models.py_104a28eb9810dc32ff752ef3c950e4ba": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/fix_groq_models.py",
+    "file_hash": "104a28eb9810dc32ff752ef3c950e4ba",
+    "analysis_timestamp": "2025-12-13T02:35:21.567901",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 68.541,
+    "processing_time": 1.71661376953125e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/setup_more_apis.py_cb26e1ca643f58e8028e455406358566": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/setup_more_apis.py",
+    "file_hash": "cb26e1ca643f58e8028e455406358566",
+    "analysis_timestamp": "2025-12-13T02:35:21.570694",
+    "description": "Python module: setup_more_apis",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.279,
+    "processing_time": 2.1457672119140625e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/dynamic_case_study_adoption.py_1ad3923ae4845b1225f7dc8282f2280c": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/dynamic_case_study_adoption.py",
+    "file_hash": "1ad3923ae4845b1225f7dc8282f2280c",
+    "analysis_timestamp": "2025-12-13T02:35:21.571499",
+    "description": "Python module: dynamic_case_study_adoption",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.675,
+    "processing_time": 1.6689300537109375e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/improvement_integration.py_965a6ee51e5ccb1f62818d3f12b79528": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/improvement_integration.py",
+    "file_hash": "965a6ee51e5ccb1f62818d3f12b79528",
+    "analysis_timestamp": "2025-12-13T02:35:21.580429",
+    "description": "Python module: improvement_integration",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.54299999999999,
+    "processing_time": 2.2649765014648438e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/data_persistence.py_51dff8bc1ba09e2f7a778ac88cca41c7": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/data_persistence.py",
+    "file_hash": "51dff8bc1ba09e2f7a778ac88cca41c7",
+    "analysis_timestamp": "2025-12-13T02:35:21.590907",
+    "description": "Python module: data_persistence",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.312,
+    "processing_time": 2.193450927734375e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/execute_cri_reduction.py_7af9af4cc551049650b6602d9dd57599": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/execute_cri_reduction.py",
+    "file_hash": "7af9af4cc551049650b6602d9dd57599",
+    "analysis_timestamp": "2025-12-13T02:35:21.591929",
+    "description": "Python module: execute_cri_reduction",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.47699999999999,
+    "processing_time": 1.7881393432617188e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/prepare_overhaul.py_712441d99e096341e4ccec1455d69d16": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/prepare_overhaul.py",
+    "file_hash": "712441d99e096341e4ccec1455d69d16",
+    "analysis_timestamp": "2025-12-13T02:35:21.592752",
+    "description": "Python module: prepare_overhaul",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.312,
+    "processing_time": 1.6927719116210938e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/provider_pricing_tracker.py_1d8b3098ac367fe6df1d4afbdd5c5044": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/provider_pricing_tracker.py",
+    "file_hash": "1d8b3098ac367fe6df1d4afbdd5c5044",
+    "analysis_timestamp": "2025-12-13T02:35:21.600395",
+    "description": "Python module: provider_pricing_tracker",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.576,
+    "processing_time": 1.7881393432617188e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/immediate_next_steps.py_56c0c55a3207bbe734ef092e623ebae3": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/immediate_next_steps.py",
+    "file_hash": "56c0c55a3207bbe734ef092e623ebae3",
+    "analysis_timestamp": "2025-12-13T02:35:21.605535",
+    "description": "Python module: immediate_next_steps",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.44399999999999,
+    "processing_time": 1.7881393432617188e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/secure_token_manager.py_4b15557d789ced13efa6fa5950c7dfb9": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/secure_token_manager.py",
+    "file_hash": "4b15557d789ced13efa6fa5950c7dfb9",
+    "analysis_timestamp": "2025-12-13T02:35:21.609527",
+    "description": "Python module: secure_token_manager",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.44399999999999,
+    "processing_time": 2.193450927734375e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/context_reset_cases.py_a7ab075b00f810459406304ee66f8d09": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/context_reset_cases.py",
+    "file_hash": "a7ab075b00f810459406304ee66f8d09",
+    "analysis_timestamp": "2025-12-13T02:35:21.615590",
+    "description": "Python module: context_reset_cases",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.411,
+    "processing_time": 2.288818359375e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/context_reset_mitigation.py_ca9f604d945f466bfaaf9b8faa065453": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/context_reset_mitigation.py",
+    "file_hash": "ca9f604d945f466bfaaf9b8faa065453",
+    "analysis_timestamp": "2025-12-13T02:35:21.624506",
+    "description": "Python module: context_reset_mitigation",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.576,
+    "processing_time": 2.1457672119140625e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/orchestra_cli.py_0fe433ad15372e986074f0b83b16c287": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/orchestra_cli.py",
+    "file_hash": "0fe433ad15372e986074f0b83b16c287",
+    "analysis_timestamp": "2025-12-13T02:35:21.629790",
+    "description": "Python module: orchestra_cli",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.213,
+    "processing_time": 2.1696090698242188e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/reality_checker.py_72e25163d05d2c09b287d707ebc9a73f": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/reality_checker.py",
+    "file_hash": "72e25163d05d2c09b287d707ebc9a73f",
+    "analysis_timestamp": "2025-12-13T02:35:21.631085",
+    "description": "Python module: reality_checker",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.279,
+    "processing_time": 1.5497207641601562e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/persistence_integration.py_d43489d91ada29c4ff0b43dee385f4e2": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/persistence_integration.py",
+    "file_hash": "d43489d91ada29c4ff0b43dee385f4e2",
+    "analysis_timestamp": "2025-12-13T02:35:21.639641",
+    "description": "Python module: persistence_integration",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.54299999999999,
+    "processing_time": 1.8596649169921875e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/ai_load_balancer.py_3be23d4a2b585fcd3283abaca7adc812": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/ai_load_balancer.py",
+    "file_hash": "3be23d4a2b585fcd3283abaca7adc812",
+    "analysis_timestamp": "2025-12-13T02:35:21.650337",
+    "description": "Python module: ai_load_balancer",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.312,
+    "processing_time": 2.1457672119140625e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/auto_commit.py_8e5275d06d84559f4b41361d760f143f": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/auto_commit.py",
+    "file_hash": "8e5275d06d84559f4b41361d760f143f",
+    "analysis_timestamp": "2025-12-13T02:35:21.650831",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 74.778,
+    "processing_time": 1.2159347534179688e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/update_automation.py_9da367ac1af9e5581eb614fdbd531bdf": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/update_automation.py",
+    "file_hash": "9da367ac1af9e5581eb614fdbd531bdf",
+    "analysis_timestamp": "2025-12-13T02:35:21.654737",
+    "description": "Python module: update_automation",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.34499999999998,
+    "processing_time": 2.09808349609375e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/migrate_imports.py_74e530e75f2cd64899b13372cc85768f": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/migrate_imports.py",
+    "file_hash": "74e530e75f2cd64899b13372cc85768f",
+    "analysis_timestamp": "2025-12-13T02:35:21.661803",
+    "description": "Main entry point module",
+    "tags": [
+      "core",
+      "entry-point",
+      "main"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 8.0,
+    "improvements": [
+      "Add command-line argument parsing",
+      "Improve error handling"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 50.952,
+    "processing_time": 1.7881393432617188e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/provider_categories.py_e830b4763416b55d5037937a0c5dc5fb": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/provider_categories.py",
+    "file_hash": "e830b4763416b55d5037937a0c5dc5fb",
+    "analysis_timestamp": "2025-12-13T02:35:21.662476",
+    "description": "Python module: provider_categories",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.411,
+    "processing_time": 1.8358230590820312e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/universal_context_guard.py_eb3bf53a00350423a1f66a1250b0bb4c": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/universal_context_guard.py",
+    "file_hash": "eb3bf53a00350423a1f66a1250b0bb4c",
+    "analysis_timestamp": "2025-12-13T02:35:21.678203",
+    "description": "Python module: universal_context_guard",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.54299999999999,
+    "processing_time": 2.193450927734375e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/case_study_intelligent_renaming.py_1cafc7e2be6ed0bd7b6a9d72d2cfb7a6": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/case_study_intelligent_renaming.py",
+    "file_hash": "1cafc7e2be6ed0bd7b6a9d72d2cfb7a6",
+    "analysis_timestamp": "2025-12-13T02:35:21.679163",
+    "description": "Python module: case_study_intelligent_renaming",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.807,
+    "processing_time": 2.0265579223632812e-05
+  },
+  "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/reality_guided_cri.py_4e71bd0b24494ed4c49c36b45b635126": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/archive/ai-orchestra/reality_guided_cri.py",
+    "file_hash": "4e71bd0b24494ed4c49c36b45b635126",
+    "analysis_timestamp": "2025-12-13T02:35:21.680602",
+    "description": "Python module: reality_guided_cri",
+    "tags": [
+      "module",
+      "python",
+      "core"
+    ],
+    "complexity": "complex",
+    "category": "code_analysis",
+    "quality_score": 7.5,
+    "improvements": [
+      "Add type hints",
+      "Improve documentation"
+    ],
+    "provider_used": "claude-sonnet",
+    "analysis_cost": 81.378,
+    "processing_time": 2.002716064453125e-05
+  }
+}

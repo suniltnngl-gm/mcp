@@ -66,3 +66,4 @@ temp_game_rules.db
 temp_game_rules.db-journal
 temp_llm_sandbox/
 uv.lock
+.vercel

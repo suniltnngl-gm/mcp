@@ -1,0 +1,26 @@
+{
+  "protected_paths": [
+    "/media/sunil-kr/workspace/user-projects/shared-tools/nested-shares",
+    "/media/sunil-kr/workspace/user-projects/current"
+  ],
+  "working_tools": [
+    {
+      "path": "/media/sunil-kr/workspace/user-projects/shared-tools/nested-shares",
+      "description": "Core shared tools - working system, do not break",
+      "registered": "2025-12-11T17:27:36.361020",
+      "status": "working"
+    }
+  ],
+  "safe_operations": [
+    "analyze",
+    "create_new",
+    "report",
+    "plan"
+  ],
+  "high_risk_operations": [
+    "move",
+    "delete",
+    "modify",
+    "restructure"
+  ]
+}

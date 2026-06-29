@@ -1,0 +1,192 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-12-13T02:49:45Z",
+  "cost_tiers": {
+    "free": {
+      "max_cost_per_request": 0.0,
+      "providers": ["openrouter-free"],
+      "use_cases": ["simple_tasks", "testing", "budget_constrained"]
+    },
+    "budget": {
+      "max_cost_per_request": 0.5,
+      "providers": ["gemini-flash", "claude-haiku"],
+      "use_cases": ["moderate_tasks", "development", "frequent_use"]
+    },
+    "standard": {
+      "max_cost_per_request": 2.0,
+      "providers": ["gpt-3.5", "claude-haiku", "gemini-flash"],
+      "use_cases": ["production", "quality_focused", "business_critical"]
+    },
+    "premium": {
+      "max_cost_per_request": 50.0,
+      "providers": ["claude-sonnet", "gpt-4"],
+      "use_cases": ["complex_analysis", "high_quality", "critical_decisions"]
+    }
+  },
+  "fallback_chains": {
+    "cost_optimized": {
+      "description": "Prioritize cost savings with quality fallbacks",
+      "chain": [
+        {"provider": "openrouter-free", "conditions": ["always_try_first"]},
+        {"provider": "gemini-flash", "conditions": ["if_free_fails", "moderate_complexity"]},
+        {"provider": "claude-haiku", "conditions": ["if_gemini_fails", "need_reliability"]},
+        {"provider": "claude-sonnet", "conditions": ["if_all_fail", "last_resort"]}
+      ]
+    },
+    "quality_first": {
+      "description": "Prioritize quality with cost-effective fallbacks",
+      "chain": [
+        {"provider": "claude-sonnet", "conditions": ["complex_tasks", "high_quality_needed"]},
+        {"provider": "gpt-4", "conditions": ["if_claude_fails", "premium_backup"]},
+        {"provider": "claude-haiku", "conditions": ["if_premium_fails", "reliable_fallback"]},
+        {"provider": "gemini-flash", "conditions": ["if_all_premium_fail", "budget_option"]}
+      ]
+    },
+    "balanced": {
+      "description": "Balance cost and quality",
+      "chain": [
+        {"provider": "gemini-flash", "conditions": ["first_choice", "good_balance"]},
+        {"provider": "claude-haiku", "conditions": ["if_gemini_fails", "similar_cost"]},
+        {"provider": "claude-sonnet", "conditions": ["if_need_quality", "willing_to_pay"]},
+        {"provider": "openrouter-free", "conditions": ["if_budget_exceeded", "emergency_fallback"]}
+      ]
+    },
+    "development": {
+      "description": "Optimized for development and testing",
+      "chain": [
+        {"provider": "openrouter-free", "conditions": ["testing", "development"]},
+        {"provider": "gemini-flash", "conditions": ["need_better_quality", "still_cheap"]},
+        {"provider": "claude-haiku", "conditions": ["production_testing", "moderate_cost"]},
+        {"provider": "claude-sonnet", "conditions": ["final_validation", "quality_check"]}
+      ]
+    }
+  },
+  "switching_rules": {
+    "budget_exceeded": {
+      "trigger": "daily_cost > budget_limit",
+      "action": "switch_to_tier",
+      "target": "free",
+      "duration": "until_budget_reset"
+    },
+    "provider_unhealthy": {
+      "trigger": "success_rate < 80%",
+      "action": "skip_provider",
+      "duration": "1_hour",
+      "fallback_to": "next_in_chain"
+    },
+    "high_latency": {
+      "trigger": "avg_response_time > 10000ms",
+      "action": "deprioritize_provider",
+      "duration": "30_minutes",
+      "fallback_to": "faster_alternative"
+    },
+    "rate_limited": {
+      "trigger": "rate_limit_hit",
+      "action": "skip_provider",
+      "duration": "rate_limit_reset_time",
+      "fallback_to": "next_available"
+    },
+    "cost_spike": {
+      "trigger": "cost_per_request > tier_max * 1.5",
+      "action": "switch_to_cheaper",
+      "target": "lower_tier",
+      "alert": true
+    }
+  },
+  "task_routing": {
+    "simple": {
+      "preferred_chain": "cost_optimized",
+      "max_cost": 0.1,
+      "quality_threshold": 6.0
+    },
+    "moderate": {
+      "preferred_chain": "balanced",
+      "max_cost": 1.0,
+      "quality_threshold": 7.0
+    },
+    "complex": {
+      "preferred_chain": "quality_first",
+      "max_cost": 10.0,
+      "quality_threshold": 8.5
+    },
+    "creative": {
+      "preferred_chain": "quality_first",
+      "max_cost": 5.0,
+      "quality_threshold": 8.0,
+      "preferred_providers": ["claude-sonnet", "gpt-4"]
+    },
+    "code_analysis": {
+      "preferred_chain": "balanced",
+      "max_cost": 2.0,
+      "quality_threshold": 7.5,
+      "preferred_providers": ["gemini-flash", "claude-haiku"]
+    }
+  },
+  "budget_controls": {
+    "daily_limits": {
+      "free_tier": 0.0,
+      "development": 5.0,
+      "production": 50.0,
+      "enterprise": 500.0
+    },
+    "monthly_limits": {
+      "free_tier": 0.0,
+      "development": 100.0,
+      "production": 1000.0,
+      "enterprise": 10000.0
+    },
+    "alert_thresholds": {
+      "warning": 0.8,
+      "critical": 0.95
+    },
+    "auto_actions": {
+      "at_warning": "send_notification",
+      "at_critical": "switch_to_free_tier",
+      "at_limit": "disable_paid_providers"
+    }
+  },
+  "provider_profiles": {
+    "openrouter-free": {
+      "cost_tier": "free",
+      "reliability": 7.0,
+      "speed": 6.0,
+      "quality": 6.5,
+      "best_for": ["simple_tasks", "testing", "high_volume"]
+    },
+    "gemini-flash": {
+      "cost_tier": "budget",
+      "reliability": 8.5,
+      "speed": 9.0,
+      "quality": 7.5,
+      "best_for": ["moderate_tasks", "code_analysis", "frequent_use"]
+    },
+    "claude-haiku": {
+      "cost_tier": "budget",
+      "reliability": 9.0,
+      "speed": 8.0,
+      "quality": 8.0,
+      "best_for": ["reliable_tasks", "production", "balanced_needs"]
+    },
+    "gpt-3.5": {
+      "cost_tier": "standard",
+      "reliability": 8.0,
+      "speed": 7.5,
+      "quality": 7.5,
+      "best_for": ["general_purpose", "established_workflows"]
+    },
+    "claude-sonnet": {
+      "cost_tier": "premium",
+      "reliability": 9.5,
+      "speed": 7.0,
+      "quality": 9.5,
+      "best_for": ["complex_analysis", "creative_tasks", "high_quality"]
+    },
+    "gpt-4": {
+      "cost_tier": "premium",
+      "reliability": 9.0,
+      "speed": 6.0,
+      "quality": 9.5,
+      "best_for": ["complex_reasoning", "critical_decisions", "premium_quality"]
+    }
+  }
+}

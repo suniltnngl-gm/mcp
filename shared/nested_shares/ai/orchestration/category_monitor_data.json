@@ -1,0 +1,171 @@
+{
+  "snapshots": [
+    {
+      "timestamp": "2025-12-11T17:08:49.836256",
+      "categories": {
+        "git": {
+          "name": "git",
+          "file_count": 1,
+          "balance_score": 0.8,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "healthy"
+        },
+        "testing": {
+          "name": "testing",
+          "file_count": 4,
+          "balance_score": 1.0,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "healthy"
+        },
+        "ai": {
+          "name": "ai",
+          "file_count": 89,
+          "balance_score": 0.03143570751873224,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "critical"
+        },
+        "workflow": {
+          "name": "workflow",
+          "file_count": 11,
+          "balance_score": 0.9375,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "healthy"
+        },
+        "tasks": {
+          "name": "tasks",
+          "file_count": 2,
+          "balance_score": 0.8,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "healthy"
+        },
+        "db": {
+          "name": "db",
+          "file_count": 1,
+          "balance_score": 0.8,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "healthy"
+        },
+        "config": {
+          "name": "config",
+          "file_count": 1,
+          "balance_score": 0.8,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "healthy"
+        },
+        "refactor": {
+          "name": "refactor",
+          "file_count": 9,
+          "balance_score": 0.9130434782608695,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "healthy"
+        },
+        "core": {
+          "name": "core",
+          "file_count": 5,
+          "balance_score": 1.0,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "healthy"
+        },
+        "web": {
+          "name": "web",
+          "file_count": 1,
+          "balance_score": 0.8,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "healthy"
+        },
+        "ignore": {
+          "name": "ignore",
+          "file_count": 4,
+          "balance_score": 0.8,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "healthy"
+        },
+        "data": {
+          "name": "data",
+          "file_count": 1,
+          "balance_score": 0.8,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "healthy"
+        },
+        "docs": {
+          "name": "docs",
+          "file_count": 9,
+          "balance_score": 0.9230769230769231,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "healthy"
+        },
+        "discussions": {
+          "name": "discussions",
+          "file_count": 1512,
+          "balance_score": 0.001005670735605266,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "critical"
+        },
+        "alternatives": {
+          "name": "alternatives",
+          "file_count": 57,
+          "balance_score": 0.1194879089615932,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "critical"
+        },
+        "system": {
+          "name": "system",
+          "file_count": 1,
+          "balance_score": 0.8,
+          "growth_rate": 0.0,
+          "last_optimized": "never",
+          "health_status": "healthy"
+        }
+      }
+    }
+  ],
+  "alerts": [
+    {
+      "timestamp": "2025-12-11T17:08:50.292395",
+      "critical_issues": [
+        {
+          "type": "oversized_category",
+          "category": "discussions",
+          "severity": "critical",
+          "description": "Category has 1512 files (>1000 threshold)",
+          "suggested_action": "Split category into smaller subcategories"
+        }
+      ],
+      "suggestions": [
+        {
+          "action": "execute_category_splits",
+          "priority": "critical",
+          "categories": [
+            "discussions"
+          ],
+          "estimated_time": "2-4 hours"
+        },
+        {
+          "action": "rebalance_categories",
+          "priority": "low",
+          "categories": [
+            "ai",
+            "discussions",
+            "alternatives"
+          ],
+          "estimated_time": "1-2 hours"
+        }
+      ]
+    }
+  ]
+}

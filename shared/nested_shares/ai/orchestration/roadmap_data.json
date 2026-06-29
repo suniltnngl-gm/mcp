@@ -1,0 +1,109 @@
+{
+  "roadmaps": {},
+  "patterns": {},
+  "improvements": [
+    {
+      "timestamp": "2025-12-11T16:02:03.637037",
+      "patterns": {
+        "nested_structure": {
+          "max_depth": 11,
+          "total_files": 1692,
+          "categories": 15,
+          "efficiency": 0.08865248226950354,
+          "distribution": {
+            "git": 1,
+            "testing": 4,
+            "ai": 1581,
+            "workflow": 11,
+            "tasks": 2,
+            "db": 1,
+            "config": 1,
+            "refactor": 9,
+            "core": 5,
+            "web": 1,
+            "ignore": 4,
+            "data": 1,
+            "docs": 9,
+            "alternatives": 57,
+            "system": 1
+          }
+        },
+        "merge_history": {
+          "merge_attempts": 3,
+          "backups_created": 0,
+          "success_rate": 0.8,
+          "last_merge": "2025-12-11T16:02:02.712303"
+        },
+        "documentation_gaps": {
+          "total_docs": 1596,
+          "wiki_docs": 0,
+          "conversion_rate": 0.0,
+          "gaps": 1596
+        },
+        "todo_patterns": {
+          "active_todos": 8,
+          "completion_rate": 0.0,
+          "average_time": "2h",
+          "bottlenecks": [
+            "AI integration",
+            "testing"
+          ]
+        }
+      },
+      "suggestions": [
+        {
+          "area": "documentation",
+          "suggestion": "Convert remaining docs to wiki format for better searchability",
+          "impact": "high",
+          "effort": "medium",
+          "priority": 1
+        },
+        {
+          "area": "merge_operations",
+          "suggestion": "Implement automated merge testing and rollback procedures",
+          "impact": "high",
+          "effort": "high",
+          "priority": 1
+        },
+        {
+          "area": "nested_structure",
+          "suggestion": "Rebalance nested-shares categories - some have too many files",
+          "impact": "medium",
+          "effort": "low",
+          "priority": 2
+        }
+      ],
+      "metrics": [
+        {
+          "name": "merge_success_rate",
+          "value": 0.8,
+          "target": 0.95,
+          "trend": "improving",
+          "last_updated": "2025-12-11T16:02:03.636881"
+        },
+        {
+          "name": "nested_depth_efficiency",
+          "value": 0.08865248226950354,
+          "target": 0.85,
+          "trend": "improving",
+          "last_updated": "2025-12-11T16:02:03.636951"
+        },
+        {
+          "name": "docs_conversion_rate",
+          "value": 0.0,
+          "target": 0.9,
+          "trend": "stable",
+          "last_updated": "2025-12-11T16:02:03.636965"
+        },
+        {
+          "name": "todo_completion_rate",
+          "value": 0.0,
+          "target": 0.8,
+          "trend": "stable",
+          "last_updated": "2025-12-11T16:02:03.636981"
+        }
+      ]
+    }
+  ],
+  "created": "2025-12-11T16:02:01.682171"
+}

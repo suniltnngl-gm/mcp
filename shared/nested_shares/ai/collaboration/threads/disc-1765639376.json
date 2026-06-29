@@ -1,0 +1,16 @@
+{
+  "id": "disc-1765639376",
+  "topic": "Code Analysis: extract_ai_orchestration.py",
+  "created": "2025-12-13T20:52:56.742404",
+  "status": "active",
+  "participants": [
+    "architect-ai"
+  ],
+  "context": {
+    "file_path": "/media/sunil-kr/workspace/user-projects/workspace-automation/src/extract_ai_orchestration.py",
+    "analysis_type": "code_review"
+  },
+  "messages": [],
+  "decisions": [],
+  "total_cost": 0.0
+}

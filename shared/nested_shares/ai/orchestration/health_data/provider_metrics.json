@@ -1,0 +1,41 @@
+{
+  "claude-sonnet": {
+    "provider": "claude-sonnet",
+    "total_requests": 4213,
+    "successful_requests": 4213,
+    "failed_requests": 0,
+    "total_cost": 257457.00300000072,
+    "avg_response_time": 0.044770240783691406,
+    "last_request_time": "2025-12-13T02:35:21.680662",
+    "success_rate": 100.0,
+    "cost_per_request": 61.110136007595706,
+    "requests_per_hour": 0.0,
+    "error_types": {}
+  },
+  "gemini-flash": {
+    "provider": "gemini-flash",
+    "total_requests": 424,
+    "successful_requests": 424,
+    "failed_requests": 0,
+    "total_cost": 71.58179999999994,
+    "avg_response_time": 0.5772113800048828,
+    "last_request_time": "2025-12-13T01:44:33.039888",
+    "success_rate": 100.0,
+    "cost_per_request": 0.16882499999999986,
+    "requests_per_hour": 0.0,
+    "error_types": {}
+  },
+  "openrouter-free": {
+    "provider": "openrouter-free",
+    "total_requests": 318,
+    "successful_requests": 318,
+    "failed_requests": 0,
+    "total_cost": 0.0,
+    "avg_response_time": 500.0,
+    "last_request_time": "2025-12-13T01:50:19.679607",
+    "success_rate": 100.0,
+    "cost_per_request": 0.0,
+    "requests_per_hour": 0.0,
+    "error_types": {}
+  }
+}

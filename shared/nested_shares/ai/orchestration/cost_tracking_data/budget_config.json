@@ -1,0 +1,8 @@
+{
+  "daily_limit": 1000.0,
+  "monthly_limit": 5000.0,
+  "warning_threshold": 0.8,
+  "critical_threshold": 0.95,
+  "auto_actions_enabled": true,
+  "notification_email": null
+}

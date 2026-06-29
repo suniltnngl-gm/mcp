@@ -1,0 +1,62 @@
+{
+  "openrouter-free": {
+    "provider": "openrouter-free",
+    "requests": 0,
+    "tokens_input": 0,
+    "tokens_output": 0,
+    "total_cost": 0.0,
+    "failures": 0,
+    "avg_latency": 0.0,
+    "last_used": null
+  },
+  "gemini-flash": {
+    "provider": "gemini-flash",
+    "requests": 1,
+    "tokens_input": 75,
+    "tokens_output": 100,
+    "total_cost": 0.035625,
+    "failures": 0,
+    "avg_latency": 1.5,
+    "last_used": "2025-12-13T20:52:56.743298"
+  },
+  "gpt-3.5": {
+    "provider": "gpt-3.5",
+    "requests": 0,
+    "tokens_input": 0,
+    "tokens_output": 0,
+    "total_cost": 0.0,
+    "failures": 0,
+    "avg_latency": 0.0,
+    "last_used": null
+  },
+  "claude-haiku": {
+    "provider": "claude-haiku",
+    "requests": 0,
+    "tokens_input": 0,
+    "tokens_output": 0,
+    "total_cost": 0.0,
+    "failures": 0,
+    "avg_latency": 0.0,
+    "last_used": null
+  },
+  "gpt-4": {
+    "provider": "gpt-4",
+    "requests": 0,
+    "tokens_input": 0,
+    "tokens_output": 0,
+    "total_cost": 0.0,
+    "failures": 0,
+    "avg_latency": 0.0,
+    "last_used": null
+  },
+  "claude-sonnet": {
+    "provider": "claude-sonnet",
+    "requests": 0,
+    "tokens_input": 0,
+    "tokens_output": 0,
+    "total_cost": 0.0,
+    "failures": 0,
+    "avg_latency": 0.0,
+    "last_used": null
+  }
+}
